@@ -1,4 +1,6 @@
 import 'package:get/get_navigation/src/routes/get_route.dart';
+import 'package:santaclothes/presentation/login/login_binding.dart';
+import 'package:santaclothes/presentation/login/login_screen.dart';
 import 'package:santaclothes/presentation/splash/splash_binding.dart';
 import 'package:santaclothes/presentation/splash/splash_screen.dart';
 import 'package:santaclothes/routes/app_routes.dart';
@@ -9,6 +11,11 @@ class AppPages {
       name: Routes.SPLASH,
       page: () => SplashScreen(),
       binding: SplashBinding(),
+    ),
+    GetPage(
+      name: Routes.LOGIN,
+      page: () => LoginScreen(),
+      binding: LoginBinding(),
     )
   ];
 }
