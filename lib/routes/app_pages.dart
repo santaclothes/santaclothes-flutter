@@ -1,4 +1,6 @@
 import 'package:get/get_navigation/src/routes/get_route.dart';
+import 'package:santaclothes/presentation/dashboard/dashboard_binding.dart';
+import 'package:santaclothes/presentation/dashboard/dashboard_screen.dart';
 import 'package:santaclothes/presentation/login/login_binding.dart';
 import 'package:santaclothes/presentation/login/login_screen.dart';
 import 'package:santaclothes/presentation/splash/splash_binding.dart';
@@ -16,6 +18,11 @@ class AppPages {
       name: Routes.LOGIN,
       page: () => LoginScreen(),
       binding: LoginBinding(),
-    )
+    ),
+    GetPage(
+      name: Routes.DASHBOARD,
+      page: () => DashboardScreen(),
+      binding: DashboardBinding(),
+    ),
   ];
 }
