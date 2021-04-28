@@ -1,6 +1,7 @@
 import 'package:get/get.dart';
 
 import 'package:kakao_flutter_sdk/all.dart';
+import 'package:santaclothes/routes/app_routes.dart';
 import 'package:santaclothes/utils/constants.dart';
 
 class LoginController extends GetxController {
@@ -22,8 +23,8 @@ class LoginController extends GetxController {
       /**
        * TODO -1 카카오에서 가져온 사용자 정보 서버로 보내는 작업
        * TODO -2 서버에서 받아온 토큰 정보 SharedPreferences 를 이용해 저장하기
-       * TODO -3 홈화면 전환 작업
        * */
+      Get.offNamed(Routes.DASHBOARD);
     } catch (e) {
       Get.snackbar("로그인 실패", DEFAULT_ERROR_MSG);
     }
