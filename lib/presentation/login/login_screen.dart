@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:fluttertoast/fluttertoast.dart';
 import 'package:get/get.dart';
 import 'package:santaclothes/presentation/common/widget/vertical_spacing.dart';
 import 'package:santaclothes/presentation/login/widget/login_button.dart';

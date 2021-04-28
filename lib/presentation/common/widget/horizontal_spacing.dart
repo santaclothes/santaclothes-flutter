@@ -3,7 +3,7 @@ import 'package:santaclothes/utils/size_config.dart';
 
 class HorizontalSpacing extends StatelessWidget {
   const HorizontalSpacing({
-    Key key,
+    Key? key,
     this.of = 20,
   }) : super(key: key);
 

@@ -16,14 +16,11 @@ class TokenManger {
     return await prefs.setString(PREF_USER_TOKEN, jsonEncode(tokenResponse));
   }
 
-  Future<TokenResponse> getUserToken() async {
+  Future<TokenResponse?> getUserToken() async {
     final prefs = await SharedPreferences.getInstance();
-    Map<String, dynamic> tokenMap;
-    final String data = prefs.getString(PREF_USER_TOKEN);
+    final String? data = prefs.getString(PREF_USER_TOKEN);
     if (data != null) {
-      tokenMap = jsonDecode(data) as Map<String, dynamic>;
-    }
-    if (tokenMap != null) {
+      Map<String, dynamic> tokenMap = jsonDecode(data) as Map<String, dynamic>;
       return TokenResponse.fromJson(tokenMap);
     }
     return null;

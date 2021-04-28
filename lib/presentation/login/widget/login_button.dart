@@ -10,10 +10,10 @@ class LoginButton extends StatelessWidget {
   final Color textColor;
 
   LoginButton({
-    @required this.iconAssetsName,
-    @required this.backgroundColor,
-    @required this.textColor,
-    @required this.onTab,
+    required this.iconAssetsName,
+    required this.backgroundColor,
+    required this.textColor,
+    required this.onTab,
   });
 
   @override
