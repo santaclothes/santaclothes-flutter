@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:santaclothes/presentation/common/widget/vertical_spacing.dart';
+import 'package:santaclothes/presentation/login/login_controller.dart';
 import 'package:santaclothes/presentation/login/widget/login_button.dart';
 import 'package:santaclothes/utils/constants.dart';
 import 'package:santaclothes/utils/size_config.dart';
@@ -49,7 +50,7 @@ class LoginScreen extends StatelessWidget {
                 backgroundColor: kakaoLoginColor,
                 textColor: sancleDarkColor,
                 onTab: () {
-                  // TODO kakao 로그인
+                  Get.find<LoginController>().requestKakaoLogin();
                 },
               ),
               VerticalSpacing(of: 16.0),
