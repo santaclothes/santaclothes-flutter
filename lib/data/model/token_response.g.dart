@@ -9,16 +9,16 @@ part of 'token_response.dart';
 TokenResponse _$TokenResponseFromJson(Map<String, dynamic> json) {
   return TokenResponse(
     json['accessToken'] as String,
-    json['expireDateTime'] as String,
+    json['expiredAt'] as String,
     json['refreshToken'] as String,
-    json['userId'] as String,
+    json['userToken'] as String,
   );
 }
 
 Map<String, dynamic> _$TokenResponseToJson(TokenResponse instance) =>
     <String, dynamic>{
       'accessToken': instance.accessToken,
-      'expireDateTime': instance.expireDateTime,
+      'expiredAt': instance.expiredAt,
       'refreshToken': instance.refreshToken,
-      'userId': instance.userId,
+      'userToken': instance.userToken,
     };
