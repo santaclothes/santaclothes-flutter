@@ -27,7 +27,7 @@ class AuthProvider {
     try {
       await safeApiCall(() async {
         return await DioClient.defaultClient.post(
-          BASE_URL + "/auth/register",
+          BASE_URL + "auth/register",
           data: params,
         );
       });
