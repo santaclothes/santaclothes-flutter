@@ -5,6 +5,7 @@ import 'package:santaclothes/presentation/dashboard/widget/MainBottomBar.dart';
 import 'package:santaclothes/presentation/home/home_screen.dart';
 import 'package:santaclothes/presentation/my_page/my_page_screen.dart';
 import 'package:santaclothes/utils/constants.dart';
+import 'package:santaclothes/utils/size_config.dart';
 import 'dashboard_controller.dart';
 
 class DashboardScreen extends StatelessWidget {
@@ -28,16 +29,16 @@ class DashboardScreen extends StatelessWidget {
             floatingActionButtonLocation:
                 FloatingActionButtonLocation.centerDocked,
             floatingActionButton: Container(
-              height: 76,
-              width: 76,
+              height: getProportionateScreenHeight(76.0),
+              width: getProportionateScreenHeight(76.0),
               child: FloatingActionButton(
                 onPressed: () {},
                 elevation: 0,
                 backgroundColor: primaryColor,
                 child: SvgPicture.asset(
                   "assets/icons/ic_camera.svg",
-                  width: 32.0,
-                  height: 32.0,
+                  width: getProportionateScreenHeight(32.0),
+                  height: getProportionateScreenHeight(32.0),
                 ),
               ),
             ),

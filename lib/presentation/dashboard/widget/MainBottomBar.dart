@@ -3,6 +3,7 @@ import 'package:flutter_svg/flutter_svg.dart';
 import 'package:get/get.dart';
 import 'package:santaclothes/presentation/dashboard/dashboard_controller.dart';
 import 'package:santaclothes/presentation/dashboard/model/dash_board_tab_type.dart';
+import 'package:santaclothes/utils/size_config.dart';
 
 class MainBottomBar extends GetView<DashboardController> {
   @override
@@ -12,7 +13,7 @@ class MainBottomBar extends GetView<DashboardController> {
       notchMargin: 5.0,
       color: Colors.white,
       child: Container(
-        height: 86.0,
+        height: getProportionateScreenHeight(86.0),
         margin: EdgeInsets.only(left: 40.0, right: 40.0),
         child: Row(
           mainAxisSize: MainAxisSize.max,
@@ -27,8 +28,8 @@ class MainBottomBar extends GetView<DashboardController> {
                   controller.currentTabType.value == DashBoardTabType.HOME
                       ? "assets/icons/ic_home_selected.svg"
                       : "assets/icons/ic_home_unselected.svg",
-                  width: 28.0,
-                  height: 28.0,
+                  width: getProportionateScreenHeight(28.0),
+                  height: getProportionateScreenHeight(28.0),
                 ),
               ),
             ),
@@ -42,8 +43,8 @@ class MainBottomBar extends GetView<DashboardController> {
                   controller.currentTabType.value == DashBoardTabType.MY_PAGE
                       ? "assets/icons/ic_my_page_selected.svg"
                       : "assets/icons/ic_my_page_unselected.svg",
-                  width: 28.0,
-                  height: 28.0,
+                  width: getProportionateScreenHeight(28.0),
+                  height: getProportionateScreenHeight(28.0),
                 ),
               ),
             ),
