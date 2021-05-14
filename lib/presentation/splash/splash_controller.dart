@@ -20,7 +20,7 @@ class SplashController extends GetxController {
     if (tokenResponse == null ||
         DateTime.parse(tokenResponse.expiredAt).millisecondsSinceEpoch <
             DateTime.now().millisecondsSinceEpoch) {
-      Get.offNamed(Routes.LOGIN);
+      Get.offNamed(Routes.DASHBOARD);
     } else {
       Get.offNamed(Routes.DASHBOARD);
     }
