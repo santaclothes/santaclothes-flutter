@@ -1,4 +1,6 @@
 import 'package:get/get_navigation/src/routes/get_route.dart';
+import 'package:santaclothes/presentation/clothes_camera/clothes_camera_binding.dart';
+import 'package:santaclothes/presentation/clothes_camera/clothes_camera_screen.dart';
 import 'package:santaclothes/presentation/dashboard/dashboard_binding.dart';
 import 'package:santaclothes/presentation/dashboard/dashboard_screen.dart';
 import 'package:santaclothes/presentation/login/login_binding.dart';
@@ -23,6 +25,11 @@ class AppPages {
       name: Routes.DASHBOARD,
       page: () => DashboardScreen(),
       binding: DashboardBinding(),
+    ),
+    GetPage(
+      name: Routes.CLOTHES_CAMERA,
+      page: () => ClothesCameraScreen(),
+      binding: ClothesCameraBinding(),
     ),
   ];
 }
