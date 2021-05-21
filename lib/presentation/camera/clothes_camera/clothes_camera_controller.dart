@@ -1,5 +1,6 @@
 import 'package:camera/camera.dart';
 import 'package:get/get.dart';
+import 'package:santaclothes/routes/app_routes.dart';
 import 'package:santaclothes/utils/constants.dart';
 
 class ClothesCameraController extends GetxController {
@@ -30,23 +31,23 @@ class ClothesCameraController extends GetxController {
     }
   }
 
-  Future<String?> onCameraCaptured() async {
+  void onCameraCaptured() async {
     final CameraController? controller = cameraController;
     if (controller == null || !this.isInitialized()) {
       _showCameraException();
-      return null;
+      return;
     }
 
     if (controller.value.isTakingPicture) {
-      return null;
+      return;
     }
 
     try {
       final xFile = await controller.takePicture();
-      return xFile.path;
+      Get.toNamed(Routes.CLOTHES_CAMERA_RESULT, arguments: xFile.path);
     } on CameraException catch (_) {
       _showCameraException();
-      return null;
+      return;
     }
   }
 

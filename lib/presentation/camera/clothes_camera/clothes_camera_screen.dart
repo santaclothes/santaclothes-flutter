@@ -50,11 +50,8 @@ class _ClothesCameraScreen extends State<ClothesCameraScreen>
                     description: '정확한 분류를 위해\n옷 전체의 모습을 촬영해 주세요.',
                     stepTitle: 'STEP 1',
                     stepContent: '옷 전체 촬영',
-                    onTap: () async {
-                      String? path = await controller.onCameraCaptured();
-                      if (path != null) {
-                        // TODO 옷 사진 결과 화면 전환
-                      }
+                    onTap: () {
+                      controller.onCameraCaptured();
                     },
                   )
                 : Center(child: CircularProgressIndicator());
@@ -63,97 +60,4 @@ class _ClothesCameraScreen extends State<ClothesCameraScreen>
       ),
     );
   }
-
-// Widget _cameraBody(
-//     CameraController cameraController, Widget cameraButtonSvg) {
-//   return Column(
-//     children: [
-//       Container(
-//         child: SizedBox(
-//           width: double.infinity,
-//           height: getProportionateScreenHeight(666),
-//           child: ClipRRect(
-//             borderRadius: BorderRadius.circular(18.0),
-//             child: Stack(
-//               children: [
-//                 Container(
-//                   width: double.infinity,
-//                   child: CameraPreview(cameraController),
-//                 ),
-//                 Column(
-//                   mainAxisSize: MainAxisSize.max,
-//                   crossAxisAlignment: CrossAxisAlignment.end,
-//                   children: [
-//                     Container(
-//                       margin: EdgeInsets.only(
-//                         top: getProportionateScreenHeight(21.0),
-//                         right: getProportionateScreenWidth(28.0),
-//                       ),
-//                       child: GestureDetector(
-//                         onTap: () {
-//                           Get.back();
-//                         },
-//                         child: SvgPicture.asset(
-//                           'assets/icons/ic_close_normal.svg',
-//                           height: getProportionateScreenHeight(32),
-//                           width: getProportionateScreenHeight(32),
-//                         ),
-//                       ),
-//                     ),
-//                     VerticalSpacing(of: 25.0),
-//                     Align(
-//                       alignment: Alignment.center,
-//                       child: Text(
-//                         '정확한 분류를 위해\n옷 전체의 모습을 촬영해 주세요.',
-//                         textAlign: TextAlign.center,
-//                         style: TextStyle(
-//                           height: 1.4,
-//                           fontSize: 12.0,
-//                           fontFamily: 'nanum_square',
-//                           color: whiteColor,
-//                           fontWeight: FontWeight.w700,
-//                         ),
-//                       ),
-//                     ),
-//                     VerticalSpacing(of: 30.0),
-//                     Align(
-//                       alignment: Alignment.center,
-//                       child: SvgPicture.asset(
-//                         'assets/images/bg_camera_focus.svg',
-//                         height: getProportionateScreenHeight(375.0),
-//                       ),
-//                     ),
-//                     Expanded(
-//                       child: Align(
-//                         alignment: Alignment.bottomCenter,
-//                         child: Container(
-//                           margin: EdgeInsets.only(
-//                             bottom: getProportionateScreenHeight(8.0),
-//                           ),
-//                           width: getProportionateScreenHeight(82),
-//                           height: getProportionateScreenHeight(82),
-//                           child: GestureDetector(
-//                             onTapCancel: () {},
-//                             onTapDown: (_) {},
-//                             onTapUp: (_) {},
-//                             onTap: () {
-//                               Get.snackbar("촬영", "촬영 시작");
-//                             },
-//                             child: SvgPicture.asset(
-//                               'assets/icons/ic_camera_button_pressed.svg',
-//                             ),
-//                           ),
-//                         ),
-//                       ),
-//                     )
-//                   ],
-//                 ),
-//               ],
-//             ),
-//           ),
-//         ),
-//       ),
-//     ],
-//   );
-// }
 }

@@ -1,6 +1,8 @@
 import 'package:get/get_navigation/src/routes/get_route.dart';
 import 'package:santaclothes/presentation/camera/clothes_camera/clothes_camera_binding.dart';
 import 'package:santaclothes/presentation/camera/clothes_camera/clothes_camera_screen.dart';
+import 'package:santaclothes/presentation/camera/clothes_camera_result/clothes_camera_result_binding.dart';
+import 'package:santaclothes/presentation/camera/clothes_camera_result/clothes_camera_result_screen.dart';
 import 'package:santaclothes/presentation/dashboard/dashboard_binding.dart';
 import 'package:santaclothes/presentation/dashboard/dashboard_screen.dart';
 import 'package:santaclothes/presentation/login/login_binding.dart';
@@ -31,5 +33,10 @@ class AppPages {
       page: () => ClothesCameraScreen(),
       binding: ClothesCameraBinding(),
     ),
+    GetPage(
+      name: Routes.CLOTHES_CAMERA_RESULT,
+      page: () => ClothesCameraResultScreen(),
+      binding: ClothesCameraResultBinding(),
+    )
   ];
 }
