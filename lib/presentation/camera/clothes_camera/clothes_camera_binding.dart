@@ -1,5 +1,5 @@
 import 'package:get/get.dart';
-import 'package:santaclothes/presentation/clothes_camera/clothes_camera_controller.dart';
+import 'package:santaclothes/presentation/camera/clothes_camera/clothes_camera_controller.dart';
 
 class ClothesCameraBinding extends Bindings {
   @override
