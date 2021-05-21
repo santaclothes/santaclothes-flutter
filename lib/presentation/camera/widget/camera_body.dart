@@ -71,6 +71,13 @@ class _CameraBodyState extends State<CameraBody> {
                           widget.description,
                           textAlign: TextAlign.center,
                           style: TextStyle(
+                            shadows: [
+                              Shadow(
+                                offset: Offset(0, 1.0),
+                                blurRadius: 2.0,
+                                color: Color.fromRGBO(0, 0, 0, 0.4),
+                              )
+                            ],
                             height: 1.4,
                             fontSize: 12.0,
                             fontFamily: 'nanum_square',
