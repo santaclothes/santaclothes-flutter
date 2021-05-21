@@ -21,7 +21,7 @@ class ClothesCameraController extends GetxController {
     final camera = cameras.firstWhere(
         (camera) => camera.lensDirection == CameraLensDirection.back);
     cameraController =
-        CameraController(camera, ResolutionPreset.max, enableAudio: false);
+        CameraController(camera, ResolutionPreset.veryHigh, enableAudio: false);
     try {
       await cameraController?.initialize();
       update();
