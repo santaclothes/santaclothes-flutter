@@ -8,6 +8,7 @@ class ClothesCameraResultController extends GetxController {
     super.onReady();
     if ((Get.arguments as String).isNotEmpty) {
       imagePath.value = Get.arguments;
+      update();
     } else {
       Get.back();
     }
