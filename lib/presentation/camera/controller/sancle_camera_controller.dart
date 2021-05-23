@@ -3,7 +3,8 @@ import 'package:get/get.dart';
 import 'package:santaclothes/routes/app_routes.dart';
 import 'package:santaclothes/utils/constants.dart';
 
-class SancleCameraController extends GetxController {
+class SancleCameraController extends FullLifeCycleController
+    with FullLifeCycle {
   CameraController? cameraController;
 
   bool isInitialized() => cameraController?.value.isInitialized ?? false;
@@ -12,6 +13,24 @@ class SancleCameraController extends GetxController {
   void onInit() {
     onCameraInitialized();
     super.onInit();
+  }
+
+  @override
+  void onDetached() {}
+
+  @override
+  void onInactive() {
+    if (!isInitialized()) return;
+    cameraController?.dispose();
+  }
+
+  @override
+  void onPaused() {}
+
+  @override
+  void onResumed() {
+    if (!isInitialized()) return;
+    onCameraInitialized();
   }
 
   void onCameraInitialized() async {
