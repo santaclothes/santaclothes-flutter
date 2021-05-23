@@ -1,17 +1,18 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:santaclothes/utils/constants.dart';
 import 'package:santaclothes/utils/size_config.dart';
 
 class OnboardingController extends GetxController {
-
-  final _pageController = PageController(
+  final pageController = PageController(
     initialPage: 0,
   );
+
   var page = 0.obs;
   RxString onboardingImage = "assets/images/onboarding_1.png".obs;
 
   setOnboardingList(index) {
-    onboardingImage = onboardingList[index] as RxString;
+    onboardingImage = onboardingList[index];
   }
 
   final List<RxString> onboardingList =
@@ -99,7 +100,7 @@ class OnboardingController extends GetxController {
     ),
   ].obs;
 
-  final List<Widget> _subPrompt = <Widget>[
+  final List<Widget> subPrompt = <Widget>[
     Text('카메라 버튼을 눌러 라벨을 찍어보세요',
         textAlign: TextAlign.left,
         style: TextStyle(
@@ -130,7 +131,27 @@ class OnboardingController extends GetxController {
             fontSize: getProportionateScreenHeight(16),
             fontFamily: 'nanum_square',
             fontWeight: FontWeight.w300)),
-  ];
+  ].obs;
 
-  final List<String> _buttonPrompt = ['다음', '다음', '시작하기'];
+  final List<String> buttonPrompt = ['다음', '다음', '시작하기'].obs;
+
+  Widget circleBar(int flag, int index) {
+    bool isActive = false;
+    if(index == page.value) isActive = true;
+
+    return AnimatedContainer(
+      duration: Duration(milliseconds: 150),
+      margin: EdgeInsets.symmetric(horizontal: 4),
+      height: getProportionateScreenHeight(8),
+      width: getProportionateScreenWidth(8),
+      decoration: BoxDecoration(
+          color: isActive ? pageIndicatorSelectColor : whiteColor,
+          border: Border.all(
+            color: isActive
+                ? pageIndicatorSelectBorderColor
+                : pageIndicatorUnselectColor,
+          ),
+          borderRadius: BorderRadius.all(Radius.circular(12))),
+    );
+  }
 }
