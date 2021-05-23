@@ -1,6 +1,7 @@
+import 'package:firebase_messaging/firebase_messaging.dart';
 import 'package:get/get.dart';
-
 import 'package:kakao_flutter_sdk/all.dart';
+import 'package:santaclothes/data/common/fcm_error.dart';
 import 'package:santaclothes/data/common/sancle_error.dart';
 import 'package:santaclothes/data/repository/login_repository.dart';
 import 'package:santaclothes/routes/app_routes.dart';
@@ -9,12 +10,14 @@ import 'package:santaclothes/utils/constants.dart';
 class LoginController extends GetxController {
   final LoginRepository _loginRepository;
   bool _isKakaoTalkInstalled = false;
+  late FirebaseMessaging messaging;
 
   LoginController(this._loginRepository);
 
   @override
   void onInit() async {
     _isKakaoTalkInstalled = await isKakaoTalkInstalled();
+    messaging = FirebaseMessaging.instance;
     super.onInit();
   }
 
@@ -24,9 +27,27 @@ class LoginController extends GetxController {
       final User user = await UserApi.instance.me();
       final int userId = user.id;
       final String nickname = user.properties?["nickname"] ?? "";
-      _requestSignUp("KAKAO", nickname, userId.toString());
+      final String deviceToken = await _getDeviceToken();
+      print("getToken : ${deviceToken}");
+      _requestSignUp("KAKAO", nickname, userId.toString(), deviceToken);
     } catch (e) {
       Get.snackbar("로그인 실패", DEFAULT_ERROR_MSG);
+    }
+  }
+
+  _getDeviceToken() async {
+    try{
+      String? deviceToken;
+      messaging.getToken().then((token){
+        deviceToken = token;
+      });
+      if(deviceToken == null){
+        throw DeviceTokenException("Token is null");
+      }
+    }
+    catch(e){
+      print(e);
+      Get.snackbar("단말 토큰 생성 실패", DEFAULT_ERROR_MSG);
     }
   }
 
@@ -57,23 +78,23 @@ class LoginController extends GetxController {
     }
   }
 
-  _requestSignUp(String accountType, String name, String userToken) async {
+  _requestSignUp(String accountType, String name, String userToken, String deviceToken) async {
     try {
       await _loginRepository.postAuthRegister(accountType, name, userToken);
-      _requestLogin(userToken);
+      _requestLogin(userToken, deviceToken);
     } catch (e) {
       if (e is SancleApiException && e.status == 409) {
         // 이미 가입된 사용자 일 경우
-        _requestLogin(userToken);
+        _requestLogin(userToken, deviceToken);
       } else {
         Get.snackbar("로그인 실패", DEFAULT_ERROR_MSG);
       }
     }
   }
 
-  _requestLogin(String userToken) async {
+  _requestLogin(String userToken, String deviceToken) async {
     try {
-      bool isLoginSuccess = await _loginRepository.postAuthLogin(userToken);
+      bool isLoginSuccess = await _loginRepository.postAuthLogin(userToken, deviceToken);
       if (isLoginSuccess) {
         Get.offNamed(Routes.DASHBOARD);
       } else {

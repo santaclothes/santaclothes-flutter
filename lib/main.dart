@@ -1,3 +1,4 @@
+import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:santaclothes/data/repository/auth_repository.dart';
@@ -13,6 +14,7 @@ void main() {
 
 _initialize() {
   KakaoContext.clientId = "57c1c9479dd978197a079c7df2db0905";
+  // Firebase.initializeApp();
   Get.lazyPut(() => AuthController(AuthRepository()));
 }
 
