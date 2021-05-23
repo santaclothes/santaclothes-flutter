@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:santaclothes/data/prefs/onboarding_manager.dart';
+import 'package:santaclothes/data/repository/onboarding_repository.dart';
 import 'package:santaclothes/utils/constants.dart';
 import 'package:santaclothes/utils/size_config.dart';
 
@@ -13,6 +15,10 @@ class OnboardingController extends GetxController {
 
   setOnboardingList(index) {
     onboardingImage = onboardingList[index];
+  }
+
+  setOnboardingFlag(bool flag) {
+    OnboardingRepository().setIsGuide(true);
   }
 
   final List<RxString> onboardingList =

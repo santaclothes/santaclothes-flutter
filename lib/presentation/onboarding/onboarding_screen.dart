@@ -52,6 +52,7 @@ class OnboardingScreen extends GetView<OnboardingController> {
               child: TouchableOpacity(
                 activeOpacity: 0.6,
                 onTap: () {
+                  controller.setOnboardingFlag(true);
                   Get.offNamed(Routes.DASHBOARD);
                 },
                 child: Text(
@@ -118,6 +119,7 @@ class OnboardingScreen extends GetView<OnboardingController> {
                   controller.pageController.jumpToPage(++controller.page.value);
                 }
                 else{
+                  controller.setOnboardingFlag(true);
                   Get.offNamed(Routes.DASHBOARD);
                 }
               },
