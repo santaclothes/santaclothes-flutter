@@ -3,7 +3,7 @@ import 'package:get/get.dart';
 import 'package:santaclothes/routes/app_routes.dart';
 import 'package:santaclothes/utils/constants.dart';
 
-class ClothesCameraController extends GetxController {
+class SancleCameraController extends GetxController {
   CameraController? cameraController;
 
   bool isInitialized() => cameraController?.value.isInitialized ?? false;

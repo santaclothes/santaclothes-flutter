@@ -3,7 +3,7 @@ import 'package:get/get.dart';
 import 'package:santaclothes/presentation/camera/widget/camera_body.dart';
 import 'package:santaclothes/utils/constants.dart';
 
-import 'clothes_camera_controller.dart';
+import '../controller/sancle_camera_controller.dart';
 
 class ClothesCameraScreen extends StatefulWidget {
   @override
@@ -26,7 +26,7 @@ class _ClothesCameraScreen extends State<ClothesCameraScreen>
 
   @override
   void didChangeAppLifecycleState(AppLifecycleState state) {
-    final controller = Get.find<ClothesCameraController>();
+    final controller = Get.find<SancleCameraController>();
 
     if (!controller.isInitialized()) return;
 
@@ -42,7 +42,7 @@ class _ClothesCameraScreen extends State<ClothesCameraScreen>
     return SafeArea(
       child: Scaffold(
         backgroundColor: blackColor,
-        body: GetBuilder<ClothesCameraController>(
+        body: GetBuilder<SancleCameraController>(
           builder: (controller) {
             return controller.isInitialized()
                 ? CameraBody(
