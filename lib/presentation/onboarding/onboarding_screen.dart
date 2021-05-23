@@ -89,7 +89,7 @@ class OnboardingScreen extends GetView<OnboardingController> {
                     children:
                     <Widget>[
                       for (int i = 0; i < controller.onboardingList.length; i++)
-                          Obx(()=>controller.circleBar(controller.page.value,i))
+                        Obx(()=>controller.getCircleBar(controller.page.value,i))
                     ],
                   ),
                   height: getProportionateScreenHeight(20),
@@ -106,9 +106,10 @@ class OnboardingScreen extends GetView<OnboardingController> {
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: <Widget>[
                         // _mainPrompt[controller.page.value],
-                        Obx(()=>controller.mainPrompt[controller.page.value]),
+                        // Obx(()=>controller.getMainPrompt(controller.page.value)),
+                        Obx(()=>controller.main[controller.page.value]),
                         SizedBox(height: getProportionateScreenHeight(24)),
-                        Obx(()=>controller.subPrompt[controller.page.value] )
+                        Obx(()=>controller.sub[controller.page.value])
                       ]),
                 )),
             Expanded(child: Container()),
@@ -125,6 +126,7 @@ class OnboardingScreen extends GetView<OnboardingController> {
               },
               child: Container(
                 height: getProportionateScreenHeight(52),
+
                 width: controller.page.value < 2
                     ? getProportionateScreenWidth(120)
                     : getProportionateScreenWidth(142),
@@ -139,7 +141,7 @@ class OnboardingScreen extends GetView<OnboardingController> {
                   Row(mainAxisSize: MainAxisSize.min, children: [
                     SizedBox(width: getProportionateScreenWidth(16)),
                     Obx(()=>Text(
-                      '${controller.buttonPrompt[controller.page.value]}',
+                      '${controller.button[controller.page.value]}',
                       style: TextStyle(
                         fontFamily: 'nanum_square',
                         fontWeight: FontWeight.w800,
