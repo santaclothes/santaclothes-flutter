@@ -1,6 +1,9 @@
 import 'package:get/get.dart';
 
-class ClothesCameraResultController extends GetxController {
+const String CLOTHES_RESULT_TAG = "CLOTHES_RESULT_TAG";
+const String LABEL_RESULT_TAG = "LABEL_RESULT_TAG";
+
+class CameraResultController extends GetxController {
   final imagePath = ''.obs;
 
   @override

@@ -1,8 +1,9 @@
 import 'package:get/get_navigation/src/routes/get_route.dart';
+import 'package:santaclothes/presentation/camera/camera_result/camera_result_binding.dart';
+import 'package:santaclothes/presentation/camera/camera_result/camera_result_controller.dart';
+import 'package:santaclothes/presentation/camera/camera_result/camera_result_screen.dart';
 import 'package:santaclothes/presentation/camera/clothes_camera/clothes_camera_binding.dart';
 import 'package:santaclothes/presentation/camera/clothes_camera/clothes_camera_screen.dart';
-import 'package:santaclothes/presentation/camera/clothes_camera_result/clothes_camera_result_binding.dart';
-import 'package:santaclothes/presentation/camera/clothes_camera_result/clothes_camera_result_screen.dart';
 import 'package:santaclothes/presentation/camera/label_camera/label_camera_binding.dart';
 import 'package:santaclothes/presentation/camera/label_camera/label_camera_screen.dart';
 import 'package:santaclothes/presentation/dashboard/dashboard_binding.dart';
@@ -36,14 +37,19 @@ class AppPages {
       binding: ClothesCameraBinding(),
     ),
     GetPage(
-      name: Routes.CLOTHES_CAMERA_RESULT,
-      page: () => ClothesCameraResultScreen(),
-      binding: ClothesCameraResultBinding(),
-    ),
-    GetPage(
       name: Routes.LABEL_CAMERA,
       page: () => LabelCameraScreen(),
       binding: LabelCameraBinding(),
-    )
+    ),
+    GetPage(
+      name: Routes.CLOTHES_CAMERA_RESULT,
+      page: () => CameraResultScreen(tag: CLOTHES_RESULT_TAG),
+      binding: CameraResultBinding(tag: CLOTHES_RESULT_TAG),
+    ),
+    GetPage(
+      name: Routes.LABEL_CAMERA_RESULT,
+      page: () => CameraResultScreen(tag: LABEL_RESULT_TAG),
+      binding: CameraResultBinding(tag: LABEL_RESULT_TAG),
+    ),
   ];
 }
