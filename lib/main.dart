@@ -8,15 +8,15 @@ import 'package:santaclothes/routes/app_routes.dart';
 import 'package:kakao_flutter_sdk/all.dart';
 
 void main() {
-  _initialize();
-  // await Firebase.initializeApp();
   WidgetsFlutterBinding.ensureInitialized();
+  _initialize();
   runApp(MyApp());
 }
 
-_initialize() {
+_initialize() async {
   KakaoContext.clientId = "57c1c9479dd978197a079c7df2db0905";
   Get.lazyPut(() => AuthController(AuthRepository()));
+  await Firebase.initializeApp();
 }
 
 class MyApp extends StatelessWidget {

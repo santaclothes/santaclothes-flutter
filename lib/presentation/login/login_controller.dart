@@ -40,8 +40,6 @@ class LoginController extends GetxController {
   Future _getDeviceToken() async {
     try{
       String? deviceToken;
-      WidgetsFlutterBinding.ensureInitialized();
-      await Firebase.initializeApp();
       _messaging = FirebaseMessaging.instance;
       deviceToken = await _messaging.getToken();
       if(deviceToken == null){
