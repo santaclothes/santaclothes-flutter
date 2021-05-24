@@ -7,35 +7,6 @@
   "client": [
     {
       "client_info": {
-        "mobilesdk_app_id": "1:1000768781273:android:9eb509e77816ae03cab7c8",
-        "android_client_info": {
-          "package_name": "com.example.fcm_test"
-        }
-      },
-      "oauth_client": [
-        {
-          "client_id": "1000768781273-35uj9aieon6glbcrhms9hubgo3buib9l.apps.googleusercontent.com",
-          "client_type": 3
-        }
-      ],
-      "api_key": [
-        {
-          "current_key": "AIzaSyAo_rRBU2p_BdOKcBc0cQg84v07BLoMKco"
-        }
-      ],
-      "services": {
-        "appinvite_service": {
-          "other_platform_oauth_client": [
-            {
-              "client_id": "1000768781273-35uj9aieon6glbcrhms9hubgo3buib9l.apps.googleusercontent.com",
-              "client_type": 3
-            }
-          ]
-        }
-      }
-    },
-    {
-      "client_info": {
         "mobilesdk_app_id": "1:1000768781273:android:778ce8cebec4a92fcab7c8",
         "android_client_info": {
           "package_name": "com.pinocchio.santaclothes"

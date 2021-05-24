@@ -9,12 +9,13 @@ import 'package:kakao_flutter_sdk/all.dart';
 
 void main() {
   _initialize();
+  // await Firebase.initializeApp();
+  WidgetsFlutterBinding.ensureInitialized();
   runApp(MyApp());
 }
 
 _initialize() {
   KakaoContext.clientId = "57c1c9479dd978197a079c7df2db0905";
-  // Firebase.initializeApp();
   Get.lazyPut(() => AuthController(AuthRepository()));
 }
 

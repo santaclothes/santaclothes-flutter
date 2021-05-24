@@ -1,4 +1,6 @@
+import 'package:firebase_core/firebase_core.dart';
 import 'package:firebase_messaging/firebase_messaging.dart';
+import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:kakao_flutter_sdk/all.dart';
 import 'package:santaclothes/data/common/fcm_error.dart';
@@ -10,14 +12,13 @@ import 'package:santaclothes/utils/constants.dart';
 class LoginController extends GetxController {
   final LoginRepository _loginRepository;
   bool _isKakaoTalkInstalled = false;
-  late FirebaseMessaging messaging;
+  late FirebaseMessaging _messaging;
 
   LoginController(this._loginRepository);
 
   @override
   void onInit() async {
     _isKakaoTalkInstalled = await isKakaoTalkInstalled();
-    messaging = FirebaseMessaging.instance;
     super.onInit();
   }
 
@@ -31,19 +32,22 @@ class LoginController extends GetxController {
       print("getToken : ${deviceToken}");
       _requestSignUp("KAKAO", nickname, userId.toString(), deviceToken);
     } catch (e) {
+      print(e);
       Get.snackbar("로그인 실패", DEFAULT_ERROR_MSG);
     }
   }
 
-  _getDeviceToken() async {
+  Future _getDeviceToken() async {
     try{
       String? deviceToken;
-      messaging.getToken().then((token){
-        deviceToken = token;
-      });
+      WidgetsFlutterBinding.ensureInitialized();
+      await Firebase.initializeApp();
+      _messaging = FirebaseMessaging.instance;
+      deviceToken = await _messaging.getToken();
       if(deviceToken == null){
         throw DeviceTokenException("Token is null");
       }
+      return deviceToken;
     }
     catch(e){
       print(e);
