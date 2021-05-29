@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:santaclothes/presentation/analysis_request/model/analysis_request_form.dart';
+import 'package:santaclothes/presentation/camera/controller/sancle_camera_controller.dart';
 import 'package:santaclothes/presentation/camera/widget/camera_result_body.dart';
 import 'package:santaclothes/routes/app_routes.dart';
 import 'package:santaclothes/utils/constants.dart';
@@ -27,7 +29,19 @@ class CameraResultScreen extends StatelessWidget {
                       if (tag == CLOTHES_RESULT_TAG) {
                         Get.toNamed(Routes.LABEL_CAMERA);
                       } else {
-                        // TODO 최종 STEP 화면 전환
+                        final labelImagePath = Get.find<CameraResultController>(
+                                tag: LABEL_RESULT_TAG)
+                            .imagePath
+                            .value;
+                        final clothesImagePath =
+                            Get.find<CameraResultController>(
+                                    tag: CLOTHES_RESULT_TAG)
+                                .imagePath
+                                .value;
+                        Get.toNamed(Routes.ANALYSIS_REQUEST,
+                            arguments: AnalysisRequestForm(
+                                labelImagePath: labelImagePath,
+                                clothesImagePath: clothesImagePath));
                       }
                     },
                   )

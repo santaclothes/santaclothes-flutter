@@ -1,4 +1,6 @@
 import 'package:get/get_navigation/src/routes/get_route.dart';
+import 'package:santaclothes/presentation/analysis_request/analysis_request_binding.dart';
+import 'package:santaclothes/presentation/analysis_request/analysis_request_screen.dart';
 import 'package:santaclothes/presentation/camera/camera_result/camera_result_binding.dart';
 import 'package:santaclothes/presentation/camera/camera_result/camera_result_controller.dart';
 import 'package:santaclothes/presentation/camera/camera_result/camera_result_screen.dart';
@@ -50,6 +52,11 @@ class AppPages {
       name: Routes.LABEL_CAMERA_RESULT,
       page: () => CameraResultScreen(tag: LABEL_RESULT_TAG),
       binding: CameraResultBinding(tag: LABEL_RESULT_TAG),
+    ),
+    GetPage(
+      name: Routes.ANALYSIS_REQUEST,
+      page: () => AnalysisRequestScreen(),
+      binding: AnalysisRequestBinding(),
     ),
   ];
 }
