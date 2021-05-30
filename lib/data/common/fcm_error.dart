@@ -1,10 +1,6 @@
-class FcmException implements Exception {
-  final String? message;
+import 'package:santaclothes/data/common/sancle_error.dart';
 
-  FcmException(this.message);
-}
-
-class DeviceTokenException extends FcmException {
+class DeviceTokenException extends SancleException {
   final String msg;
 
   DeviceTokenException(this.msg) : super(msg);
