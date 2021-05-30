@@ -8,10 +8,10 @@ class LoginRepository {
     return AuthProvider.instance.postAuthRegister(accountType, name, userToken);
   }
 
-  Future<bool> postAuthLogin(String userToken) async {
+  Future<bool> postAuthLogin(String userToken, String deviceToken) async {
     try {
       TokenResponse tokenResponse =
-          await AuthProvider.instance.postAuthLogin(userToken);
+          await AuthProvider.instance.postAuthLogin(userToken, deviceToken);
       return await TokenManger.instance.setUserToken(tokenResponse);
     } catch (e) {
       throw e;
