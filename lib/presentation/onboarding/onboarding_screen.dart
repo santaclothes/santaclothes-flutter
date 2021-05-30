@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:santaclothes/presentation/onboarding/widget/onboarding_page_screen.dart';
-import 'package:santaclothes/presentation/onboarding/widget/onboaridng_bottom_screen.dart';
+import 'package:santaclothes/presentation/onboarding/widget/onboarding_picture_widget.dart';
+import 'package:santaclothes/presentation/onboarding/widget/onboaridng_content_widget.dart';
 
 class OnboardingScreen extends StatelessWidget {
 
@@ -10,7 +10,7 @@ class OnboardingScreen extends StatelessWidget {
       top: false,
       child: Scaffold(
         body: Column(
-          children: <Widget>[OnboardingPageView(), OnboardingBottomView()],
+          children: <Widget>[OnboardingPictureWidget(), OnboardingContentWidget()],
         ),
       ),
     );
