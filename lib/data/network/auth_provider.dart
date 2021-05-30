@@ -41,12 +41,12 @@ class AuthProvider {
   /// 200 : 성공
   /// 400 : 존재하지 않는 소셜 아이디
   /// */
-  Future<TokenResponse> postAuthLogin(String userToken) async {
+  Future<TokenResponse> postAuthLogin(String userToken, String deviceToken) async {
     try {
       Response response = await safeApiCall(() async {
         return await DioClient.defaultClient.post(
           BASE_URL + "auth/login",
-          data: jsonEncode({"userToken": userToken}),
+          data: jsonEncode({"userToken": userToken, "deviceToken": deviceToken}),
         );
       });
       return TokenResponse.fromJson(response.data);
