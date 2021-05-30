@@ -10,7 +10,6 @@ class LoginRepository {
 
   Future<bool> postAuthLogin(String userToken, String deviceToken) async {
     try {
-      print("device : ${deviceToken}");
       TokenResponse tokenResponse =
           await AuthProvider.instance.postAuthLogin(userToken, deviceToken);
       return await TokenManger.instance.setUserToken(tokenResponse);
