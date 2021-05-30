@@ -29,7 +29,6 @@ class LoginController extends GetxController {
       final int userId = user.id;
       final String nickname = user.properties?["nickname"] ?? "";
       final String deviceToken = await _getDeviceToken();
-      print("getToken : ${deviceToken}");
       _requestSignUp("KAKAO", nickname, userId.toString(), deviceToken);
     } catch (e) {
       print(e);
