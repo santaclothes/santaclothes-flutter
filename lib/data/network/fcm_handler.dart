@@ -21,7 +21,7 @@ class FcmHandler{
     FirebaseMessaging.onBackgroundMessage(_firebaseMessagingBackgroundHandler);
 
     // 3. App이 Terminate 상태 일 때
-    _firebaseTerminateListner();
+    _firebaseTerminateListener();
 
     // Noti 클릭 했을 때
     FirebaseMessaging.onMessageOpenedApp.listen((RemoteMessage message) async {
@@ -46,7 +46,7 @@ class FcmHandler{
     });
   }
 
-  static _firebaseTerminateListner() async{
+  static _firebaseTerminateListener() async{
     RemoteMessage? initialMessage = await FirebaseMessaging.instance.getInitialMessage();
     final TokenResponse? tokenResponse = await _authRepository.getToken();
 
