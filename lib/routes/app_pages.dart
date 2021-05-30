@@ -3,6 +3,8 @@ import 'package:santaclothes/presentation/dashboard/dashboard_binding.dart';
 import 'package:santaclothes/presentation/dashboard/dashboard_screen.dart';
 import 'package:santaclothes/presentation/login/login_binding.dart';
 import 'package:santaclothes/presentation/login/login_screen.dart';
+import 'package:santaclothes/presentation/onboarding/onboarding_binding.dart';
+import 'package:santaclothes/presentation/onboarding/onboarding_screen.dart';
 import 'package:santaclothes/presentation/splash/splash_binding.dart';
 import 'package:santaclothes/presentation/splash/splash_screen.dart';
 import 'package:santaclothes/routes/app_routes.dart';
@@ -23,6 +25,11 @@ class AppPages {
       name: Routes.DASHBOARD,
       page: () => DashboardScreen(),
       binding: DashboardBinding(),
+    ),
+    GetPage(
+      name: Routes.ONBOARDING,
+      page: () => OnboardingScreen(),
+      binding: OnboardingBinding(),
     ),
   ];
 }
