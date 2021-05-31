@@ -8,13 +8,19 @@ import 'package:santaclothes/routes/app_routes.dart';
 class FcmHandler{
   static final AuthRepository _authRepository = AuthRepository();
 
-  static firebaseListener(BuildContext context) {
+  static firebaseListener() {
     // 1. App이 Front 상태 일 때
     FirebaseMessaging.onMessage.listen((RemoteMessage message) {
       // TODO Front
-      ScaffoldMessenger.of(context).showSnackBar(SnackBar(
-        content: Text(message.data['data'])
-      ));
+      try{
+        ScaffoldMessenger.of(Get.context!).showSnackBar(SnackBar(
+            content: Text("test")
+        ));
+      }
+      catch(e){
+        // TODO context 접근 불가 에러처리
+        print(e);
+      }
     });
 
     // 2. App이 Background 상태 일 때
@@ -31,6 +37,9 @@ class FcmHandler{
       if (tokenResponse == null ||
           DateTime.parse(tokenResponse.expiredAt).millisecondsSinceEpoch <
               DateTime.now().millisecondsSinceEpoch) {
+        // TODO 로그인 후 결과 페이지 이동
+        // ex) Get.offNamed(Routes.LOGIN, argument : {"result": message.data['id']});
+        // LOGIN에 argument 전달 후 argument 있다면 LOGIN에서 Dashboard가 아닌 Result로 이동
         Get.offNamed(Routes.LOGIN);
       }
       // 로그인 되어 있다면

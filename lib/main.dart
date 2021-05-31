@@ -18,6 +18,8 @@ _initialize() async {
   KakaoContext.clientId = "57c1c9479dd978197a079c7df2db0905";
   Get.lazyPut(() => AuthController(AuthRepository()));
   await Firebase.initializeApp();
+  // TODO prefs에서 알림 수신 여부 체크하기
+  FcmHandler.firebaseListener();
 }
 
 
@@ -27,8 +29,7 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return GetMaterialApp(
       onInit: (){
-        // TODO prefs에서 알림 수신 여부 체크하기
-        FcmHandler.firebaseListener(context);
+
       },
       initialRoute: Routes.SPLASH,
       getPages: AppPages.pages,
