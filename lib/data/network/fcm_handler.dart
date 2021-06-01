@@ -5,10 +5,14 @@ import 'package:santaclothes/data/model/token_response.dart';
 import 'package:santaclothes/data/repository/auth_repository.dart';
 import 'package:santaclothes/routes/app_routes.dart';
 
-class FcmHandler{
+class FcmHandler {
+  static final FcmHandler _fcmHandler = FcmHandler._internal();
   static final AuthRepository _authRepository = AuthRepository();
+  static FcmHandler get instance => _fcmHandler;
 
-  static firebaseListener() {
+  FcmHandler._internal();
+
+  firebaseListener() {
     // 1. App이 Front 상태 일 때
     FirebaseMessaging.onMessage.listen((RemoteMessage message) {
       // TODO Front
@@ -55,7 +59,7 @@ class FcmHandler{
     });
   }
 
-  static _firebaseTerminateListener() async{
+  _firebaseTerminateListener() async{
     RemoteMessage? initialMessage = await FirebaseMessaging.instance.getInitialMessage();
     final TokenResponse? tokenResponse = await _authRepository.getToken();
 
@@ -77,7 +81,7 @@ class FcmHandler{
     }
   }
 
-  static Future<void> _firebaseMessagingBackgroundHandler(RemoteMessage message) async {
+  Future<void> _firebaseMessagingBackgroundHandler(RemoteMessage message) async {
     // TODO Background
   }
 }

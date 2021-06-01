@@ -19,18 +19,14 @@ _initialize() async {
   Get.lazyPut(() => AuthController(AuthRepository()));
   await Firebase.initializeApp();
   // TODO prefs에서 알림 수신 여부 체크하기
-  FcmHandler.firebaseListener();
+  FcmHandler.instance.firebaseListener();
 }
-
 
 class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
     return GetMaterialApp(
-      onInit: (){
-
-      },
       initialRoute: Routes.SPLASH,
       getPages: AppPages.pages,
       debugShowCheckedModeBanner: false,
