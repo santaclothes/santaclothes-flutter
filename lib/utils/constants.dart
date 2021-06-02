@@ -7,8 +7,18 @@ const whiteColor = Color(0xFFFFFFFF);
 const blackColor = Color(0xFF000000);
 
 const sancleDarkColor = Color(0xFF0F1012);
+const sancleDark2Color = Color(0xFF0F0F0F);
+
+const sancleGrayDark = Color(0xFFAFAFAF);
+const sancleGrayLight = Color(0xFFF1EFEE);
 
 const kakaoLoginColor = Color(0xFFFEE500);
+
+const borderColor = Color(0xFFDBDBDB);
+
+const grayBackgroundColor = Color(0xFFF8F8F8);
+
+const dottedLineColor = Color(0xFFA2A2A2);
 
 // SharedPreferences
 const String PREF_USER_TOKEN = "PREF_USER_TOKEN";
