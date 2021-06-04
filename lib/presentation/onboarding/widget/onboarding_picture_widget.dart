@@ -6,7 +6,7 @@ import 'package:santaclothes/utils/constants.dart';
 import 'package:santaclothes/utils/size_config.dart';
 import 'package:touchable_opacity/touchable_opacity.dart';
 
-class OnboardingPictureWidget extends GetView<OnboardingController>{
+class OnboardingPictureWidget extends GetView<OnboardingController> {
   @override
   Widget build(BuildContext context) {
     return Expanded(
@@ -39,7 +39,7 @@ class OnboardingPictureWidget extends GetView<OnboardingController>{
                 activeOpacity: 0.6,
                 onTap: () {
                   controller.setOnboardingFlag(true);
-                  Get.offNamed(Routes.DASHBOARD);
+                  Get.offNamed(Routes.LOGIN);
                 },
                 child: Text(
                   '건너뛰기',
