@@ -20,8 +20,15 @@ const grayBackgroundColor = Color(0xFFF8F8F8);
 
 const dottedLineColor = Color(0xFFA2A2A2);
 
+const buttonBorderDarkColor = Color(0x660F1012);
+
+const pageIndicatorSelectColor = Color(0xFFF8D247);
+const pageIndicatorSelectBorderColor = Color(0xFFDFB10F);
+const pageIndicatorUnselectColor = Color(0xFFC4C4C4);
+
 // SharedPreferences
 const String PREF_USER_TOKEN = "PREF_USER_TOKEN";
+const String ONBOARDING_FLAG = "ONBOARDING_FLAG";
 
 // Error Message
 const String DEFAULT_ERROR_MSG = "잠시 후 다시 시도해주세요.";

@@ -12,10 +12,9 @@ class TokenResponse {
   final String accessToken;
   final String expiredAt;
   final String refreshToken;
-  final String userToken;
 
   TokenResponse(
-      this.accessToken, this.expiredAt, this.refreshToken, this.userToken);
+      this.accessToken, this.expiredAt, this.refreshToken);
 
   factory TokenResponse.fromJson(Map<String, dynamic> json) =>
       _$TokenResponseFromJson(json);
