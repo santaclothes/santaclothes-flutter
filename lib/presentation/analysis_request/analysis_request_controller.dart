@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:santaclothes/data/repository/analysis_repository.dart';
-import 'package:santaclothes/presentation/analysis_request/model/analysis_request_form.dart';
 import 'package:santaclothes/presentation/common/model/clothes_category.dart';
 import 'package:santaclothes/presentation/common/model/clothes_color_type.dart';
 import 'package:santaclothes/presentation/common/widget/loading_overlay.dart';
@@ -22,10 +21,11 @@ class AnalysisRequestController extends GetxController {
   @override
   void onReady() {
     super.onReady();
-    if (Get.arguments is AnalysisRequestForm) {
-      final analysisRequestForm = Get.arguments as AnalysisRequestForm;
-      labelImagePath.value = analysisRequestForm.labelImagePath;
-      clothesImagePath.value = analysisRequestForm.clothesImagePath;
+    final labelImagePathArgs = Get.arguments['labelImagePath'];
+    final clothesImagePathArgs = Get.arguments['clothesImagePath'];
+    if (labelImagePathArgs != null && clothesImagePathArgs != null) {
+      labelImagePath.value = labelImagePathArgs;
+      clothesImagePath.value = clothesImagePathArgs;
     } else {
       // 옷 촬영 화면으로 전환하기
       Get.until((Route<dynamic> route) =>
