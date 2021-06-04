@@ -1,6 +1,8 @@
 import 'package:get/get_navigation/src/routes/get_route.dart';
 import 'package:santaclothes/presentation/analysis_request/analysis_request_binding.dart';
 import 'package:santaclothes/presentation/analysis_request/analysis_request_screen.dart';
+import 'package:santaclothes/presentation/analysis_results%20/analysis_results_binding.dart';
+import 'package:santaclothes/presentation/analysis_results%20/analysis_results_screen.dart';
 import 'package:santaclothes/presentation/camera/camera_result/camera_result_binding.dart';
 import 'package:santaclothes/presentation/camera/camera_result/camera_result_controller.dart';
 import 'package:santaclothes/presentation/camera/camera_result/camera_result_screen.dart';
@@ -64,6 +66,11 @@ class AppPages {
       name: Routes.ANALYSIS_REQUEST,
       page: () => AnalysisRequestScreen(),
       binding: AnalysisRequestBinding(),
+    ),
+    GetPage(
+      name: Routes.ANALYSIS_RESULTS,
+      page: () => AnalysisResultsScreen(),
+      binding: AnalysisResultsBinding(),
     ),
   ];
 }
