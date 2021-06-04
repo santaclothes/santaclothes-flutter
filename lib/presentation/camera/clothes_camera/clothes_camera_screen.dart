@@ -10,6 +10,7 @@ class ClothesCameraScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return SafeArea(
       child: Scaffold(
+        resizeToAvoidBottomInset: false,
         backgroundColor: blackColor,
         body: GetBuilder<SancleCameraController>(
           builder: (controller) {

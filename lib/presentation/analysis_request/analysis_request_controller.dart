@@ -47,7 +47,8 @@ class AnalysisRequestController extends GetxController {
               selectedClothesColorType.value.toShortString()),
         );
         if (statusCode == 201) {
-          // TODO 최종 화면(광고?)으로 전환
+          Get.until((route) => route.settings.name == Routes.DASHBOARD);
+          Get.snackbar('성공', '분석이 완료된 후, 알림을 드리겠습니다.');
         } else {
           Get.snackbar('요청 실패', DEFAULT_ERROR_MSG);
         }
