@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:santaclothes/presentation/analysis_request/analysis_request_controller.dart';
 import 'package:santaclothes/presentation/analysis_request/widget/analysis_request_body.dart';
+import 'package:santaclothes/presentation/common/widget/loading_overlay.dart';
 import 'package:santaclothes/utils/constants.dart';
 import 'package:santaclothes/utils/size_config.dart';
 
@@ -18,7 +19,8 @@ class AnalysisRequestScreen extends StatelessWidget {
               AnalysisRequestBody(),
               GestureDetector(
                 onTap: () {
-                  Get.find<AnalysisRequestController>().requestAnalysis();
+                  Get.find<AnalysisRequestController>()
+                      .requestAnalysis(LoadingOverlay.of(context));
                 },
                 child: Container(
                   margin: EdgeInsets.symmetric(
