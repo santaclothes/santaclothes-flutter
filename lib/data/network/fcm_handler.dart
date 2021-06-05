@@ -1,13 +1,12 @@
 import 'package:firebase_messaging/firebase_messaging.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:santaclothes/data/model/token_response.dart';
-import 'package:santaclothes/data/repository/auth_repository.dart';
+import 'package:santaclothes/data/model/fcm_data.dart';
+import 'package:santaclothes/data/prefs/fcm_manager.dart';
 import 'package:santaclothes/routes/app_routes.dart';
 
 class FcmHandler {
   static final FcmHandler _fcmHandler = FcmHandler._internal();
-  static final AuthRepository _authRepository = AuthRepository();
   static FcmHandler get instance => _fcmHandler;
 
   FcmHandler._internal();
@@ -35,50 +34,20 @@ class FcmHandler {
 
     // Noti 클릭 했을 때
     FirebaseMessaging.onMessageOpenedApp.listen((RemoteMessage message) async {
-      final TokenResponse? tokenResponse = await _authRepository.getToken();
+      // Category 저장하고 SPLASH로 보내기
+      FcmData data = FcmData("none",0);
 
-      // 로그인 안되어 있다면
-      if (tokenResponse == null ||
-          DateTime.parse(tokenResponse.expiredAt).millisecondsSinceEpoch <
-              DateTime.now().millisecondsSinceEpoch) {
-        // TODO 로그인 후 결과 페이지 이동
-        // ex) Get.offNamed(Routes.LOGIN, argument : {"result": message.data['id']});
-        // LOGIN에 argument 전달 후 argument 있다면 LOGIN에서 Dashboard가 아닌 Result로 이동
-        Get.offNamed(Routes.LOGIN);
+      if(message.data['category'] != null && message.data['id'] != null){
+          data = FcmData(message.data['category'],message.data['id']);
       }
-      // 로그인 되어 있다면
-      else{
-        // TODO 푸시에 옷 정보가 있다면
-        if(message.data['id'] != null){
-          // Get.offNamed(Routes.RESULT, argument: initialMessage.data['id']);
-        }
-        else{
-          Get.offNamed(Routes.DASHBOARD);
-        }
-      }
+
+      FcmManager.instance.setCategory(data);
+      Get.offAllNamed(Routes.SPLASH);
     });
   }
 
   _firebaseTerminateListener() async{
-    RemoteMessage? initialMessage = await FirebaseMessaging.instance.getInitialMessage();
-    final TokenResponse? tokenResponse = await _authRepository.getToken();
-
-    // 로그인 안되어 있다면
-    if (tokenResponse == null ||
-        DateTime.parse(tokenResponse.expiredAt).millisecondsSinceEpoch <
-            DateTime.now().millisecondsSinceEpoch) {
-      Get.offNamed(Routes.LOGIN);
-    }
-    // 로그인 되어 있다면
-    else{
-      // TODO 푸시에 옷 정보가 있다면
-      if(initialMessage?.data['id'] != null){
-        // Get.offNamed(Routes.RESULT, argument: initialMessage.data['id']);
-      }
-      else{
-        Get.offNamed(Routes.DASHBOARD);
-      }
-    }
+    // TODO 앱이 꺼져있을 때
   }
 
   Future<void> _firebaseMessagingBackgroundHandler(RemoteMessage message) async {
