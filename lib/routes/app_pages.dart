@@ -31,5 +31,10 @@ class AppPages {
       page: () => OnboardingScreen(),
       binding: OnboardingBinding(),
     ),
+    // GetPage(
+    //   name: Routes.MYPAGE,
+    //   page: () => MypageScreen(),
+    //   binding: MypageBinding(),
+    // )
   ];
 }
