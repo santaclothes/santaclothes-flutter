@@ -8,6 +8,7 @@ import 'package:santaclothes/data/common/sancle_error.dart';
 import 'package:santaclothes/data/repository/login_repository.dart';
 import 'package:santaclothes/routes/app_routes.dart';
 import 'package:santaclothes/utils/constants.dart';
+import 'dart:developer' as developer;
 
 class LoginController extends GetxController {
   final LoginRepository _loginRepository;
@@ -29,7 +30,8 @@ class LoginController extends GetxController {
       final int userId = user.id;
       final String nickname = user.properties?["nickname"] ?? "";
       final String deviceToken = await _getDeviceToken();
-      print("device Token : ${deviceToken}");
+      // Dedugging 용
+      developer.log('device token : ${deviceToken}', name: 'deviceToken');
       _requestSignUp("KAKAO", nickname, userId.toString(), deviceToken);
     } catch (e) {
       print(e);

@@ -39,7 +39,7 @@ class OnboardingPictureWidget extends GetView<OnboardingController>{
                 activeOpacity: 0.6,
                 onTap: () {
                   controller.setOnboardingFlag(true);
-                  Get.offNamed(Routes.DASHBOARD);
+                  Get.offNamed(Routes.LOGIN);
                 },
                 child: Text(
                   '건너뛰기',

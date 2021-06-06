@@ -63,7 +63,7 @@ class OnboardingContentWidget extends GetView<OnboardingController>{
                 }
                 else{
                   controller.setOnboardingFlag(true);
-                  Get.offNamed(Routes.DASHBOARD);
+                  Get.offNamed(Routes.LOGIN);
                 }
               },
               child: Container(

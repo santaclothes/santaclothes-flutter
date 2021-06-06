@@ -8,19 +8,20 @@ class DashboardController extends GetxController {
   var currentTabType = DashBoardTabType.HOME.obs;
 
   @override
-  get onStart async {
+  void onReady() async {
+    // TODO: implement onReady
+    super.onReady();
     FcmData data = await FcmManager.instance.getCategory();
 
     switch(data.category){
       case "result":
-        // TODO 결과 화면으로 라우팅
-        // Get.offNamed(Routes.RESULT, argument: data.id);
+      // TODO 결과 화면으로 라우팅
+      // Get.offNamed(Routes.RESULT, argument: data.id);
         break;
       case "notice":
-        // TODO 공지 화면으로 라우팅
-        // Get.offNamed(Routes.NOTICE, argument: data.id);
+      // TODO 공지 화면으로 라우팅
+      // Get.offNamed(Routes.NOTICE, argument: data.id);
         break;
     }
-
   }
 }
