@@ -11,7 +11,7 @@ class FcmHandler {
 
   FcmHandler._internal();
 
-  firebaseListener() {
+  firebaseListener() async {
     // 1. App이 Front 상태 일 때
     FirebaseMessaging.onMessage.listen((RemoteMessage message) {
       // TODO Front
@@ -32,25 +32,26 @@ class FcmHandler {
     // 3. App이 Terminate 상태 일 때
     _firebaseTerminateListener();
 
-    // Noti 클릭 했을 때
     FirebaseMessaging.onMessageOpenedApp.listen((RemoteMessage message) async {
-      // Category 저장하고 SPLASH로 보내기
-      FcmData data = FcmData("none",0);
-
-      if(message.data['category'] != null && message.data['id'] != null){
-          data = FcmData(message.data['category'],message.data['id']);
-      }
-
-      FcmManager.instance.setCategory(data);
-      Get.offAllNamed(Routes.SPLASH);
     });
   }
 
   _firebaseTerminateListener() async{
     // TODO 앱이 꺼져있을 때
+    RemoteMessage? message = await FirebaseMessaging.instance.getInitialMessage();
+
+    FcmData data = FcmData("none",0);
+
+    if(message?.data['category'] != null && message?.data['id'] != null){
+      String category = message?.data['category'];
+      int id = int.parse(message?.data['id']);
+      data = FcmData(category,id);
+    }
+
+    FcmManager.instance.setCategory(data);
+    Get.offAllNamed(Routes.SPLASH);
   }
 
   Future<void> _firebaseMessagingBackgroundHandler(RemoteMessage message) async {
-    // TODO Background
   }
 }

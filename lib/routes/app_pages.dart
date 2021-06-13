@@ -5,6 +5,7 @@ import 'package:santaclothes/presentation/login/login_binding.dart';
 import 'package:santaclothes/presentation/login/login_screen.dart';
 import 'package:santaclothes/presentation/onboarding/onboarding_binding.dart';
 import 'package:santaclothes/presentation/onboarding/onboarding_screen.dart';
+import 'package:santaclothes/presentation/result/result_screen.dart';
 import 'package:santaclothes/presentation/splash/splash_binding.dart';
 import 'package:santaclothes/presentation/splash/splash_screen.dart';
 import 'package:santaclothes/routes/app_routes.dart';
@@ -31,5 +32,9 @@ class AppPages {
       page: () => OnboardingScreen(),
       binding: OnboardingBinding(),
     ),
+    GetPage(
+      name: Routes.RESULT,
+      page: () => ResultScreen(),
+    )
   ];
 }

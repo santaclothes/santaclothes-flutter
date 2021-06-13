@@ -20,8 +20,8 @@ class FcmManager {
     FcmData result = FcmData("none",0);
 
     final prefs = await SharedPreferences.getInstance();
-    String? category = prefs.getString(FCM_DATA_CATEGORY);
-    int? id = prefs.getInt(FCM_DATA_ID);
+    String? category = await prefs.getString(FCM_DATA_CATEGORY);
+    int? id = await prefs.getInt(FCM_DATA_ID);
 
     if(category != null && id != null){
       result = FcmData(category,id);
