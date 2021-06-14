@@ -3,11 +3,14 @@ import 'dart:convert';
 import 'package:dio/dio.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:santaclothes/data/common/sancle_error.dart';
+import 'package:santaclothes/data/model/analysis_request_result_response.dart';
 import 'package:santaclothes/data/utils/api_utils.dart';
+
+import 'utils.dart';
 
 void main() {
   String _baseUrl =
-      "http://ec2-13-124-105-1.ap-northeast-2.compute.amazonaws.com:8082/";
+      "http://ec2-13-124-105-1.ap-northeast-2.compute.amazonaws.com:8080/";
   Dio _dio = Dio();
 
   group('회원가입 -> 로그인 테스트', () {
@@ -71,5 +74,22 @@ void main() {
         }
       }
     });
+  });
+
+  test('분석 결과 요청 API 테스트', () async {
+    int requestId = 3;
+    _dio.options.headers["Authorization"] =
+        "Bearer " + "d7cfd0e6-dbc8-46bc-a83b-d3778c68f067";
+    try {
+      Response response = await safeApiCall(() async {
+        return await _dio.get(_baseUrl + "view/analysisRequest/$requestId");
+      });
+      expect(response.statusCode, 200);
+      final analysisRequestResultResponse =
+          AnalysisRequestResultResponse.fromJson(response.data);
+      print('결과 : ${prettyJson(analysisRequestResultResponse.toJson())}');
+    } catch (e) {
+      print(e);
+    }
   });
 }
