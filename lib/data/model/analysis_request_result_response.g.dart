@@ -9,6 +9,7 @@ part of 'analysis_request_result_response.dart';
 AnalysisRequestResultResponse _$AnalysisRequestResultResponseFromJson(
     Map<String, dynamic> json) {
   return AnalysisRequestResultResponse(
+    json['userName'] as String,
     json['clothName'] as String,
     json['howToTitle'] as String,
     json['howToContent'] as String,
@@ -27,6 +28,7 @@ AnalysisRequestResultResponse _$AnalysisRequestResultResponseFromJson(
 Map<String, dynamic> _$AnalysisRequestResultResponseToJson(
         AnalysisRequestResultResponse instance) =>
     <String, dynamic>{
+      'userName': instance.userName,
       'clothName': instance.clothName,
       'howToTitle': instance.howToTitle,
       'howToContent': instance.howToContent,

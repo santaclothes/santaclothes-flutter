@@ -13,6 +13,7 @@ part 'analysis_request_result_response.g.dart';
 
 @JsonSerializable(explicitToJson: true)
 class AnalysisRequestResultResponse {
+  final String userName;
   final String clothName;
   final String howToTitle;
   final String howToContent;
@@ -22,6 +23,7 @@ class AnalysisRequestResultResponse {
   final String createdDate;
 
   AnalysisRequestResultResponse(
+    this.userName,
     this.clothName,
     this.howToTitle,
     this.howToContent,
