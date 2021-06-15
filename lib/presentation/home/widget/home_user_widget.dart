@@ -14,7 +14,7 @@ class HomeUserWidget extends GetView<HomeController>{
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           Text.rich(TextSpan(
-              text: "nickname",
+              text: controller.userName.value,
               style: TextStyle(
                   fontSize: getProportionateScreenHeight(28),
                   fontWeight: FontWeight.w800,
@@ -46,7 +46,7 @@ class HomeUserWidget extends GetView<HomeController>{
           ),
           SizedBox(height: getProportionateScreenHeight(8)),
           Text(
-            'count벌!',
+            "${controller.clothCount.value}",
             style: TextStyle(
                 fontSize: getProportionateScreenHeight(16),
                 fontWeight: FontWeight.w800,

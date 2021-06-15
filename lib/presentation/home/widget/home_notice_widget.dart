@@ -51,7 +51,7 @@ class HomeNoticeWidget extends GetView<HomeController>{
                               right: getProportionateScreenWidth(24),
                               top: getProportionateScreenHeight(18)),
                           child: Text(
-                            controller.prompt[controller.page.value][0],
+                            controller.prompt[controller.page.value].title,
                             maxLines: 2,
                             overflow: TextOverflow.ellipsis,
                             style: TextStyle(
@@ -67,7 +67,7 @@ class HomeNoticeWidget extends GetView<HomeController>{
                               right: getProportionateScreenWidth(24),
                               top: getProportionateScreenHeight(10)),
                           child: Text(
-                            controller.prompt[controller.page.value][1],
+                            controller.prompt[controller.page.value].hint,
                             maxLines: 1,
                             overflow: TextOverflow.ellipsis,
                             style: TextStyle(
@@ -83,7 +83,7 @@ class HomeNoticeWidget extends GetView<HomeController>{
                               right: getProportionateScreenWidth(24),
                               top: getProportionateScreenHeight(12)),
                           child: Text(
-                            controller.prompt[controller.page.value][2],
+                            controller.prompt[controller.page.value].content,
                             maxLines: 2,
                             overflow: TextOverflow.ellipsis,
                             style: TextStyle(
