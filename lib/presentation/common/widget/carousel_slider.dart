@@ -15,6 +15,7 @@ class CarouselSlider extends StatelessWidget {
           width: double.infinity,
           height: getProportionateScreenWidth(250.0),
           child: ListView.builder(
+            physics: BouncingScrollPhysics(),
             itemCount: imageUrls.length,
             scrollDirection: Axis.horizontal,
             itemBuilder: (context, index) {
