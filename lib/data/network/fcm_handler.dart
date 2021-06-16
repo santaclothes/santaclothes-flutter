@@ -1,5 +1,9 @@
 import 'package:firebase_messaging/firebase_messaging.dart';
 import 'package:flutter_local_notifications/flutter_local_notifications.dart';
+import 'package:get/get.dart';
+import 'package:santaclothes/data/model/fcm_data.dart';
+import 'package:santaclothes/data/prefs/fcm_manager.dart';
+import 'package:santaclothes/routes/app_routes.dart';
 
 class FcmHandler {
   static final FcmHandler _fcmHandler = FcmHandler._internal();
@@ -24,13 +28,10 @@ class FcmHandler {
         .resolvePlatformSpecificImplementation<AndroidFlutterLocalNotificationsPlugin>()
         ?.createNotificationChannel(channel);
 
-    // 1. App이 Front 상태 일 때
     FirebaseMessaging.onMessage.listen((RemoteMessage message) {
-      RemoteNotification notification = message.notification!;
-      AndroidNotification android = message.notification!.android!;
+      final notification = message.notification; // Forground에서 push noti 잡는 친구
+      final android = message.notification?.android;
 
-      // If `onMessage` is triggered with a notification, construct our own
-      // local notification to show to users using the created channel.
       if (notification != null && android != null) {
         flutterLocalNotificationsPlugin.show(
             notification.hashCode,
@@ -41,49 +42,51 @@ class FcmHandler {
                 channel.id,
                 channel.name,
                 channel.description,
-                // other properties...
               ),
             ));
       }
     });
 
-    // 2. App이 Background 상태 일 때
-    // FirebaseMessaging.onBackgroundMessage(_firebaseMessagingBackgroundHandler);
+    FirebaseMessaging.onBackgroundMessage(_firebaseMessagingBackgroundHandler);
 
-    // 3. App이 Terminate 상태 일 때
-    // _firebaseTerminateListener();
+    // 앱이 켜졌을 때 push 데이터가 있냐 없냐
+    _firebaseTerminateCheck();
 
-    // FirebaseMessaging.onMessageOpenedApp.listen((RemoteMessage message) async {
-    // });
+    FirebaseMessaging.onMessageOpenedApp.listen((RemoteMessage message) async {
+      print("t"); // 앱 실행 후 홈화면 누른 상태에서, Push Noti 왔을 때 눌르면 호출되는 친구
+    });
   }
 
-  void _setting(RemoteMessage message) async{
-    final notiTitle = 'title';
-    final notiDesc = 'description';
-    var android = AndroidNotificationDetails('id', notiTitle, notiDesc,
-        importance: Importance.max, priority: Priority.max);
-    var platform = NotificationDetails(android: android);
-    print("show");
-    print("${message.notification!.body}");
-    await FlutterLocalNotificationsPlugin().show(0, "message.notification!.title", "message.notification!.body", platform);
+  _firebaseTerminateCheck() async{
+    // null인지를 보는지
+    RemoteMessage? message = await FirebaseMessaging.instance.getInitialMessage();
+
+    // none 대신 null로 변경하기
+    FcmData data = FcmData("none",0);
+
+    if(message?.data['category'] != null && message?.data['id'] != null){
+      String category = message?.data['category'];
+      int id = int.parse(message?.data['id']);
+      data = FcmData(category,id);
+    }
+
+    FcmManager.instance.setCategory(data);
+    // splash에서 Get.offNamed() 없애기
   }
 
-  // _firebaseTerminateListener() async{
-  //   // TODO 앱이 꺼져있을 때
-  //   RemoteMessage? message = await FirebaseMessaging.instance.getInitialMessage();
-  //
-  //   FcmData data = FcmData("none",0);
-  //
-  //   if(message?.data['category'] != null && message?.data['id'] != null){
-  //     String category = message?.data['category'];
-  //     int id = int.parse(message?.data['id']);
-  //     data = FcmData(category,id);
-  //   }
-  //
-  //   FcmManager.instance.setCategory(data);
-  //   Get.offAllNamed(Routes.SPLASH);
-  // }
-
-  // Future<void> _firebaseMessagingBackgroundHandler(RemoteMessage message) async {
-  // }
+  Future<void> _firebaseMessagingBackgroundHandler(RemoteMessage message) async {
+    print("back");
+    // RemoteMessage? message = await FirebaseMessaging.instance.getInitialMessage();
+    //
+    // FcmData data = FcmData("none",0);
+    //
+    // if(message?.data['category'] != null && message?.data['id'] != null){
+    //   String category = message?.data['category'];
+    //   int id = int.parse(message?.data['id']);
+    //   data = FcmData(category,id);
+    // }
+    //
+    // FcmManager.instance.setCategory(data);
+    // Get.offAllNamed(Routes.SPLASH);
+  }
 }
