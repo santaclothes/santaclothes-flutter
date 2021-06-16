@@ -8,17 +8,18 @@ import 'package:santaclothes/utils/size_config.dart';
 import 'package:touchable_opacity/touchable_opacity.dart';
 
 class MyPageScreen extends GetView<MyPageController> {
-
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        backgroundColor: buttonDisableColor,
-          body: SafeArea(
-            child: SingleChildScrollView(
-              child: Container(
-                color: buttonDisableColor,
-                child: Column(
-                  children: <Widget>[
+      backgroundColor: buttonDisableColor,
+      body: SafeArea(
+        child: SingleChildScrollView(
+          child: Container(
+            color: buttonDisableColor,
+            child: Column(
+              children: <Widget>[
+                Row(
+                  children: [
                     TouchableOpacity(
                       activeOpacity: 0.6,
                       child: Container(
@@ -27,18 +28,31 @@ class MyPageScreen extends GetView<MyPageController> {
                           padding: EdgeInsets.only(
                               left: getProportionateScreenWidth(30)),
                           child:
-                          SvgPicture.asset("assets/icons/back_button.svg")),
+                              SvgPicture.asset("assets/icons/back_button.svg")),
                       onTap: () {
-                        Get.until((Route<dynamic> route) => route.settings.name == Routes.DASHBOARD);
+                        Get.until((Route<dynamic> route) =>
+                            route.settings.name == Routes.DASHBOARD);
                       },
                     ),
-                    // _notice(),
-                    // _profile(),
+                    Expanded(child: Container(),),
+                    Padding(
+                      padding: EdgeInsets.only(right: getProportionateScreenWidth(30)),
+                      child: Text("설정",
+                          style: TextStyle(
+                              color: textColor,
+                              fontSize: 16.0,
+                              fontFamily: 'nanum_square',
+                              fontWeight: FontWeight.w700)),
+                    ),
                   ],
                 ),
-              ),
+                // _notice(),
+                // _profile(),
+              ],
             ),
           ),
-        );
+        ),
+      ),
+    );
   }
 }
