@@ -11,10 +11,9 @@ class HomeController extends GetxController {
   final clothCount = 0.obs;
   final hasNoti = false.obs;
   final prompt = [].obs;
+  final notiIcon = 'assets/icons/has_push.svg'.obs;
 
   HomeController(this._homeRepository);
-
-
 
   @override
   Future<void> onReady() async {
@@ -25,6 +24,10 @@ class HomeController extends GetxController {
       clothCount.value = userData.totalClothesCount;
       hasNoti.value = userData.hasNewNotification;
       prompt.value = userData.notices;
+    }
+
+    if(hasNoti == true){
+      notiIcon.value = 'assets/icons/has_push.svg';
     }
   }
 
