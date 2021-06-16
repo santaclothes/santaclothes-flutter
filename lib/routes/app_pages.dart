@@ -53,12 +53,12 @@ class AppPages {
     GetPage(
       name: Routes.CLOTHES_CAMERA_RESULT,
       page: () => CameraResultScreen(tag: CLOTHES_RESULT_TAG),
-      binding: CameraResultBinding(tag: CLOTHES_RESULT_TAG),
+      binding: CameraResultBinding(CLOTHES_RESULT_TAG),
     ),
     GetPage(
       name: Routes.LABEL_CAMERA_RESULT,
       page: () => CameraResultScreen(tag: LABEL_RESULT_TAG),
-      binding: CameraResultBinding(tag: LABEL_RESULT_TAG),
+      binding: CameraResultBinding(LABEL_RESULT_TAG),
     ),
     GetPage(
       name: Routes.ANALYSIS_REQUEST,
