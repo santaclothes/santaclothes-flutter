@@ -11,7 +11,7 @@ class HomeController extends GetxController {
   final clothCount = "0".obs;
   final hasNoti = false.obs;
   final prompt = [].obs;
-  final notiIcon = 'assets/icons/has_push.svg'.obs;
+  final notiIcon = 'assets/icons/no_push.svg'.obs;
 
   HomeController(this._homeRepository);
 
