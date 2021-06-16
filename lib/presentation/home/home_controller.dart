@@ -8,7 +8,7 @@ class HomeController extends GetxController {
   final HomeRepository _homeRepository;
 
   final userName = "".obs;
-  final clothCount = 0.obs;
+  final clothCount = "0".obs;
   final hasNoti = false.obs;
   final prompt = [].obs;
   final notiIcon = 'assets/icons/has_push.svg'.obs;
@@ -21,7 +21,7 @@ class HomeController extends GetxController {
 
     if(userData != null){
       userName.value = userData.userName;
-      clothCount.value = userData.totalClothesCount;
+      clothCount.value = countWithComma(userData.totalClothesCount);
       hasNoti.value = userData.hasNewNotification;
       prompt.value = userData.notices;
     }
@@ -30,32 +30,28 @@ class HomeController extends GetxController {
       notiIcon.value = 'assets/icons/has_push.svg';
     }
   }
-
+  
   final pageController = PageController(
     initialPage: 0,
   );
 
   var page = 0.obs;
 
-  // final List<List<String>> prompt = [
-  //   [
-  //     '산타클로즈에 라벨을 쌓아주세요 2줄가이드 라인하이트 8',
-  //     '라벨을 10개 찍으면 상품이 팡!',
-  //     '산타클로즈에 라벨을 쌓아주세요 2줄가이드 라인하이트8'
-  //   ],
-  //   [
-  //     '산타클로즈에 라벨을 쌓아주세요 2줄가이드 라인하이트 8',
-  //     '라벨을 10개 찍으면 상품이 팡!',
-  //     '산타클로즈에 라벨을 쌓아주세요 2줄가이드 라인하이트8'
-  //   ],
-  //   [
-  //     '산타클로즈에 라벨을 쌓아주세요 2줄가이드 라인하이트 8',
-  //     '라벨을 10개 찍으면 상품이 팡!',
-  //     '산타클로즈에 라벨을 쌓아주세요 2줄가이드 라인하이트8'
-  //   ]
-  // ].obs;
-
   getCircleBar(int flag, int index) {
     return circleBar(flag, index);
+  }
+
+  String countWithComma(int count){
+    String countStr = count.toString().split("").reversed.join("");
+    String result = "";
+
+    for(int i = 0; i < countStr.length; i++){
+      result = countStr[i] + result;
+      if((i+1)%3 == 0 && i != countStr.length-1){
+        result = "," + result;
+      }
+    }
+
+    return result;
   }
 }
