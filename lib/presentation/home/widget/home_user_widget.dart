@@ -48,7 +48,7 @@ class HomeUserWidget extends GetView<HomeController>{
           ),
           SizedBox(height: getProportionateScreenHeight(8)),
           Obx(()=>Text(
-            "${controller.clothCount.value}",
+            "${controller.clothCount.value}벌!",
             style: TextStyle(
                 fontSize: getProportionateScreenHeight(16),
                 fontWeight: FontWeight.w800,
