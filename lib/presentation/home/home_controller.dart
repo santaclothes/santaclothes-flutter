@@ -29,6 +29,9 @@ class HomeController extends GetxController {
     if(hasNoti == true){
       notiIcon.value = 'assets/icons/has_push.svg';
     }
+    else{
+      notiIcon.value = 'assets/icons/no_push.svg';
+    }
   }
   
   final pageController = PageController(
