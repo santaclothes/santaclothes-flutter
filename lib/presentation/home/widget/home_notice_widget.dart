@@ -3,6 +3,7 @@ import 'package:flutter/src/widgets/framework.dart';
 import 'package:get/get.dart';
 import 'package:get/get_state_manager/src/simple/get_view.dart';
 import 'package:santaclothes/presentation/home/home_controller.dart';
+import 'package:santaclothes/utils/constants.dart';
 import 'package:santaclothes/utils/size_config.dart';
 
 class HomeNoticeWidget extends GetView<HomeController>{
@@ -14,10 +15,17 @@ class HomeNoticeWidget extends GetView<HomeController>{
         width: MediaQuery.of(context).size.width,
         height: getProportionateScreenHeight(169),
         decoration: BoxDecoration(
-            color: Colors.white,
+            color: whiteColor,
             borderRadius: BorderRadius.only(
                 topLeft: Radius.circular(16.0),
-                topRight: Radius.circular(16.0))),
+                topRight: Radius.circular(16.0)),
+            boxShadow: [BoxShadow(
+              color: shadowColor, //color of shadow
+              spreadRadius: 0, //spread radius
+              blurRadius: 7, // blur radius
+              offset: Offset(0, -5), // changes position of shadow
+            )]
+        ),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: <Widget>[

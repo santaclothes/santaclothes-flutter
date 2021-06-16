@@ -14,14 +14,18 @@ class HomeController extends GetxController {
 
   HomeController(this._homeRepository);
 
+
+
   @override
   Future<void> onReady() async {
-    HomeResponse userData = (await _homeRepository.getUserData())!;
+    HomeResponse? userData = await _homeRepository.getUserData();
 
-    userName.value = userData.userName;
-    clothCount.value = userData.totalClothesCount;
-    hasNoti.value = userData.hasNewNotification;
-    prompt.value = userData.notices;
+    if(userData != null){
+      userName.value = userData.userName;
+      clothCount.value = userData.totalClothesCount;
+      hasNoti.value = userData.hasNewNotification;
+      prompt.value = userData.notices;
+    }
   }
 
   final pageController = PageController(

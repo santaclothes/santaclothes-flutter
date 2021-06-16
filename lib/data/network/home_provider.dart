@@ -1,3 +1,4 @@
+import 'package:dio/dio.dart';
 import 'package:santaclothes/data/model/home_response.dart';
 import 'package:santaclothes/data/network/dio_client.dart';
 import 'package:santaclothes/data/utils/api_utils.dart';
@@ -15,11 +16,12 @@ class HomeProvider {
   /// */
   Future<HomeResponse?> getUserData() async {
     try {
-      await safeApiCall(() async {
-        return await DioClient.defaultClient.post(
+      Response response = await safeApiCall(() async {
+        return await DioClient.authClient.get(
           BASE_URL + "view/home",
         );
       });
+      return HomeResponse.fromJson(response.data);
     } catch (e) {
       throw e;
     }

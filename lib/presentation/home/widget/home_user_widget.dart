@@ -13,7 +13,8 @@ class HomeUserWidget extends GetView<HomeController>{
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          Text.rich(TextSpan(
+          Obx(()=>Text.rich(
+          TextSpan(
               text: controller.userName.value,
               style: TextStyle(
                   fontSize: getProportionateScreenHeight(28),
@@ -27,7 +28,8 @@ class HomeUserWidget extends GetView<HomeController>{
                       fontWeight: FontWeight.w300,
                       fontFamily: 'nanum_square'),
                 )
-              ])),
+              ]))
+          ),
           SizedBox(height: getProportionateScreenHeight(12)),
           Text(
             '안녕하세요!',
@@ -45,13 +47,13 @@ class HomeUserWidget extends GetView<HomeController>{
                 fontFamily: 'nanum_square'),
           ),
           SizedBox(height: getProportionateScreenHeight(8)),
-          Text(
+          Obx(()=>Text(
             "${controller.clothCount.value}",
             style: TextStyle(
                 fontSize: getProportionateScreenHeight(16),
                 fontWeight: FontWeight.w800,
                 fontFamily: 'nanum_square'),
-          ),
+          )),
         ],
       ),
     );

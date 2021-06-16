@@ -45,11 +45,11 @@ class _HomeScreenState extends State<HomeScreen> {
                 child: TouchableOpacity(
                   activeOpacity: 0.6,
                   onTap: () {
-                    // TODO route mypage
-                    Get.offNamed(Routes.MYPAGE);
+                    // TODO route push list
+                    // Get.offNamed(Routes.MYPAGE);
                   },
                   child: SvgPicture.asset(
-                    'assets/icons/my_page.svg',
+                    'assets/icons/no_push.svg',
                     width: getProportionateScreenHeight(52),
                     height: getProportionateScreenHeight(52),
                   ),

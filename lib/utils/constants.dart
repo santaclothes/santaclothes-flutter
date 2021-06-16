@@ -21,6 +21,8 @@ const pageIndicatorSelectColor = Color(0xFFF8D247);
 const pageIndicatorSelectBorderColor = Color(0xFFDFB10F);
 const pageIndicatorUnselectColor = Color(0xFFC4C4C4);
 
+const shadowColor = Color.fromRGBO(0, 0, 0, 0.15);
+
 
 
 // SharedPreferences

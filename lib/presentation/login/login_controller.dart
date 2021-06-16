@@ -56,6 +56,8 @@ class LoginController extends GetxController {
     try {
       var token = await AuthApi.instance.issueAccessToken(authCode);
       AccessTokenStore.instance.toStore(token);
+      print("token:"+token.accessToken);
+
     } catch (e) {
       throw e;
     }

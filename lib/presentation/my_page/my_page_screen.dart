@@ -32,8 +32,8 @@ class MyPageScreen extends GetView<MyPageController> {
                         Get.until((Route<dynamic> route) => route.settings.name == Routes.DASHBOARD);
                       },
                     ),
-                    _notice(),
-                    _profile(),
+                    // _notice(),
+                    // _profile(),
                   ],
                 ),
               ),

@@ -17,6 +17,7 @@ class DashboardScreen extends StatelessWidget {
           top: false,
           bottom: false,
           child: Scaffold(
+            backgroundColor: whiteColor,
             body: Container(
               child: IndexedStack(
                 index: controller.currentTabType.value.index,
