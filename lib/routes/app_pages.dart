@@ -44,7 +44,8 @@ class AppPages {
     GetPage(
       name: Routes.RESULT,
       page: () => ResultScreen(),
-    )
+    ),
+    GetPage(
       name: Routes.CLOTHES_CAMERA,
       page: () => ClothesCameraScreen(),
       binding: ClothesCameraBinding(),
