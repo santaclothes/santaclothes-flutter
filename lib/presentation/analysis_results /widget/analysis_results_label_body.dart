@@ -74,13 +74,16 @@ class AnalysisResultsLabelBody extends GetView<AnalysisResultsController> {
                           ),
                           Expanded(
                             flex: 5,
-                            child: Text(
-                              '상세',
-                              style: TextStyle(
-                                fontFamily: 'nanum_square',
-                                fontWeight: FontWeight.w400,
-                                fontSize: getProportionateScreenHeight(14.0),
-                                color: sancleDarkColor,
+                            child: Padding(
+                              padding: const EdgeInsets.only(left: 5.0),
+                              child: Text(
+                                '상세',
+                                style: TextStyle(
+                                  fontFamily: 'nanum_square',
+                                  fontWeight: FontWeight.w400,
+                                  fontSize: getProportionateScreenHeight(14.0),
+                                  color: sancleDarkColor,
+                                ),
                               ),
                             ),
                           )
@@ -132,7 +135,7 @@ class AnalysisResultsLabelBody extends GetView<AnalysisResultsController> {
           Expanded(
             flex: 3,
             child: Text(
-              '물세탁',
+              response.name,
               style: TextStyle(
                 fontFamily: 'nanum_square',
                 fontWeight: FontWeight.w700,
@@ -143,14 +146,17 @@ class AnalysisResultsLabelBody extends GetView<AnalysisResultsController> {
           ),
           Expanded(
             flex: 5,
-            child: Text(
-              response.description,
-              style: TextStyle(
-                height: 1.2,
-                fontFamily: 'nanum_square',
-                fontWeight: FontWeight.w400,
-                fontSize: getProportionateScreenHeight(12.0),
-                color: sancleDarkColor,
+            child: Container(
+              margin: EdgeInsets.only(left: 8.0),
+              child: Text(
+                response.description,
+                style: TextStyle(
+                  height: 1.2,
+                  fontFamily: 'nanum_square',
+                  fontWeight: FontWeight.w400,
+                  fontSize: getProportionateScreenHeight(12.0),
+                  color: sancleDarkColor,
+                ),
               ),
             ),
           )
