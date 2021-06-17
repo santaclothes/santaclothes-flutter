@@ -40,12 +40,7 @@ class MyPageNoticeWidget extends GetView<MyPageController> {
                         children: [
                           SizedBox(height: getProportionateScreenHeight(36.0)),
                           Text(
-                            _myPageBloc.myPageResponse.noticeViewList[index]
-                                        .title ==
-                                    null
-                                ? ''
-                                : _myPageBloc
-                                    .myPageResponse.noticeViewList[index].title,
+                            "title",
                             overflow: TextOverflow.ellipsis,
                             textAlign: TextAlign.end,
                             maxLines: 2,
@@ -56,12 +51,7 @@ class MyPageNoticeWidget extends GetView<MyPageController> {
                           ),
                           SizedBox(height: getProportionateScreenHeight(10.0)),
                           Text(
-                            _myPageBloc.myPageResponse.noticeViewList[index]
-                                        .content ==
-                                    null
-                                ? ''
-                                : _myPageBloc.myPageResponse
-                                    .noticeViewList[index].content,
+                            "content",
                             maxLines: 1,
                             overflow: TextOverflow.ellipsis,
                             style: TextStyle(
@@ -85,8 +75,7 @@ class MyPageNoticeWidget extends GetView<MyPageController> {
             mainAxisAlignment: MainAxisAlignment.end,
             children: <Widget>[
               for (int i = 0; i < controller.prompt.length; i++)
-                if (i == snapshot.data) ...[_circleBar(true)] else
-                  _circleBar(false),
+                Obx(()=>controller.getCircleBar(controller.page.value, i))
             ],
           ),
         )
