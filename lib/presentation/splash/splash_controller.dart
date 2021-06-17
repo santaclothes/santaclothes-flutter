@@ -26,8 +26,9 @@ class SplashController extends GetxController {
             DateTime.now().millisecondsSinceEpoch) {
       if (onBoardingFlag == true) {
         Get.offNamed(Routes.LOGIN);
+      } else {
+        Get.offNamed(Routes.ONBOARDING);
       }
-      Get.offNamed(Routes.ONBOARDING);
     } else {
       Get.offNamed(Routes.DASHBOARD);
     }
