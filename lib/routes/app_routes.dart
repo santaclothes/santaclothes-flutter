@@ -9,4 +9,5 @@ class Routes {
   static const LABEL_CAMERA_RESULT = '/label_camera_result';
   static const ANALYSIS_REQUEST = '/analysis_request';
   static const ANALYSIS_RESULTS = '/analysis_results';
+  static const NOTIFICATION = '/notification';
 }
