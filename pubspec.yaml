@@ -37,9 +37,11 @@ dependencies:
   flutter_svg: ^0.22.0
   fluttertoast: ^8.0.5
   flutter_slidable: ^0.6.0
+  camera: ^0.8.1
+  permission_handler: ^7.1.0
   firebase_core: ^1.1.0
   firebase_messaging: ^10.0.0
-  
+
 dev_dependencies:
   flutter_test:
     sdk: flutter

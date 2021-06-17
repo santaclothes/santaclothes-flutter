@@ -1,5 +1,6 @@
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:get/get.dart';
 import 'package:santaclothes/data/repository/auth_repository.dart';
 import 'package:santaclothes/presentation/common/controller/auth_controller.dart';
@@ -22,6 +23,10 @@ _initialize() async {
 class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
+    SystemChrome.setPreferredOrientations([
+      DeviceOrientation.portraitUp,
+      DeviceOrientation.portraitDown,
+    ]);
     return GetMaterialApp(
       initialRoute: Routes.SPLASH,
       getPages: AppPages.pages,
