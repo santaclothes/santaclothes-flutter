@@ -1,6 +1,9 @@
 import 'dart:io';
 
 import 'package:dio/dio.dart';
+import 'package:santaclothes/data/model/home_response.dart';
+import 'package:santaclothes/data/model/my_page_cloth_data.dart';
+import 'package:santaclothes/data/model/my_page_response.dart';
 import 'package:santaclothes/data/network/dio_client.dart';
 import 'package:santaclothes/data/utils/api_utils.dart';
 
@@ -40,6 +43,32 @@ class ApiProvider {
         );
       });
       return response.statusCode;
+    } catch (e) {
+      throw e;
+    }
+  }
+
+  Future<HomeResponse?> getUserData() async {
+    try {
+      Response response = await safeApiCall(() async {
+        return await DioClient.authClient.get(
+          BASE_URL + "view/home",
+        );
+      });
+      return HomeResponse.fromJson(response.data);
+    } catch (e) {
+      throw e;
+    }
+  }
+
+  Future<MyPageResponse?> getMyPageData() async {
+    try {
+      Response response = await safeApiCall(() async {
+        return await DioClient.authClient.get(
+          BASE_URL + "view/myPage",
+        );
+      });
+      return MyPageResponse.fromJson(response.data);
     } catch (e) {
       throw e;
     }

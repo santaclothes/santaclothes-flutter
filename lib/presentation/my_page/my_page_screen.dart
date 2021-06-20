@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:get/get.dart';
 import 'package:santaclothes/presentation/my_page/my_page_controller.dart';
+import 'package:santaclothes/presentation/my_page/widget/my_page_clothes_list_widget.dart';
 import 'package:santaclothes/presentation/my_page/widget/my_page_notice_widget.dart';
 import 'package:santaclothes/presentation/my_page/widget/my_page_profile_widget.dart';
 import 'package:santaclothes/routes/app_routes.dart';
@@ -50,6 +51,7 @@ class MyPageScreen extends GetView<MyPageController> {
                 ),
                 MyPageNoticeWidget(),
                 MyPageProfileWidget(),
+                MyPageClothListWidget()
               ],
             ),
           ),

@@ -13,7 +13,6 @@ class DashboardController extends GetxController {
     // TODO: implement onReady
     super.onReady();
     FcmData data = await FcmManager.instance.getCategory();
-    developer.log('data : ${data.category}', name: 'fcm');
 
     switch(data.category){
       case "result":

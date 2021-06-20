@@ -16,7 +16,6 @@ class MyPageNoticeWidget extends GetView<MyPageController> {
               controller: controller.pageController,
               itemCount: controller.prompt.length,
               onPageChanged: (page) {
-                controller.setOnboardingList(page);
                 controller.page.value = page;
                 controller.pageController.jumpToPage(page);
               },

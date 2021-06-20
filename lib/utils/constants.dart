@@ -36,6 +36,10 @@ const pageIndicatorUnselectColor = Color(0xFFC4C4C4);
 
 const shadowColor = Color.fromRGBO(0, 0, 0, 0.15);
 
+const divideLineColor = Color(0xFF4F4F4F); // 79,79,79
+const divideLineColor2 = Color(0xFF444444); // 68,68,68
+const divideLineColor3 = Color(0xFF686868); // 104,104,104
+
 
 
 // SharedPreferences

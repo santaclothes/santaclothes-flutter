@@ -26,14 +26,14 @@ class MyPageProfileWidget extends GetView<MyPageController>{
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               Expanded(child: Container()),
-              Text(
-                '누구누구님',
+              Obx(()=>Text(
+                '${controller.userName}님',
                 maxLines: 1,
                 style: TextStyle(
                     fontSize: getProportionateScreenHeight(20),
                     fontWeight: FontWeight.w800,
                     fontFamily: 'nanum_square'),
-              ),
+              )),
               SizedBox(height: getProportionateScreenHeight(12)),
               Text(
                 '산클 옷장에 쌓인 옷',
@@ -53,15 +53,14 @@ class MyPageProfileWidget extends GetView<MyPageController>{
                           top: getProportionateScreenHeight(10)),
                       color: highlightColor,
                       height: getProportionateScreenHeight(4),
-                      width: 100,
                     ),
-                    Text(
-                      '0',
+                    Obx(()=>Text(
+                      '${controller.myClothesCount}',
                       style: TextStyle(
                           fontSize: getProportionateScreenHeight(14),
                           fontWeight: FontWeight.w700,
                           fontFamily: 'nanum_square'),
-                    ),
+                    )),
                   ]),
                   Text(
                     '벌!',
