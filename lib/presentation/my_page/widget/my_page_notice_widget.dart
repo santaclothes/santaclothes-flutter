@@ -39,7 +39,7 @@ class MyPageNoticeWidget extends GetView<MyPageController> {
                         children: [
                           SizedBox(height: getProportionateScreenHeight(36.0)),
                           Text(
-                            "title",
+                            controller.prompt[controller.page.value][0],
                             overflow: TextOverflow.ellipsis,
                             textAlign: TextAlign.end,
                             maxLines: 2,
@@ -50,7 +50,7 @@ class MyPageNoticeWidget extends GetView<MyPageController> {
                           ),
                           SizedBox(height: getProportionateScreenHeight(10.0)),
                           Text(
-                            "content",
+                            controller.prompt[controller.page.value][1],
                             maxLines: 1,
                             overflow: TextOverflow.ellipsis,
                             style: TextStyle(

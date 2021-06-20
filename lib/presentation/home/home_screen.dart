@@ -10,7 +10,6 @@ import 'package:santaclothes/utils/constants.dart';
 import 'package:santaclothes/utils/size_config.dart';
 import 'package:touchable_opacity/touchable_opacity.dart';
 
-
 class HomeScreen extends GetView<HomeController> {
   @override
   Widget build(BuildContext context) {

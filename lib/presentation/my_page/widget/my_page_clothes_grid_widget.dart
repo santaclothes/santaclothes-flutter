@@ -9,22 +9,25 @@ class MyPageClothesGirdWidget extends GetView<MyPageController>{
 
   @override
   Widget build(BuildContext context) {
-    return Obx(()=>Column(
-      children: <Widget>[
-        for(int i = 0; i < getDivide(controller.myPageClothes.length).quotient; i++)
+    return Obx(()=>Padding(
+      padding: const EdgeInsets.only(left: 10, right: 10),
+      child: Column(
+        children: <Widget>[
+          for(int i = 0; i < getDivide(controller.myPageClothes.length).quotient; i++)
+            Row(
+              children: [
+                for(int j = 0; j < 3; j++)
+                  MyPageClothWidget(index++)
+              ],
+            ),
           Row(
             children: [
-              for(int j = 0; j < 3; j++)
+              for(int j = 0; j < getDivide(controller.myPageClothes.length).mod; j++)
                 MyPageClothWidget(index++)
             ],
           ),
-        Row(
-          children: [
-            for(int j = 0; j < getDivide(controller.myPageClothes.length).mod; j++)
-              MyPageClothWidget(index++)
-          ],
-        ),
-      ],
+        ],
+      ),
     ));
   }
 

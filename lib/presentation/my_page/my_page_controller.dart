@@ -29,7 +29,7 @@ class MyPageController extends GetxController {
   );
 
   var page = 0.obs;
-  
+
   List<List<String>> prompt = [
     [
       '최대 10글자로 타이틀',
@@ -50,6 +50,13 @@ class MyPageController extends GetxController {
 
   getCircleBar(int flag, int index) {
     return circleBar(flag, index);
+  }
+
+  String dateToFormat(int index){
+    String origin = myPageClothes.value[index].requestAt;
+    String date = origin.split("T")[0].replaceAll('-', '/');
+
+    return date;
   }
 }
 
