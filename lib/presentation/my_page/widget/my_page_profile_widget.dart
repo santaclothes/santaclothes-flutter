@@ -42,24 +42,32 @@ class MyPageProfileWidget extends GetView<MyPageController>{
                 style: TextStyle(
                     fontSize: getProportionateScreenHeight(14),
                     fontWeight: FontWeight.w400,
-                    fontFamily: 'nanum_square'),
+                    fontFamily: 'nanum_square',
+                ),
               ),
               SizedBox(height: getProportionateScreenHeight(8)),
               Row(
                 children: [
                   Stack(children: [
-                    Container(
-                      margin: EdgeInsets.only(
-                          top: getProportionateScreenHeight(10)),
-                      color: highlightColor,
-                      height: getProportionateScreenHeight(4),
-                    ),
                     Obx(()=>Text(
                       '${controller.myClothesCount}',
                       style: TextStyle(
                           fontSize: getProportionateScreenHeight(14),
                           fontWeight: FontWeight.w700,
-                          fontFamily: 'nanum_square'),
+                          fontFamily: 'nanum_square',
+                          color: whiteColor,
+                          decoration: TextDecoration.underline,
+                          decorationColor: highlightColor,
+                          decorationThickness: 4
+                      ),
+                    )),
+                    Obx(()=>Text(
+                      '${controller.myClothesCount}',
+                      style: TextStyle(
+                          fontSize: getProportionateScreenHeight(14),
+                          fontWeight: FontWeight.w700,
+                          fontFamily: 'nanum_square',
+                      ),
                     )),
                   ]),
                   Text(
