@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:santaclothes/data/model/my_page_cloth_data.dart';
 import 'package:santaclothes/data/model/my_page_response.dart';
 import 'package:santaclothes/data/repository/my_page_repository.dart';
 import 'package:santaclothes/presentation/common/widget/circle_bar_widget.dart';
@@ -11,6 +12,8 @@ class MyPageController extends GetxController {
   final userName = "".obs;
   final clothCategory = "등록일순".obs;
   final clothCategoryList = ["등록일순","색상","상의","하의","양말","속옷","수건","케어라벨 수"].obs;
+  final filtedClothes = [].obs;
+
   MyPageController(this._myPageRepository);
 
   @override
@@ -21,6 +24,7 @@ class MyPageController extends GetxController {
       myClothesCount.value = myPageData.myClothesCount;
       myPageClothes.value = myPageData.myPageClothes;
       userName.value = myPageData.userName;
+      filtedClothes.value = myPageData.myPageClothes;
     }
   }
 
@@ -58,5 +62,26 @@ class MyPageController extends GetxController {
 
     return date;
   }
-}
 
+  void filter(String category){
+    filtedClothes.clear();
+    if(category == "등록일순"){
+      for(int i = 0; i < myPageClothes.length; i++){
+        filtedClothes.add(myPageClothes[i]);
+      }
+      filtedClothes.sort((a,b) => a.requestAt.compareTo(b.requestAt));
+    }
+    else if(category == "케어라벨 수"){
+      for(int i = 0; i < myPageClothes.length; i++){
+        filtedClothes.add(myPageClothes[i]);
+      }
+    }
+    else{
+      for(int i = 0; i < myPageClothes.length; i++){
+        if(myPageClothes[i] == category){
+          filtedClothes.add(myPageClothes[i]);
+        }
+      }
+    }
+  }
+}
