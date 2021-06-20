@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:get/get.dart';
+import 'package:santaclothes/presentation/dashboard/model/dash_board_tab_type.dart';
 import 'package:santaclothes/presentation/dashboard/widget/MainBottomBar.dart';
 import 'package:santaclothes/presentation/home/home_screen.dart';
 import 'package:santaclothes/presentation/my_page/my_page_screen.dart';
@@ -18,7 +19,7 @@ class DashboardScreen extends StatelessWidget {
           top: false,
           bottom: false,
           child: Scaffold(
-            backgroundColor: whiteColor,
+            backgroundColor: controller.currentTabType.value == DashBoardTabType.HOME ? whiteColor : buttonDisableColor,
             body: Container(
               child: IndexedStack(
                 index: controller.currentTabType.value.index,
