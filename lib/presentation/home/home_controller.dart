@@ -10,20 +10,41 @@ class HomeController extends GetxController {
   final userName = "".obs;
   final clothCount = "0".obs;
   final hasNoti = false.obs;
-  final prompt = [].obs;
+  final notice = [].obs;
   final notiIcon = 'assets/icons/no_push.svg'.obs;
+  var page = 0.obs;
 
   HomeController(this._homeRepository);
 
   @override
-  Future<void> onReady() async {
+  void onInit() async {
+    super.onInit();
     HomeResponse? userData = await _homeRepository.getUserData();
 
     if(userData != null){
+      notice.value = userData.notices;
       userName.value = userData.userName;
       clothCount.value = countWithComma(userData.totalClothesCount);
       hasNoti.value = userData.hasNewNotification;
-      prompt.value = userData.notices;
+    }
+
+    if(hasNoti == true){
+      notiIcon.value = 'assets/icons/has_push.svg';
+    }
+    else{
+      notiIcon.value = 'assets/icons/no_push.svg';
+    }
+  }
+  @override
+  Future<void> onReady() async {
+    super.onReady();
+    HomeResponse? userData = await _homeRepository.getUserData();
+
+    if(userData != null){
+      notice.value = userData.notices;
+      userName.value = userData.userName;
+      clothCount.value = countWithComma(userData.totalClothesCount);
+      hasNoti.value = userData.hasNewNotification;
     }
 
     if(hasNoti == true){
@@ -38,7 +59,6 @@ class HomeController extends GetxController {
     initialPage: 0,
   );
 
-  var page = 0.obs;
 
   getCircleBar(int flag, int index) {
     return circleBar(flag, index);
