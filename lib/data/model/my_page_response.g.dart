@@ -6,7 +6,7 @@ part of 'my_page_response.dart';
 // JsonSerializableGenerator
 // **************************************************************************
 
-MyPageResponse _$MyPageReponseFromJson(Map<String, dynamic> json) {
+MyPageResponse _$MyPageResponseFromJson(Map<String, dynamic> json) {
   return MyPageResponse(
     json['myClothesCount'] as int,
     (json['myPageClothes'] as List<dynamic>)

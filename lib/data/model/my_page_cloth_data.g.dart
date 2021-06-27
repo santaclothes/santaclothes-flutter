@@ -8,6 +8,7 @@ part of 'my_page_cloth_data.dart';
 
 MyPageCloth _$MyPageClothFromJson(Map<String, dynamic> json) {
   return MyPageCloth(
+    json['careLabelCount'] as int,
     json['clothId'] as int,
     json['clothType'] as String,
     json['imageUrl'] as String,
@@ -17,6 +18,7 @@ MyPageCloth _$MyPageClothFromJson(Map<String, dynamic> json) {
 
 Map<String, dynamic> _$MyPageClothToJson(MyPageCloth instance) =>
     <String, dynamic>{
+      'careLabelCount': instance.careLabelCount,
       'clothId': instance.clothId,
       'clothType': instance.clothType,
       'imageUrl': instance.imageUrl,

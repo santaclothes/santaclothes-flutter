@@ -49,7 +49,7 @@ class MyPageScreen extends GetView<MyPageController> {
                     ),
                   ],
                 ),
-                MyPageNoticeWidget(),
+                // MyPageNoticeWidget(),
                 MyPageProfileWidget(),
                 MyPageClothListWidget()
               ],

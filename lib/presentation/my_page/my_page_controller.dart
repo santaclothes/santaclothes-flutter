@@ -11,7 +11,7 @@ class MyPageController extends GetxController {
   final myPageClothes = [].obs;
   final userName = "".obs;
   final clothCategory = "등록일순".obs;
-  final clothCategoryList = ["등록일순","색상","상의","하의","양말","속옷","수건","케어라벨 수"].obs;
+  final clothCategoryList = ["등록일순","상의","하의","양말","속옷","수건","케어라벨 수"].obs;
   final filtedClothes = [].obs;
 
   MyPageController(this._myPageRepository);
@@ -75,6 +75,7 @@ class MyPageController extends GetxController {
       for(int i = 0; i < myPageClothes.length; i++){
         filtedClothes.add(myPageClothes[i]);
       }
+      filtedClothes.sort((a,b) => a.careLabelCount.compareTo(b.requestAt));
     }
     else{
       for(int i = 0; i < myPageClothes.length; i++){

@@ -12,7 +12,7 @@ class MyPageResponse {
   MyPageResponse(this.myClothesCount, this.myPageClothes, this.userName);
 
   factory MyPageResponse.fromJson(Map<String, dynamic> json) =>
-      _$MyPageReponseFromJson(json);
+      _$MyPageResponseFromJson(json);
 
   Map<String, dynamic> toJson() => _$MyPageResponseToJson(this);
 }
