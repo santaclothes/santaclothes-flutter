@@ -14,52 +14,50 @@ class AnalysisResultsScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return SafeArea(
-      child: Scaffold(
-        appBar: AppBar(
-          backgroundColor: grayBackgroundColor,
-          elevation: 0,
-          titleSpacing: 0,
-          toolbarHeight: 56.0,
-          automaticallyImplyLeading: false,
-          title: Container(
-            margin: EdgeInsets.only(
-              left: getProportionateScreenWidth(17.0),
-            ),
-            child: GestureDetector(
-              onTap: () => Get.back(),
-              child: SvgPicture.asset(
-                'assets/icons/ic_back_34.svg',
-                height: getProportionateScreenHeight(34),
-                width: getProportionateScreenHeight(34),
-              ),
+    return Scaffold(
+      appBar: AppBar(
+        backgroundColor: grayBackgroundColor,
+        elevation: 0,
+        titleSpacing: 0,
+        toolbarHeight: 56.0,
+        automaticallyImplyLeading: false,
+        title: Container(
+          margin: EdgeInsets.only(
+            left: getProportionateScreenWidth(17.0),
+          ),
+          child: GestureDetector(
+            onTap: () => Get.back(),
+            child: SvgPicture.asset(
+              'assets/icons/ic_back_34.svg',
+              height: getProportionateScreenHeight(34),
+              width: getProportionateScreenHeight(34),
             ),
           ),
         ),
-        backgroundColor: grayBackgroundColor,
-        body: Obx(
-          () => controller.isLoading.value
-              ? Center(
-                  child: CircularProgressIndicator(
-                      valueColor: AlwaysStoppedAnimation(primaryColor)))
-              : SingleChildScrollView(
-                  physics: BouncingScrollPhysics(),
-                  child: Column(
-                    children: [
-                      AnalysisResultsHeader(),
-                      VerticalSpacing(of: 26.0),
-                      AnalysisResultsClothesBody(),
-                      VerticalSpacing(of: 14.0),
-                      AnalysisResultsLabelBody(),
-                      VerticalSpacing(of: 36.0),
-                      _bottomButton(title: "나의 보관함에 저장", onTap: () {}),
-                      VerticalSpacing(of: 16.0),
-                      _bottomButton(title: "나의 보관함에 저장하지 않기", onTap: () {}),
-                      VerticalSpacing(of: 30.0),
-                    ],
-                  ),
+      ),
+      backgroundColor: grayBackgroundColor,
+      body: Obx(
+        () => controller.isLoading.value
+            ? Center(
+                child: CircularProgressIndicator(
+                    valueColor: AlwaysStoppedAnimation(primaryColor)))
+            : SingleChildScrollView(
+                physics: BouncingScrollPhysics(),
+                child: Column(
+                  children: [
+                    AnalysisResultsHeader(),
+                    VerticalSpacing(of: 26.0),
+                    AnalysisResultsClothesBody(),
+                    VerticalSpacing(of: 14.0),
+                    AnalysisResultsLabelBody(),
+                    VerticalSpacing(of: 36.0),
+                    _bottomButton(title: "나의 보관함에 저장", onTap: () {}),
+                    VerticalSpacing(of: 16.0),
+                    _bottomButton(title: "나의 보관함에 저장하지 않기", onTap: () {}),
+                    VerticalSpacing(of: 30.0),
+                  ],
                 ),
-        ),
+              ),
       ),
     );
   }
