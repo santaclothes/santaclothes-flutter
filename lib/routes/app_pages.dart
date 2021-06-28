@@ -12,6 +12,8 @@ import 'package:santaclothes/presentation/camera/label_camera/label_camera_bindi
 import 'package:santaclothes/presentation/camera/label_camera/label_camera_screen.dart';
 import 'package:santaclothes/presentation/dashboard/dashboard_binding.dart';
 import 'package:santaclothes/presentation/dashboard/dashboard_screen.dart';
+import 'package:santaclothes/presentation/error_report/error_report_binding.dart';
+import 'package:santaclothes/presentation/error_report/error_report_screen.dart';
 import 'package:santaclothes/presentation/login/login_binding.dart';
 import 'package:santaclothes/presentation/login/login_screen.dart';
 import 'package:santaclothes/presentation/notification/notification_binding.dart';
@@ -78,6 +80,11 @@ class AppPages {
       name: Routes.NOTIFICATION,
       page: () => NotificationScreen(),
       binding: NotificationBinding(),
+    ),
+    GetPage(
+      name: Routes.ERROR_REPORT,
+      page: () => ErrorReportScreen(),
+      binding: ErrorReportBinding(),
     ),
   ];
 }

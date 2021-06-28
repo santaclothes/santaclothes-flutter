@@ -10,4 +10,5 @@ class Routes {
   static const ANALYSIS_REQUEST = '/analysis_request';
   static const ANALYSIS_RESULTS = '/analysis_results';
   static const NOTIFICATION = '/notification';
+  static const ERROR_REPORT = '/error_report';
 }
