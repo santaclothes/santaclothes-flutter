@@ -2,6 +2,7 @@ import 'dart:io';
 
 import 'package:dio/dio.dart';
 import 'package:santaclothes/data/model/analysis_request_result_response.dart';
+import 'package:santaclothes/data/model/notification_response.dart';
 import 'package:santaclothes/data/network/dio_client.dart';
 import 'package:santaclothes/data/utils/api_utils.dart';
 
@@ -55,6 +56,18 @@ class ApiProvider {
             .get(BASE_URL + "view/analysisRequest/$requestId");
       });
       return AnalysisRequestResultResponse.fromJson(response.data);
+    } catch (e) {
+      throw e;
+    }
+  }
+
+  Future<NotificationResponse> getNotification(int page, int size) async {
+    try {
+      Response response = await safeApiCall(() async {
+        return await DioClient.authClient.get(BASE_URL + "api/notification",
+            queryParameters: {"page": page, "size": size});
+      });
+      return NotificationResponse.fromJson(response.data);
     } catch (e) {
       throw e;
     }
