@@ -9,7 +9,7 @@ part of 'notification_response.dart';
 NotificationResponse _$NotificationResponseFromJson(Map<String, dynamic> json) {
   return NotificationResponse(
     json['userName'] as String,
-    (json["notificationElements"] as List<dynamic>)
+    (json['notificationElements'] as List<dynamic>)
         .map(
             (e) => NotificationItemResponse.fromJson(e as Map<String, dynamic>))
         .toList(),

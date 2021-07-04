@@ -1,6 +1,5 @@
-import 'dart:io';
-
 import 'package:santaclothes/data/model/analysis_request_result_response.dart';
+import 'package:santaclothes/data/model/error_report_response.dart';
 import 'package:santaclothes/data/network/api_provider.dart';
 
 class AnalysisRepository {
@@ -19,5 +18,11 @@ class AnalysisRepository {
     int requestId,
   ) async {
     return await ApiProvider.instance.getAnalysisRequest(requestId);
+  }
+
+  Future<ErrorReportResponse> getAnalysisRequestReport(
+    int requestId,
+  ) async {
+    return await ApiProvider.instance.getAnalysisRequestReport(requestId);
   }
 }
