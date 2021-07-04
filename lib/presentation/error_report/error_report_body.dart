@@ -1,6 +1,8 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:santaclothes/data/model/care_label_details_response.dart';
+import 'package:santaclothes/data/network/dio_client.dart';
 import 'package:santaclothes/presentation/common/widget/receipt_widget.dart';
 import 'package:santaclothes/presentation/common/widget/vertical_spacing.dart';
 import 'package:santaclothes/presentation/error_report/error_report_controller.dart';
@@ -67,17 +69,26 @@ class ErrorReportBody extends GetView<ErrorReportController> {
               ),
             ),
             VerticalSpacing(of: 40.0),
-            Container(
-              height: getProportionateScreenHeight(110.0),
-              child: ListView.builder(
-                shrinkWrap: true,
-                scrollDirection: Axis.horizontal,
-                physics: BouncingScrollPhysics(),
-                itemCount: 10,
-                itemBuilder: (context, index) {
-                  return _careLabelItem(index);
-                },
-              ),
+            Obx(
+              () => controller.errorReportResults.value != null
+                  ? Container(
+                      height: getProportionateScreenHeight(110.0),
+                      child: ListView.builder(
+                        shrinkWrap: true,
+                        scrollDirection: Axis.horizontal,
+                        physics: BouncingScrollPhysics(),
+                        itemCount: controller
+                            .errorReportResults.value!.careLabelDetails.length,
+                        itemBuilder: (context, index) {
+                          return _careLabelItem(
+                            controller.errorReportResults.value!
+                                .careLabelDetails[index],
+                            index,
+                          );
+                        },
+                      ),
+                    )
+                  : Container(),
             ),
             _errorReportButton(),
             VerticalSpacing(of: 28.0),
@@ -87,7 +98,7 @@ class ErrorReportBody extends GetView<ErrorReportController> {
     );
   }
 
-  Widget _careLabelItem(int position) {
+  Widget _careLabelItem(CareLabelDetailsResponse response, int position) {
     return Container(
       margin: EdgeInsets.only(
         left: position == 0 ? getProportionateScreenWidth(30.0) : 0,
@@ -96,13 +107,13 @@ class ErrorReportBody extends GetView<ErrorReportController> {
       child: Column(
         children: [
           Image.network(
-            'url',
+            BASE_URL + response.iconUrl,
             width: getProportionateScreenWidth(34.0),
             height: getProportionateScreenWidth(34.0),
           ),
           VerticalSpacing(of: 13.0),
           Text(
-            '라벨 이름',
+            response.name,
             style: TextStyle(
               fontSize: getProportionateScreenHeight(12.0),
               fontFamily: 'nanum_square',
@@ -116,30 +127,35 @@ class ErrorReportBody extends GetView<ErrorReportController> {
   }
 
   Widget _errorReportButton() {
-    return Container(
-      margin: EdgeInsets.symmetric(
-        horizontal: getProportionateScreenWidth(30.0),
-      ),
-      decoration: BoxDecoration(
-        color: whiteColor,
-        borderRadius: BorderRadius.all(
-          Radius.circular(30.0),
+    return GestureDetector(
+      onTap: () {
+        // TODO 오류레포트 보내기 API 연결
+      },
+      child: Container(
+        margin: EdgeInsets.symmetric(
+          horizontal: getProportionateScreenWidth(30.0),
         ),
-        border: Border.all(
-          width: 0.5,
-          color: Color.fromRGBO(15, 16, 18, 0.4),
+        decoration: BoxDecoration(
+          color: whiteColor,
+          borderRadius: BorderRadius.all(
+            Radius.circular(30.0),
+          ),
+          border: Border.all(
+            width: 0.5,
+            color: Color.fromRGBO(15, 16, 18, 0.4),
+          ),
         ),
-      ),
-      width: double.infinity,
-      height: getProportionateScreenHeight(52.0),
-      child: Center(
-        child: Text(
-          '오류 레포트 보내기',
-          style: TextStyle(
-            color: sancleDarkColor,
-            fontSize: getProportionateScreenHeight(16.0),
-            fontFamily: 'nanum_square',
-            fontWeight: FontWeight.w700,
+        width: double.infinity,
+        height: getProportionateScreenHeight(52.0),
+        child: Center(
+          child: Text(
+            '오류 레포트 보내기',
+            style: TextStyle(
+              color: sancleDarkColor,
+              fontSize: getProportionateScreenHeight(16.0),
+              fontFamily: 'nanum_square',
+              fontWeight: FontWeight.w700,
+            ),
           ),
         ),
       ),

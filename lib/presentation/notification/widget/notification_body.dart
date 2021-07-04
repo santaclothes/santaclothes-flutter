@@ -8,6 +8,7 @@ import 'package:santaclothes/presentation/common/widget/horizontal_spacing.dart'
 import 'package:santaclothes/presentation/common/widget/receipt_widget.dart';
 import 'package:santaclothes/presentation/common/widget/vertical_spacing.dart';
 import 'package:santaclothes/presentation/notification/notification_controller.dart';
+import 'package:santaclothes/routes/app_routes.dart';
 import 'package:santaclothes/utils/constants.dart';
 import 'package:santaclothes/utils/size_config.dart';
 
@@ -78,7 +79,8 @@ class NotificationBody extends GetView<NotificationController> {
   Widget _notificationItem(NotificationItemResponse item, int position) {
     return GestureDetector(
       onTap: () {
-        // TODO 에러 리포트 화면 연결 작업
+        Get.toNamed(Routes.ERROR_REPORT,
+            arguments: {'requestId': item.analysisRequestId});
       },
       child: Container(
         margin: EdgeInsets.only(

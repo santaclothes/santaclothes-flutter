@@ -1,13 +1,18 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:get/get.dart';
+import 'package:santaclothes/data/network/dio_client.dart';
 import 'package:santaclothes/presentation/common/widget/horizontal_spacing.dart';
 import 'package:santaclothes/presentation/common/widget/vertical_spacing.dart';
 import 'package:santaclothes/presentation/error_report/error_report_body.dart';
+import 'package:santaclothes/presentation/error_report/error_report_controller.dart';
+import 'package:santaclothes/routes/app_routes.dart';
 import 'package:santaclothes/utils/constants.dart';
 import 'package:santaclothes/utils/size_config.dart';
 
 class ErrorReportScreen extends StatelessWidget {
+  final controller = Get.find<ErrorReportController>();
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -33,17 +38,25 @@ class ErrorReportScreen extends StatelessWidget {
         ),
       ),
       backgroundColor: grayBackgroundColor,
-      body: SingleChildScrollView(
-        physics: BouncingScrollPhysics(),
-        child: Column(
-          children: [
-            _headerLabelImage(),
-            ErrorReportBody(),
-            VerticalSpacing(of: 42.0),
-            _nextButton(),
-            VerticalSpacing(of: 30.0),
-          ],
-        ),
+      body: Obx(
+        () => controller.isLoading.value
+            ? Center(
+                child: CircularProgressIndicator(
+                  valueColor: AlwaysStoppedAnimation(primaryColor),
+                ),
+              )
+            : SingleChildScrollView(
+                physics: BouncingScrollPhysics(),
+                child: Column(
+                  children: [
+                    _headerLabelImage(),
+                    ErrorReportBody(),
+                    VerticalSpacing(of: 42.0),
+                    _nextButton(),
+                    VerticalSpacing(of: 30.0),
+                  ],
+                ),
+              ),
       ),
     );
   }
@@ -52,14 +65,24 @@ class ErrorReportScreen extends StatelessWidget {
     return Container(
       width: Get.size.width,
       height: Get.size.width * 1.2,
-      child: Image.network("url"),
+      child: Obx(
+        () => controller.errorReportResults.value != null
+            ? Image.network(
+                BASE_URL +
+                    controller.errorReportResults.value!.careLabelImageUrl,
+              )
+            : Container(),
+      ),
     );
   }
 
   Widget _nextButton() {
     return GestureDetector(
       onTap: () {
-        // TODO 라벨 결과 페이지 전환
+        Get.toNamed(
+          Routes.ANALYSIS_RESULTS,
+          arguments: {'requestId': controller.requestId},
+        );
       },
       child: Container(
         margin: EdgeInsets.symmetric(
