@@ -35,28 +35,30 @@ class NotificationHeader extends GetView<NotificationController> {
                     ),
                   ),
                   VerticalSpacing(of: 16.0),
-                  RichText(
-                    text: TextSpan(
-                      text: '***님의\n',
-                      style: TextStyle(
-                        fontSize: getProportionateScreenHeight(16.0),
-                        height: 1.5,
-                        color: sancleDark2Color,
-                        fontFamily: 'nanum_square',
-                        fontWeight: FontWeight.w400,
-                      ),
-                      children: [
-                        TextSpan(
-                          text: '라벨 분석결과',
-                          style: TextStyle(fontWeight: FontWeight.w800),
+                  Obx(
+                    () => RichText(
+                      text: TextSpan(
+                        text: '${controller.userName}님의\n',
+                        style: TextStyle(
+                          fontSize: getProportionateScreenHeight(16.0),
+                          height: 1.5,
+                          color: sancleDark2Color,
+                          fontFamily: 'nanum_square',
+                          fontWeight: FontWeight.w400,
                         ),
-                        TextSpan(
-                          text: '가 완료 되었습니다.',
-                          style: TextStyle(
-                            fontWeight: FontWeight.w400,
+                        children: [
+                          TextSpan(
+                            text: '라벨 분석결과',
+                            style: TextStyle(fontWeight: FontWeight.w800),
                           ),
-                        )
-                      ],
+                          TextSpan(
+                            text: '가 완료 되었습니다.',
+                            style: TextStyle(
+                              fontWeight: FontWeight.w400,
+                            ),
+                          )
+                        ],
+                      ),
                     ),
                   ),
                 ],

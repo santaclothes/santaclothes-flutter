@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:get/get.dart';
 import 'package:pagination_view/pagination_view.dart';
+import 'package:santaclothes/data/model/notification_item_response.dart';
 import 'package:santaclothes/presentation/common/widget/dotted_line.dart';
 import 'package:santaclothes/presentation/common/widget/horizontal_spacing.dart';
 import 'package:santaclothes/presentation/common/widget/receipt_widget.dart';
@@ -15,15 +16,14 @@ class NotificationBody extends GetView<NotificationController> {
   Widget build(BuildContext context) {
     return ReceiptWidget(
       color: Colors.white,
-      child: PaginationView<String>(
+      child: PaginationView<NotificationItemResponse>(
         physics: BouncingScrollPhysics(),
         itemBuilder: (context, value, position) {
-          return _notificationItem(position);
+          return _notificationItem(value, position);
         },
         pullToRefresh: true,
         pageFetch: (currentListSize) {
-          final controller = Get.find<NotificationController>();
-          return controller.getTextItems();
+          return controller.fetchNotificationApi(currentListSize);
         },
         separatorBuilder: (context, position) {
           return Padding(
@@ -75,7 +75,7 @@ class NotificationBody extends GetView<NotificationController> {
     );
   }
 
-  Widget _notificationItem(int position) {
+  Widget _notificationItem(NotificationItemResponse item, int position) {
     return GestureDetector(
       onTap: () {
         // TODO 에러 리포트 화면 연결 작업
@@ -117,7 +117,7 @@ class NotificationBody extends GetView<NotificationController> {
                     children: [
                       RichText(
                         text: TextSpan(
-                          text: '자라에서 산 니트',
+                          text: item.clothName,
                           style: TextStyle(
                             fontSize: 14.0,
                             color: sancleDark2Color,
