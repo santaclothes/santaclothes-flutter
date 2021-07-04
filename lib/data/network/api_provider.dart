@@ -1,3 +1,4 @@
+import 'dart:convert';
 import 'dart:io';
 
 import 'package:dio/dio.dart';
@@ -81,6 +82,18 @@ class ApiProvider {
             .get(BASE_URL + "view/analysisRequest/$requestId/report");
       });
       return ErrorReportResponse.fromJson(response.data);
+    } catch (e) {
+      throw e;
+    }
+  }
+
+  Future<void> putAnalysisRequest(int requestId, String status) async {
+    try {
+      await safeApiCall(() async {
+        await DioClient.authClient.put(
+            BASE_URL + "api/analysisRequest/$requestId",
+            data: jsonEncode({"status": status}));
+      });
     } catch (e) {
       throw e;
     }

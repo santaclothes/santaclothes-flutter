@@ -128,9 +128,7 @@ class ErrorReportBody extends GetView<ErrorReportController> {
 
   Widget _errorReportButton() {
     return GestureDetector(
-      onTap: () {
-        // TODO 오류레포트 보내기 API 연결
-      },
+      onTap: () => controller.requestErrorReport(),
       child: Container(
         margin: EdgeInsets.symmetric(
           horizontal: getProportionateScreenWidth(30.0),

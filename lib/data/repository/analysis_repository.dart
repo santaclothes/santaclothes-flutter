@@ -25,4 +25,8 @@ class AnalysisRepository {
   ) async {
     return await ApiProvider.instance.getAnalysisRequestReport(requestId);
   }
+
+  Future<void> putAnalysisRequest(int requestId, String status) async {
+    return await ApiProvider.instance.putAnalysisRequest(requestId, status);
+  }
 }
