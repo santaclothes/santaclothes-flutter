@@ -70,6 +70,7 @@ class ErrorReportScreen extends StatelessWidget {
             ? Image.network(
                 BASE_URL +
                     controller.errorReportResults.value!.careLabelImageUrl,
+                fit: BoxFit.cover,
               )
             : Container(),
       ),
