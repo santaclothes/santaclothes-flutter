@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:get/get.dart';
-import 'package:santaclothes/presentation/analysis_results%20/analysis_results_controller.dart';
-import 'package:santaclothes/presentation/analysis_results%20/widget/analysis_results_clothes_body.dart';
-import 'package:santaclothes/presentation/analysis_results%20/widget/analysis_results_header.dart';
-import 'package:santaclothes/presentation/analysis_results%20/widget/analysis_results_label_body.dart';
+import 'package:santaclothes/presentation/analysis_results/analysis_results_controller.dart';
+import 'package:santaclothes/presentation/analysis_results/widget/analysis_results_clothes_body.dart';
+import 'package:santaclothes/presentation/analysis_results/widget/analysis_results_header.dart';
+import 'package:santaclothes/presentation/analysis_results/widget/analysis_results_label_body.dart';
 import 'package:santaclothes/presentation/common/widget/vertical_spacing.dart';
 import 'package:santaclothes/utils/constants.dart';
 import 'package:santaclothes/utils/size_config.dart';
@@ -51,16 +51,26 @@ class AnalysisResultsScreen extends StatelessWidget {
                     VerticalSpacing(of: 14.0),
                     AnalysisResultsLabelBody(),
                     VerticalSpacing(of: 36.0),
-                    _bottomButton(
-                      title: "나의 보관함에 저장",
-                      onTap: () => controller.saveLabelDataToServer(),
+                    Visibility(
+                      visible: controller.tag == NOTIFICATION_FUNNEL_TAG,
+                      child: _bottomButton(
+                        title: "나의 보관함에 저장",
+                        onTap: () => controller.saveLabelDataToServer(),
+                      ),
                     ),
-                    VerticalSpacing(of: 16.0),
-                    _bottomButton(
-                      title: "나의 보관함에 저장하지 않기",
-                      onTap: () => controller.deleteLabelDataFromServer(),
+                    controller.tag == NOTIFICATION_FUNNEL_TAG
+                        ? VerticalSpacing(of: 16.0)
+                        : VerticalSpacing(of: 0.0),
+                    Visibility(
+                      visible: controller.tag == NOTIFICATION_FUNNEL_TAG,
+                      child: _bottomButton(
+                        title: "나의 보관함에 저장하지 않기",
+                        onTap: () => controller.deleteLabelDataFromServer(),
+                      ),
                     ),
-                    VerticalSpacing(of: 30.0),
+                    controller.tag == NOTIFICATION_FUNNEL_TAG
+                        ? VerticalSpacing(of: 30.0)
+                        : VerticalSpacing(of: 80.0)
                   ],
                 ),
               ),

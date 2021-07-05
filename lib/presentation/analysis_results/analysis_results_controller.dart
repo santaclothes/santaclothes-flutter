@@ -7,8 +7,13 @@ import 'package:santaclothes/presentation/common/model/analysis_status.dart';
 import 'package:santaclothes/routes/app_routes.dart';
 import 'package:santaclothes/utils/constants.dart';
 
+const String NOTIFICATION_FUNNEL_TAG = "NOTIFICATION_FUNNEL_TAG";
+const String MY_PAGE_FUNNEL_TAG = "MY_PAGE_FUNNEL_TAG";
+
 class AnalysisResultsController extends GetxController {
   final AnalysisRepository _analysisRepository;
+
+  final String tag;
 
   final isLoading = true.obs;
 
@@ -18,7 +23,7 @@ class AnalysisResultsController extends GetxController {
 
   int requestId = -1;
 
-  AnalysisResultsController(this._analysisRepository);
+  AnalysisResultsController(this._analysisRepository, this.tag);
 
   @override
   void onReady() {

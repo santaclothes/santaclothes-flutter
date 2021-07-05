@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:santaclothes/presentation/analysis_results%20/analysis_results_controller.dart';
+import 'package:santaclothes/presentation/analysis_results/analysis_results_controller.dart';
 import 'package:santaclothes/presentation/common/widget/carousel_slider.dart';
 import 'package:santaclothes/presentation/common/widget/dotted_line.dart';
 import 'package:santaclothes/presentation/common/widget/receipt_widget.dart';

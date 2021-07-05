@@ -81,7 +81,7 @@ class ErrorReportScreen extends StatelessWidget {
     return GestureDetector(
       onTap: () {
         Get.toNamed(
-          Routes.ANALYSIS_RESULTS,
+          Routes.ANALYSIS_RESULTS_FROM_NOTIFICATION,
           arguments: {'requestId': controller.requestId},
         );
       },
