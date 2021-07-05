@@ -23,22 +23,6 @@ class AnalysisRequestBody extends GetView<AnalysisRequestController> {
       child: Column(
         children: [
           Container(
-            height: getProportionateScreenHeight(56.0),
-            width: double.infinity,
-            alignment: Alignment.centerRight,
-            margin: EdgeInsets.only(
-              right: getProportionateScreenWidth(19.0),
-            ),
-            child: GestureDetector(
-              onTap: () => Get.back(),
-              child: SvgPicture.asset(
-                'assets/icons/ic_close_34.svg',
-                height: getProportionateScreenHeight(34),
-                width: getProportionateScreenHeight(34),
-              ),
-            ),
-          ),
-          Container(
             width: double.infinity,
             padding: EdgeInsets.symmetric(
               horizontal: getProportionateScreenWidth(30.0),

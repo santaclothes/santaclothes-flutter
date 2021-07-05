@@ -142,7 +142,7 @@ class _CameraBodyState extends State<CameraBody> {
           widget.stepTitle,
           textAlign: TextAlign.center,
           style: TextStyle(
-            fontSize: 14.0,
+            fontSize: getProportionateScreenHeight(14.0),
             fontFamily: 'nanum_square',
             color: whiteColor,
             fontWeight: FontWeight.w700,
@@ -153,7 +153,7 @@ class _CameraBodyState extends State<CameraBody> {
           widget.stepContent,
           textAlign: TextAlign.center,
           style: TextStyle(
-            fontSize: 14.0,
+            fontSize: getProportionateScreenHeight(14.0),
             fontFamily: 'nanum_square',
             color: whiteColor,
             fontWeight: FontWeight.w400,

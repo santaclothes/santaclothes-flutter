@@ -4,7 +4,7 @@ import 'camera_result_controller.dart';
 class CameraResultBinding extends Bindings {
   final String tag;
 
-  CameraResultBinding({required this.tag});
+  CameraResultBinding(this.tag);
 
   @override
   void dependencies() {
