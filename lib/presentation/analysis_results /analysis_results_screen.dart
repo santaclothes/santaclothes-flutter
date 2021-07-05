@@ -51,9 +51,15 @@ class AnalysisResultsScreen extends StatelessWidget {
                     VerticalSpacing(of: 14.0),
                     AnalysisResultsLabelBody(),
                     VerticalSpacing(of: 36.0),
-                    _bottomButton(title: "나의 보관함에 저장", onTap: () {}),
+                    _bottomButton(
+                      title: "나의 보관함에 저장",
+                      onTap: () => controller.saveLabelDataToServer(),
+                    ),
                     VerticalSpacing(of: 16.0),
-                    _bottomButton(title: "나의 보관함에 저장하지 않기", onTap: () {}),
+                    _bottomButton(
+                      title: "나의 보관함에 저장하지 않기",
+                      onTap: () => controller.deleteLabelDataFromServer(),
+                    ),
                     VerticalSpacing(of: 30.0),
                   ],
                 ),
@@ -63,30 +69,33 @@ class AnalysisResultsScreen extends StatelessWidget {
   }
 
   Widget _bottomButton({required String title, required VoidCallback onTap}) {
-    return Container(
-      margin: EdgeInsets.symmetric(
-        horizontal: getProportionateScreenWidth(30.0),
-      ),
-      decoration: BoxDecoration(
-        color: whiteColor,
-        borderRadius: BorderRadius.all(
-          Radius.circular(30.0),
+    return GestureDetector(
+      onTap: onTap,
+      child: Container(
+        margin: EdgeInsets.symmetric(
+          horizontal: getProportionateScreenWidth(30.0),
         ),
-        border: Border.all(
-          width: 0.5,
-          color: Color.fromRGBO(15, 16, 18, 0.4),
+        decoration: BoxDecoration(
+          color: whiteColor,
+          borderRadius: BorderRadius.all(
+            Radius.circular(30.0),
+          ),
+          border: Border.all(
+            width: 0.5,
+            color: Color.fromRGBO(15, 16, 18, 0.4),
+          ),
         ),
-      ),
-      width: double.infinity,
-      height: getProportionateScreenHeight(52.0),
-      child: Center(
-        child: Text(
-          title,
-          style: TextStyle(
-            color: sancleDarkColor,
-            fontSize: getProportionateScreenHeight(16.0),
-            fontFamily: 'nanum_square',
-            fontWeight: FontWeight.w700,
+        width: double.infinity,
+        height: getProportionateScreenHeight(52.0),
+        child: Center(
+          child: Text(
+            title,
+            style: TextStyle(
+              color: sancleDarkColor,
+              fontSize: getProportionateScreenHeight(16.0),
+              fontFamily: 'nanum_square',
+              fontWeight: FontWeight.w700,
+            ),
           ),
         ),
       ),
