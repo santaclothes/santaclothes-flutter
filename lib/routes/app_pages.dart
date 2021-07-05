@@ -20,6 +20,7 @@ import 'package:santaclothes/presentation/notification/notification_binding.dart
 import 'package:santaclothes/presentation/notification/notification_screen.dart';
 import 'package:santaclothes/presentation/onboarding/onboarding_binding.dart';
 import 'package:santaclothes/presentation/onboarding/onboarding_screen.dart';
+import 'package:santaclothes/presentation/result/result_screen.dart';
 import 'package:santaclothes/presentation/splash/splash_binding.dart';
 import 'package:santaclothes/presentation/splash/splash_screen.dart';
 import 'package:santaclothes/routes/app_routes.dart';
@@ -47,6 +48,10 @@ class AppPages {
       binding: OnboardingBinding(),
     ),
     GetPage(
+      name: Routes.RESULT,
+      page: () => ResultScreen(),
+    ),
+    GetPage(
       name: Routes.CLOTHES_CAMERA,
       page: () => ClothesCameraScreen(),
       binding: ClothesCameraBinding(),
@@ -59,12 +64,12 @@ class AppPages {
     GetPage(
       name: Routes.CLOTHES_CAMERA_RESULT,
       page: () => CameraResultScreen(tag: CLOTHES_RESULT_TAG),
-      binding: CameraResultBinding(tag: CLOTHES_RESULT_TAG),
+      binding: CameraResultBinding(CLOTHES_RESULT_TAG),
     ),
     GetPage(
       name: Routes.LABEL_CAMERA_RESULT,
       page: () => CameraResultScreen(tag: LABEL_RESULT_TAG),
-      binding: CameraResultBinding(tag: LABEL_RESULT_TAG),
+      binding: CameraResultBinding(LABEL_RESULT_TAG),
     ),
     GetPage(
       name: Routes.ANALYSIS_REQUEST,

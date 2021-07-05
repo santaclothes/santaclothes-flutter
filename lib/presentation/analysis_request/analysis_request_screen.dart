@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_svg/svg.dart';
 import 'package:get/get.dart';
 import 'package:santaclothes/presentation/analysis_request/analysis_request_controller.dart';
 import 'package:santaclothes/presentation/analysis_request/widget/analysis_request_body.dart';
@@ -13,7 +14,29 @@ class AnalysisRequestScreen extends StatelessWidget {
       child: Scaffold(
         resizeToAvoidBottomInset: false,
         backgroundColor: grayBackgroundColor,
+        appBar: AppBar(
+          backgroundColor: grayBackgroundColor,
+          elevation: 0,
+          titleSpacing: 0,
+          toolbarHeight: 56.0,
+          automaticallyImplyLeading: false,
+          title: Container(
+            alignment: Alignment.bottomRight,
+            margin: EdgeInsets.only(
+              right: getProportionateScreenWidth(19.0),
+            ),
+            child: GestureDetector(
+              onTap: () => Get.back(),
+              child: SvgPicture.asset(
+                'assets/icons/ic_close_34.svg',
+                height: getProportionateScreenHeight(34),
+                width: getProportionateScreenHeight(34),
+              ),
+            ),
+          ),
+        ),
         body: SingleChildScrollView(
+          physics: BouncingScrollPhysics(),
           child: Column(
             children: [
               AnalysisRequestBody(),

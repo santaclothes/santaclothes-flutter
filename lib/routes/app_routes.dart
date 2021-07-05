@@ -3,6 +3,7 @@ class Routes {
   static const LOGIN = '/login';
   static const DASHBOARD = '/dashboard';
   static const ONBOARDING = '/onboarding';
+  static const RESULT = '/result';
   static const CLOTHES_CAMERA = '/clothes_camera';
   static const LABEL_CAMERA = '/label_camera';
   static const CLOTHES_CAMERA_RESULT = '/clothes_camera_result';
