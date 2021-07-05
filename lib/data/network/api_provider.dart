@@ -26,11 +26,11 @@ class ApiProvider {
       "clothColor": clothesColorType,
       "labelImages": await MultipartFile.fromFile(
         labelImagePath,
-        filename: labelImagePath.split('/').last,
+        filename: labelImagePath,
       ),
       "clothImage": await MultipartFile.fromFile(
         clothesImagePath,
-        filename: clothesImagePath.split('/').last,
+        filename: clothesImagePath,
       ),
     });
     try {
