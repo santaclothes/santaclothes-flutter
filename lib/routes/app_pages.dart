@@ -84,6 +84,11 @@ class AppPages {
       binding: AnalysisResultsBinding(NOTIFICATION_FUNNEL_TAG),
     ),
     GetPage(
+      name: Routes.ANALYSIS_RESULTS_FROM_MY_PAGE,
+      page: () => AnalysisResultsScreen(),
+      binding: AnalysisResultsBinding(MY_PAGE_FUNNEL_TAG),
+    ),
+    GetPage(
       name: Routes.NOTIFICATION,
       page: () => NotificationScreen(),
       binding: NotificationBinding(),

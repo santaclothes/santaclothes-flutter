@@ -11,6 +11,7 @@ class Routes {
   static const ANALYSIS_REQUEST = '/analysis_request';
   static const ANALYSIS_RESULTS_FROM_NOTIFICATION =
       '/analysis_results_from_notification';
+  static const ANALYSIS_RESULTS_FROM_MY_PAGE = '/analysis_results_from_my_page';
   static const NOTIFICATION = '/notification';
   static const ERROR_REPORT = '/error_report';
 }

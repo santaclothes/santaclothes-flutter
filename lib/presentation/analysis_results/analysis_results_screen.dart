@@ -20,6 +20,19 @@ class AnalysisResultsScreen extends StatelessWidget {
         elevation: 0,
         titleSpacing: 0,
         toolbarHeight: 56.0,
+        actions: [
+          Visibility(
+            visible: controller.tag == MY_PAGE_FUNNEL_TAG,
+            child: GestureDetector(
+              onTap: () => controller.deleteLabelDataFromServer(),
+              child: Container(
+                margin:
+                    EdgeInsets.only(right: getProportionateScreenWidth(17.0)),
+                child: SvgPicture.asset('assets/icons/ic_delete.svg'),
+              ),
+            ),
+          ),
+        ],
         automaticallyImplyLeading: false,
         title: Container(
           margin: EdgeInsets.only(
