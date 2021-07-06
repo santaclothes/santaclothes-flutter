@@ -15,40 +15,33 @@ class MyPageScreen extends GetView<MyPageController> {
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: buttonDisableColor,
+      appBar: AppBar(
+        backgroundColor: grayBackgroundColor,
+        elevation: 0,
+        titleSpacing: 0,
+        toolbarHeight: 56.0,
+        automaticallyImplyLeading: false,
+        title: Container(
+          alignment: Alignment.centerLeft,
+          margin: EdgeInsets.only(
+            right: getProportionateScreenWidth(19.0),
+          ),
+          child: GestureDetector(
+            onTap: () => Get.back(),
+            child: SvgPicture.asset(
+              'assets/icons/back_button.svg',
+              height: getProportionateScreenHeight(34),
+              width: getProportionateScreenHeight(34),
+            ),
+          ),
+        ),
+      ),
       body: SafeArea(
         child: SingleChildScrollView(
           child: Container(
             color: buttonDisableColor,
             child: Column(
               children: <Widget>[
-                Row(
-                  children: [
-                    TouchableOpacity(
-                      activeOpacity: 0.6,
-                      child: Container(
-                          height: getProportionateScreenHeight(56),
-                          alignment: Alignment.centerLeft,
-                          padding: EdgeInsets.only(
-                              left: getProportionateScreenWidth(30)),
-                          child:
-                              SvgPicture.asset("assets/icons/back_button.svg")),
-                      onTap: () {
-                        Get.until((Route<dynamic> route) =>
-                            route.settings.name == Routes.DASHBOARD);
-                      },
-                    ),
-                    Expanded(child: Container(),),
-                    Padding(
-                      padding: EdgeInsets.only(right: getProportionateScreenWidth(30)),
-                      child: Text("설정",
-                          style: TextStyle(
-                              color: textColor,
-                              fontSize: 16.0,
-                              fontFamily: 'nanum_square',
-                              fontWeight: FontWeight.w700)),
-                    ),
-                  ],
-                ),
                 // MyPageNoticeWidget(),
                 MyPageProfileWidget(),
                 MyPageClothListWidget()
