@@ -21,7 +21,7 @@ AnalysisRequestResultResponse _$AnalysisRequestResultResponseFromJson(
         .map(
             (e) => CareLabelDetailsResponse.fromJson(e as Map<String, dynamic>))
         .toList(),
-    DateFormat('yyyy/MM/dd h:mma').format(DateTime.parse(json['createdDate'])),
+    json['createdDate'] as String,
   );
 }
 

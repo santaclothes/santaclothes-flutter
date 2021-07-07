@@ -40,6 +40,7 @@ class CarouselSlider extends StatelessWidget {
         borderRadius: BorderRadius.circular(8.0),
         child: Image.network(
           imageUrls[position],
+          fit: BoxFit.cover,
           loadingBuilder: (BuildContext context, Widget child,
               ImageChunkEvent? loadingProgress) {
             if (loadingProgress == null) {
