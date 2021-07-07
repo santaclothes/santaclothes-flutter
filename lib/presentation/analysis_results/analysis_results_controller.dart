@@ -1,7 +1,7 @@
 import 'package:dio/dio.dart';
 import 'package:get/get.dart';
-import 'package:santaclothes/data/model/analysis_request_result_response.dart';
-import 'package:santaclothes/data/network/dio_client.dart';
+import 'package:santaclothes/data/remote/model/analysis_request_result_response.dart';
+import 'package:santaclothes/data/remote/network/dio_client.dart';
 import 'package:santaclothes/data/repository/analysis_repository.dart';
 import 'package:santaclothes/presentation/common/model/analysis_status.dart';
 import 'package:santaclothes/routes/app_routes.dart';

@@ -1,6 +1,6 @@
-import 'package:intl/intl.dart';
 import 'package:json_annotation/json_annotation.dart';
-import 'package:santaclothes/data/model/care_label_details_response.dart';
+
+import 'care_label_details_response.dart';
 
 part 'analysis_request_result_response.g.dart';
 

@@ -1,5 +1,5 @@
-import 'package:santaclothes/data/model/token_response.dart';
-import 'package:santaclothes/data/prefs/token_manager.dart';
+import 'package:santaclothes/data/local/prefs/token_manager.dart';
+import 'package:santaclothes/data/remote/model/token_response.dart';
 
 class AuthRepository {
   Future<void> deleteToken() => TokenManger.instance.deleteUserToken();

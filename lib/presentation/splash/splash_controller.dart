@@ -1,5 +1,5 @@
 import 'package:get/get.dart';
-import 'package:santaclothes/data/model/token_response.dart';
+import 'package:santaclothes/data/remote/model/token_response.dart';
 import 'package:santaclothes/data/repository/auth_repository.dart';
 import 'package:santaclothes/data/repository/onboarding_repository.dart';
 import 'package:santaclothes/routes/app_routes.dart';

@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:santaclothes/data/model/care_label_details_response.dart';
-import 'package:santaclothes/data/network/dio_client.dart';
+import 'package:santaclothes/data/remote/model/care_label_details_response.dart';
+import 'package:santaclothes/data/remote/network/dio_client.dart';
 import 'package:santaclothes/presentation/analysis_results/analysis_results_controller.dart';
 import 'package:santaclothes/presentation/common/widget/dotted_line.dart';
 import 'package:santaclothes/presentation/common/widget/receipt_widget.dart';

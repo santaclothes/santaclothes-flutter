@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:get/get.dart';
 import 'package:pagination_view/pagination_view.dart';
-import 'package:santaclothes/data/model/notification_item_response.dart';
+import 'package:santaclothes/data/remote/model/notification_item_response.dart';
 import 'package:santaclothes/presentation/common/widget/dotted_line.dart';
 import 'package:santaclothes/presentation/common/widget/horizontal_spacing.dart';
 import 'package:santaclothes/presentation/common/widget/receipt_widget.dart';

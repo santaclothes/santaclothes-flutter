@@ -2,7 +2,6 @@ import 'dart:io';
 
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_svg/flutter_svg.dart';
 import 'package:get/get.dart';
 import 'package:santaclothes/presentation/analysis_request/analysis_request_controller.dart';
 import 'package:santaclothes/presentation/common/model/clothes_category.dart';

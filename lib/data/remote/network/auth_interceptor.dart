@@ -2,10 +2,11 @@ import 'dart:convert';
 
 import 'package:dio/dio.dart';
 import 'package:santaclothes/data/common/sancle_error.dart';
-import 'package:santaclothes/data/model/token_response.dart';
-import 'package:santaclothes/data/network/dio_client.dart';
-import 'package:santaclothes/data/prefs/token_manager.dart';
+import 'package:santaclothes/data/local/prefs/token_manager.dart';
+import 'package:santaclothes/data/remote/model/token_response.dart';
 import 'package:santaclothes/data/utils/api_utils.dart';
+
+import 'dio_client.dart';
 
 /// TODO 테스트 항목
 /// 1. TokenManager 에 값이 없을 때 해당 인터셉터 이용해보기

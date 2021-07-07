@@ -1,6 +1,6 @@
-import 'package:santaclothes/data/model/analysis_request_result_response.dart';
-import 'package:santaclothes/data/model/error_report_response.dart';
-import 'package:santaclothes/data/network/api_provider.dart';
+import 'package:santaclothes/data/remote/model/analysis_request_result_response.dart';
+import 'package:santaclothes/data/remote/model/error_report_response.dart';
+import 'package:santaclothes/data/remote/network/api_provider.dart';
 
 class AnalysisRepository {
   Future<int?> postAnalysisRequest(

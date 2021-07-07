@@ -1,6 +1,6 @@
 import 'dart:convert';
 
-import 'package:santaclothes/data/model/token_response.dart';
+import 'package:santaclothes/data/remote/model/token_response.dart';
 import 'package:santaclothes/utils/constants.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
