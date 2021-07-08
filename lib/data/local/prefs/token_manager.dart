@@ -1,6 +1,6 @@
 import 'dart:convert';
 
-import 'package:santaclothes/data/remote/model/token_response.dart';
+import 'package:santaclothes/data/local/model/token_local_model.dart';
 import 'package:santaclothes/utils/constants.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
@@ -11,17 +11,17 @@ class TokenManger {
 
   TokenManger._internal();
 
-  Future<bool> setUserToken(TokenResponse tokenResponse) async {
+  Future<bool> setUserToken(TokenLocalModel tokenLocalModel) async {
     final prefs = await SharedPreferences.getInstance();
-    return await prefs.setString(PREF_USER_TOKEN, jsonEncode(tokenResponse));
+    return await prefs.setString(PREF_USER_TOKEN, jsonEncode(tokenLocalModel));
   }
 
-  Future<TokenResponse?> getUserToken() async {
+  Future<TokenLocalModel?> getUserToken() async {
     final prefs = await SharedPreferences.getInstance();
     final String? data = prefs.getString(PREF_USER_TOKEN);
     if (data != null) {
       Map<String, dynamic> tokenMap = jsonDecode(data) as Map<String, dynamic>;
-      return TokenResponse.fromJson(tokenMap);
+      return TokenLocalModel.fromJson(tokenMap);
     }
     return null;
   }

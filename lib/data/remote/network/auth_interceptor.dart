@@ -2,7 +2,9 @@ import 'dart:convert';
 
 import 'package:dio/dio.dart';
 import 'package:santaclothes/data/common/sancle_error.dart';
+import 'package:santaclothes/data/local/model/token_local_model.dart';
 import 'package:santaclothes/data/local/prefs/token_manager.dart';
+import 'package:santaclothes/data/remote/mapper/remote_to_local.dart';
 import 'package:santaclothes/data/remote/model/token_response.dart';
 import 'package:santaclothes/data/utils/api_utils.dart';
 
@@ -21,7 +23,7 @@ class AuthInterceptor extends Interceptor {
   @override
   void onRequest(
       RequestOptions options, RequestInterceptorHandler handler) async {
-    final TokenResponse? token = await TokenManger.instance.getUserToken();
+    final TokenLocalModel? token = await TokenManger.instance.getUserToken();
     if (token != null) {
       options.headers["Authorization"] = "Bearer " + token.accessToken;
       handler.next(options);
@@ -30,7 +32,7 @@ class AuthInterceptor extends Interceptor {
 
   @override
   void onError(DioError error, ErrorInterceptorHandler handler) async {
-    final TokenResponse? token = await TokenManger.instance.getUserToken();
+    final TokenLocalModel? token = await TokenManger.instance.getUserToken();
     _dio.interceptors.errorLock.lock();
     if (token == null ||
         error.response == null ||
@@ -48,7 +50,8 @@ class AuthInterceptor extends Interceptor {
             data: jsonEncode({"refreshToken": token.refreshToken}));
         return TokenResponse.fromJson(response.data);
       });
-      await TokenManger.instance.setUserToken(newTokenResponse);
+      await TokenManger.instance
+          .setUserToken(newTokenResponse.toTokenLocalModel());
       options.headers["Authorization"] =
           "Bearer " + newTokenResponse.accessToken;
       await _dio.fetch(options);
