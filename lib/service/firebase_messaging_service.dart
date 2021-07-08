@@ -4,6 +4,9 @@ import 'package:firebase_core/firebase_core.dart';
 import 'package:firebase_messaging/firebase_messaging.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter_local_notifications/flutter_local_notifications.dart';
+import 'package:get/get.dart';
+import 'package:santaclothes/data/local/prefs/firebase_messaging_manager.dart';
+import 'package:santaclothes/routes/app_routes.dart';
 
 class FirebaseMessagingService {
   static final FirebaseMessagingService _fcmHandler =
@@ -18,20 +21,7 @@ class FirebaseMessagingService {
 
   Future<void> _firebaseMessagingBackgroundHandler(
       RemoteMessage message) async {
-    print('Handling a background message ${message.messageId}');
-
-    // RemoteMessage? message = await FirebaseMessaging.instance.getInitialMessage();
-    //
-    // FcmData data = FcmData("none",0);
-    //
-    // if(message?.data['category'] != null && message?.data['id'] != null){
-    //   String category = message?.data['category'];
-    //   int id = int.parse(message?.data['id']);
-    //   data = FcmData(category,id);
-    // }
-    //
-    // FcmManager.instance.setCategory(data);
-    // Get.offAllNamed(Routes.SPLASH);
+    await _onSelectMessage();
   }
 
   initMessagingSetting() async {
@@ -64,9 +54,7 @@ class FirebaseMessagingService {
       await flutterLocalNotificationsPlugin.initialize(
         initSettings,
         onSelectNotification: (String? payload) async {
-          if (payload != null) {
-            Map<String, dynamic> dataPayload = json.decode(payload);
-          }
+          await _onSelectMessage();
         },
       );
 
@@ -100,28 +88,14 @@ class FirebaseMessagingService {
       }
     });
 
-    FirebaseMessaging.onMessageOpenedApp.listen((RemoteMessage message) {
-      print('A new onMessageOpenedApp event was published!');
+    FirebaseMessaging.onMessageOpenedApp.listen((RemoteMessage message) async {
+      await _onSelectMessage();
     });
   }
-}
 
-// 앱이 켜졌을 때 push 데이터가 있냐 없냐
-//   _firebaseTerminateCheck() async {
-//     RemoteMessage? message =
-//         await FirebaseMessaging.instance.getInitialMessage();
-//
-//     print('dd');
-//     // none 대신 null로 변경하기
-//     // FcmData data = FcmData("none", 0);
-//     //
-//     // if (message?.data['category'] != null && message?.data['id'] != null) {
-//     //   String category = message?.data['category'];
-//     //   int id = int.parse(message?.data['id']);
-//     //   data = FcmData(category, id);
-//     // }
-//     //
-//     // FcmManager.instance.setCategory(data);
-//     // // splash에서 Get.offNamed() 없애기
-//   }
-// }
+  _onSelectMessage() async {
+    final instance = FirebaseMessagingManager.instance;
+    await instance.setFirebaseMessageData();
+    Get.offAllNamed(Routes.SPLASH);
+  }
+}
