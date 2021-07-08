@@ -1,5 +1,5 @@
 import 'package:get/get.dart';
-import 'package:santaclothes/data/model/token_response.dart';
+import 'package:santaclothes/data/local/model/token_local_model.dart';
 import 'package:santaclothes/data/repository/auth_repository.dart';
 import 'package:santaclothes/data/repository/onboarding_repository.dart';
 import 'package:santaclothes/routes/app_routes.dart';
@@ -17,12 +17,12 @@ class SplashController extends GetxController {
   }
 
   _checkUserToken() async {
-    final TokenResponse? tokenResponse = await _authRepository.getToken();
+    final TokenLocalModel? tokenLocalModel = await _authRepository.getToken();
     final bool? onBoardingFlag = await _onboardingRepository.getIsGuide();
     await Future.delayed(Duration(seconds: 2));
 
-    if (tokenResponse == null ||
-        DateTime.parse(tokenResponse.expiredAt).millisecondsSinceEpoch <
+    if (tokenLocalModel == null ||
+        DateTime.parse(tokenLocalModel.expiredAt).millisecondsSinceEpoch <
             DateTime.now().millisecondsSinceEpoch) {
       if (onBoardingFlag == true) {
         Get.offNamed(Routes.LOGIN);

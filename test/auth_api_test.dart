@@ -3,7 +3,7 @@ import 'dart:convert';
 import 'package:dio/dio.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:santaclothes/data/common/sancle_error.dart';
-import 'package:santaclothes/data/model/analysis_request_result_response.dart';
+import 'package:santaclothes/data/remote/model/analysis_request_result_response.dart';
 import 'package:santaclothes/data/utils/api_utils.dart';
 
 import 'utils.dart';

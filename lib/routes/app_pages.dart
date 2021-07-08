@@ -1,4 +1,3 @@
-import 'package:flutter_local_notifications/flutter_local_notifications.dart';
 import 'package:get/get_navigation/src/routes/get_route.dart';
 import 'package:santaclothes/presentation/analysis_request/analysis_request_binding.dart';
 import 'package:santaclothes/presentation/analysis_request/analysis_request_screen.dart';

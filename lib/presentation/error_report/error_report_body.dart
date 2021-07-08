@@ -1,8 +1,8 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:santaclothes/data/model/care_label_details_response.dart';
-import 'package:santaclothes/data/network/dio_client.dart';
+import 'package:santaclothes/data/remote/model/care_label_details_response.dart';
+import 'package:santaclothes/data/remote/network/dio_client.dart';
 import 'package:santaclothes/presentation/common/widget/receipt_widget.dart';
 import 'package:santaclothes/presentation/common/widget/vertical_spacing.dart';
 import 'package:santaclothes/presentation/error_report/error_report_controller.dart';

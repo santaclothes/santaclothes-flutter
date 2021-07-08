@@ -3,7 +3,9 @@ import 'package:flutter_svg/svg.dart';
 import 'package:get/get.dart';
 import 'package:santaclothes/presentation/analysis_request/analysis_request_controller.dart';
 import 'package:santaclothes/presentation/analysis_request/widget/analysis_request_body.dart';
+import 'package:santaclothes/presentation/analysis_request/widget/analysis_request_header.dart';
 import 'package:santaclothes/presentation/common/widget/loading_overlay.dart';
+import 'package:santaclothes/presentation/common/widget/vertical_spacing.dart';
 import 'package:santaclothes/utils/constants.dart';
 import 'package:santaclothes/utils/size_config.dart';
 
@@ -39,6 +41,8 @@ class AnalysisRequestScreen extends StatelessWidget {
           physics: BouncingScrollPhysics(),
           child: Column(
             children: [
+              AnalysisRequestHeader(),
+              VerticalSpacing(of: 26.0),
               AnalysisRequestBody(),
               GestureDetector(
                 onTap: () {

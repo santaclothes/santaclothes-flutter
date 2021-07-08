@@ -1,6 +1,6 @@
 import 'package:get/get.dart';
-import 'package:santaclothes/data/model/notification_item_response.dart';
-import 'package:santaclothes/data/model/notification_response.dart';
+import 'package:santaclothes/data/remote/model/notification_item_response.dart';
+import 'package:santaclothes/data/remote/model/notification_response.dart';
 import 'package:santaclothes/data/repository/notification_repository.dart';
 import 'package:santaclothes/utils/constants.dart';
 

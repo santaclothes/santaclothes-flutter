@@ -1,5 +1,5 @@
-import 'package:santaclothes/data/model/notification_response.dart';
-import 'package:santaclothes/data/network/api_provider.dart';
+import 'package:santaclothes/data/remote/model/notification_response.dart';
+import 'package:santaclothes/data/remote/network/api_provider.dart';
 
 class NotificationRepository {
   Future<NotificationResponse> getNotification(int page, int count) {

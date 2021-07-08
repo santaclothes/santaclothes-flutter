@@ -1,5 +1,5 @@
 import 'package:get/get.dart';
-import 'package:santaclothes/data/model/error_report_response.dart';
+import 'package:santaclothes/data/remote/model/error_report_response.dart';
 import 'package:santaclothes/data/repository/analysis_repository.dart';
 import 'package:santaclothes/presentation/common/model/analysis_status.dart';
 import 'package:santaclothes/routes/app_routes.dart';

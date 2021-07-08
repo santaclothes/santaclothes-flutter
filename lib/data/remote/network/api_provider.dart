@@ -1,12 +1,12 @@
 import 'dart:convert';
-import 'dart:io';
 
 import 'package:dio/dio.dart';
-import 'package:santaclothes/data/model/analysis_request_result_response.dart';
-import 'package:santaclothes/data/model/error_report_response.dart';
-import 'package:santaclothes/data/model/notification_response.dart';
-import 'package:santaclothes/data/network/dio_client.dart';
+import 'package:santaclothes/data/remote/model/analysis_request_result_response.dart';
+import 'package:santaclothes/data/remote/model/error_report_response.dart';
+import 'package:santaclothes/data/remote/model/notification_response.dart';
 import 'package:santaclothes/data/utils/api_utils.dart';
+
+import 'dio_client.dart';
 
 /// 산클 메인 서비스에서 사용하는 API 관리 */
 class ApiProvider {
