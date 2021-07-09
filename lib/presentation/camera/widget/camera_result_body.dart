@@ -125,7 +125,11 @@ class CameraResultBody extends StatelessWidget {
             ),
             HorizontalSpacing(of: 16.0),
             Container(
-              margin: EdgeInsets.only(right: getProportionateScreenWidth(10)),
+              margin: EdgeInsets.only(
+                right: nextStepText == '완료'
+                    ? getProportionateScreenWidth(26)
+                    : getProportionateScreenWidth(10),
+              ),
               child: SvgPicture.asset(
                 "assets/icons/ic_next_guide.svg",
                 width: getProportionateScreenWidth(26.0),
