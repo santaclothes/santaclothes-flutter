@@ -1,8 +1,11 @@
+import 'dart:math';
+
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:santaclothes/data/model/home_response.dart';
 import 'package:santaclothes/data/repository/home_repository.dart';
 import 'package:santaclothes/presentation/common/widget/circle_bar_widget.dart';
+import 'package:santaclothes/presentation/home/model/home_background.dart';
 
 class HomeController extends GetxController {
   final HomeRepository _homeRepository;
@@ -12,6 +15,7 @@ class HomeController extends GetxController {
   final hasNoti = false.obs;
   final notice = [].obs;
   final notiIcon = 'assets/icons/no_push.svg'.obs;
+  final background = 'assets/images/home_background.png'.obs;
   var page = 0.obs;
 
   HomeController(this._homeRepository);
@@ -34,6 +38,8 @@ class HomeController extends GetxController {
     else{
       notiIcon.value = 'assets/icons/no_push.svg';
     }
+
+    randomBackground();
   }
   @override
   Future<void> onReady() async {
@@ -59,6 +65,10 @@ class HomeController extends GetxController {
     initialPage: 0,
   );
 
+  void randomBackground(){
+    int rand = Random().nextInt(4);
+    background.value = homeBackground[rand];
+  }
 
   getCircleBar(int flag, int index) {
     return circleBar(flag, index);

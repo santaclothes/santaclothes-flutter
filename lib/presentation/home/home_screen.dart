@@ -18,14 +18,14 @@ class HomeScreen extends GetView<HomeController> {
           top: false,
           child: Stack(children: <Widget>[
             Container(
-              child: Image.asset(
-                'assets/images/home_background.png',
+              child: Obx(()=>Image.asset(
+                controller.background.value,
                 width: MediaQuery
                     .of(context)
                     .size
                     .width,
                 fit: BoxFit.fitWidth,
-              ),
+              )),
             ),
             Positioned(
                 right: getProportionateScreenWidth(24),
