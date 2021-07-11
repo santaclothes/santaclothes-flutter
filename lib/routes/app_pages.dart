@@ -1,6 +1,8 @@
 import 'package:get/get_navigation/src/routes/get_route.dart';
 import 'package:santaclothes/presentation/analysis_request/analysis_request_binding.dart';
 import 'package:santaclothes/presentation/analysis_request/analysis_request_screen.dart';
+import 'package:santaclothes/presentation/analysis_results/analysis_results_binding.dart';
+import 'package:santaclothes/presentation/analysis_results/analysis_results_screen.dart';
 import 'package:santaclothes/presentation/camera/camera_result/camera_result_binding.dart';
 import 'package:santaclothes/presentation/camera/camera_result/camera_result_controller.dart';
 import 'package:santaclothes/presentation/camera/camera_result/camera_result_screen.dart';
@@ -8,11 +10,15 @@ import 'package:santaclothes/presentation/camera/clothes_camera/clothes_camera_b
 import 'package:santaclothes/presentation/camera/clothes_camera/clothes_camera_screen.dart';
 import 'package:santaclothes/presentation/camera/label_camera/label_camera_binding.dart';
 import 'package:santaclothes/presentation/camera/label_camera/label_camera_screen.dart';
+import 'package:santaclothes/presentation/analysis_results/analysis_results_controller.dart';
 import 'package:santaclothes/presentation/dashboard/dashboard_binding.dart';
 import 'package:santaclothes/presentation/dashboard/dashboard_screen.dart';
+import 'package:santaclothes/presentation/error_report/error_report_binding.dart';
+import 'package:santaclothes/presentation/error_report/error_report_screen.dart';
 import 'package:santaclothes/presentation/login/login_binding.dart';
 import 'package:santaclothes/presentation/login/login_screen.dart';
-import 'package:santaclothes/presentation/my_page/my_page_screen.dart';
+import 'package:santaclothes/presentation/notification/notification_binding.dart';
+import 'package:santaclothes/presentation/notification/notification_screen.dart';
 import 'package:santaclothes/presentation/onboarding/onboarding_binding.dart';
 import 'package:santaclothes/presentation/onboarding/onboarding_screen.dart';
 import 'package:santaclothes/presentation/result/result_screen.dart';
@@ -70,6 +76,26 @@ class AppPages {
       name: Routes.ANALYSIS_REQUEST,
       page: () => AnalysisRequestScreen(),
       binding: AnalysisRequestBinding(),
+    ),
+    GetPage(
+      name: Routes.ANALYSIS_RESULTS_FROM_NOTIFICATION,
+      page: () => AnalysisResultsScreen(),
+      binding: AnalysisResultsBinding(NOTIFICATION_FUNNEL_TAG),
+    ),
+    GetPage(
+      name: Routes.ANALYSIS_RESULTS_FROM_MY_PAGE,
+      page: () => AnalysisResultsScreen(),
+      binding: AnalysisResultsBinding(MY_PAGE_FUNNEL_TAG),
+    ),
+    GetPage(
+      name: Routes.NOTIFICATION,
+      page: () => NotificationScreen(),
+      binding: NotificationBinding(),
+    ),
+    GetPage(
+      name: Routes.ERROR_REPORT,
+      page: () => ErrorReportScreen(),
+      binding: ErrorReportBinding(),
     ),
   ];
 }

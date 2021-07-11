@@ -1,10 +1,7 @@
-import 'dart:io';
-
 import 'package:dio/dio.dart';
 import 'package:santaclothes/data/model/home_response.dart';
-import 'package:santaclothes/data/model/my_page_cloth_data.dart';
 import 'package:santaclothes/data/model/my_page_response.dart';
-import 'package:santaclothes/data/network/dio_client.dart';
+import 'package:santaclothes/data/remote/network/dio_client.dart';
 import 'package:santaclothes/data/utils/api_utils.dart';
 
 /// 산클 메인 서비스에서 사용하는 API 관리 */

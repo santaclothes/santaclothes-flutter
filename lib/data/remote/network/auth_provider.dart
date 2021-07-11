@@ -1,9 +1,10 @@
 import 'dart:convert';
 
 import 'package:dio/dio.dart';
-import 'package:santaclothes/data/model/token_response.dart';
-import 'package:santaclothes/data/network/dio_client.dart';
+import 'package:santaclothes/data/remote/model/token_response.dart';
 import 'package:santaclothes/data/utils/api_utils.dart';
+
+import 'dio_client.dart';
 
 class AuthProvider {
   static final AuthProvider _authProvider = AuthProvider._internal();
@@ -41,12 +42,14 @@ class AuthProvider {
   /// 200 : 성공
   /// 400 : 존재하지 않는 소셜 아이디
   /// */
-  Future<TokenResponse> postAuthLogin(String userToken, String deviceToken) async {
+  Future<TokenResponse> postAuthLogin(
+      String userToken, String deviceToken) async {
     try {
       Response response = await safeApiCall(() async {
         return await DioClient.defaultClient.post(
           BASE_URL + "auth/login",
-          data: jsonEncode({"userToken": userToken, "deviceToken": deviceToken}),
+          data:
+              jsonEncode({"userToken": userToken, "deviceToken": deviceToken}),
         );
       });
       return TokenResponse.fromJson(response.data);

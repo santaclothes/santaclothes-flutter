@@ -1,6 +1,4 @@
-import 'package:firebase_core/firebase_core.dart';
 import 'package:firebase_messaging/firebase_messaging.dart';
-import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:kakao_flutter_sdk/all.dart';
 import 'package:santaclothes/data/common/fcm_error.dart';
@@ -31,7 +29,7 @@ class LoginController extends GetxController {
       final String nickname = user.properties?["nickname"] ?? "";
       final String deviceToken = await _getDeviceToken();
       // Dedugging 용
-      developer.log('device token : ${deviceToken}', name: 'deviceToken');
+      developer.log('device token : $deviceToken', name: 'deviceToken');
       _requestSignUp("KAKAO", nickname, userId.toString(), deviceToken);
     } catch (e) {
       print(e);
@@ -40,16 +38,15 @@ class LoginController extends GetxController {
   }
 
   Future _getDeviceToken() async {
-    try{
+    try {
       String? deviceToken;
       _messaging = FirebaseMessaging.instance;
       deviceToken = await _messaging.getToken();
-      if(deviceToken == null){
+      if (deviceToken == null) {
         throw DeviceTokenException("Token is null");
       }
       return deviceToken;
-    }
-    catch(e){
+    } catch (e) {
       print(e);
       Get.snackbar("단말 토큰 생성 실패", DEFAULT_ERROR_MSG);
     }
@@ -84,7 +81,8 @@ class LoginController extends GetxController {
     }
   }
 
-  _requestSignUp(String accountType, String name, String userToken, String deviceToken) async {
+  _requestSignUp(String accountType, String name, String userToken,
+      String deviceToken) async {
     try {
       await _loginRepository.postAuthRegister(accountType, name, userToken);
       _requestLogin(userToken, deviceToken);
@@ -100,7 +98,8 @@ class LoginController extends GetxController {
 
   _requestLogin(String userToken, String deviceToken) async {
     try {
-      bool isLoginSuccess = await _loginRepository.postAuthLogin(userToken, deviceToken);
+      bool isLoginSuccess =
+          await _loginRepository.postAuthLogin(userToken, deviceToken);
       if (isLoginSuccess) {
         Get.offNamed(Routes.DASHBOARD);
       } else {

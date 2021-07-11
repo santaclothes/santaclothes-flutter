@@ -5,19 +5,21 @@ class ReceiptWidget extends StatelessWidget {
   final double? width;
   final double? height;
   final Widget child;
+  final allowsTopPaint;
 
   ReceiptWidget({
     required this.child,
     required this.color,
     this.width,
     this.height,
+    this.allowsTopPaint = true,
   });
 
   @override
   Widget build(BuildContext context) {
     return CustomPaint(
       painter: _ClipShadowShadowPainter(
-        clipper: _SancleFormClipper(),
+        clipper: _SancleFormClipper(allowsTopPaint),
         shadow: Shadow(
           color: Colors.black.withOpacity(0.18),
           blurRadius: 4.0,
@@ -30,7 +32,7 @@ class ReceiptWidget extends StatelessWidget {
             height: height,
             color: color,
           ),
-          clipper: _SancleFormClipper()),
+          clipper: _SancleFormClipper(allowsTopPaint)),
     );
   }
 }
@@ -55,6 +57,10 @@ class _ClipShadowShadowPainter extends CustomPainter {
 }
 
 class _SancleFormClipper extends CustomClipper<Path> {
+  final allowTopPaint;
+
+  _SancleFormClipper(this.allowTopPaint);
+
   @override
   Path getClip(Size size) {
     Path path = Path();
@@ -70,10 +76,12 @@ class _SancleFormClipper extends CustomClipper<Path> {
     }
     path.lineTo(size.width, 0.0);
 
-    while (x > 0) {
-      x -= increment;
-      y = (y == 0) ? 7.0 : 0;
-      path.lineTo(x, y);
+    if (allowTopPaint) {
+      while (x > 0) {
+        x -= increment;
+        y = (y == 0) ? 7.0 : 0;
+        path.lineTo(x, y);
+      }
     }
 
     path.close();

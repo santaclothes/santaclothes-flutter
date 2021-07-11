@@ -1,6 +1,7 @@
-import 'package:santaclothes/data/model/token_response.dart';
-import 'package:santaclothes/data/network/auth_provider.dart';
-import 'package:santaclothes/data/prefs/token_manager.dart';
+import 'package:santaclothes/data/local/prefs/token_manager.dart';
+import 'package:santaclothes/data/remote/mapper/remote_to_local.dart';
+import 'package:santaclothes/data/remote/model/token_response.dart';
+import 'package:santaclothes/data/remote/network/auth_provider.dart';
 
 class LoginRepository {
   Future<void> postAuthRegister(
@@ -12,7 +13,8 @@ class LoginRepository {
     try {
       TokenResponse tokenResponse =
           await AuthProvider.instance.postAuthLogin(userToken, deviceToken);
-      return await TokenManger.instance.setUserToken(tokenResponse);
+      return await TokenManger.instance
+          .setUserToken(tokenResponse.toTokenLocalModel());
     } catch (e) {
       throw e;
     }

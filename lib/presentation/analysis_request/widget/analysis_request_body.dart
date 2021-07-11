@@ -2,7 +2,6 @@ import 'dart:io';
 
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_svg/flutter_svg.dart';
 import 'package:get/get.dart';
 import 'package:santaclothes/presentation/analysis_request/analysis_request_controller.dart';
 import 'package:santaclothes/presentation/common/model/clothes_category.dart';
@@ -22,59 +21,13 @@ class AnalysisRequestBody extends GetView<AnalysisRequestController> {
       width: double.infinity,
       child: Column(
         children: [
-          Container(
-            width: double.infinity,
-            padding: EdgeInsets.symmetric(
-              horizontal: getProportionateScreenWidth(30.0),
-            ),
-            height: getProportionateScreenHeight(84.0),
-            child: Row(
-              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-              children: [
-                Container(
-                  margin: EdgeInsets.only(
-                    top: getProportionateScreenHeight(4.0),
-                    bottom: getProportionateScreenHeight(2.0),
-                  ),
-                  child: Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                    children: [
-                      Text(
-                        '마지막 STEP',
-                        style: TextStyle(
-                          color: sancleDark2Color,
-                          fontSize: getProportionateScreenHeight(22.0),
-                          fontFamily: 'nanum_square',
-                          fontWeight: FontWeight.w800,
-                        ),
-                      ),
-                      Text(
-                        '분석 요청서를 작성하고\n결과를 받아보세요-!',
-                        style: TextStyle(
-                          color: sancleDark2Color,
-                          fontSize: getProportionateScreenHeight(16.0),
-                          fontFamily: 'nanum_square',
-                          fontWeight: FontWeight.w400,
-                        ),
-                      )
-                    ],
-                  ),
-                ),
-                Image.asset(
-                  'assets/images/bg_sancle_illustration_1.png',
-                )
-              ],
-            ),
-          ),
-          VerticalSpacing(of: 26.0),
           ReceiptWidget(
             color: Colors.white,
             width: double.infinity,
             child: Container(
               child: Column(
                 children: [
-                  VerticalSpacing(of: 34.0),
+                  VerticalSpacing(of: 55.0),
                   Row(
                     children: [
                       HorizontalSpacing(of: 30.0),

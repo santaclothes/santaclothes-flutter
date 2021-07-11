@@ -1,5 +1,6 @@
 import 'package:dio/dio.dart';
-import 'package:santaclothes/data/network/auth_interceptor.dart';
+
+import 'auth_interceptor.dart';
 
 const BASE_URL =
     "http://ec2-13-124-105-1.ap-northeast-2.compute.amazonaws.com:8080/";
