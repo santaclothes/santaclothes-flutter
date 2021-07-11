@@ -15,7 +15,6 @@ class OnboardingContentWidget extends GetView<OnboardingController>{
       child: Align(
         alignment: Alignment.bottomCenter,
         child: Container(
-          // width: MediaQuery.of(context).size.width,
           decoration: BoxDecoration(
             color: whiteColor,
           ),
@@ -47,8 +46,6 @@ class OnboardingContentWidget extends GetView<OnboardingController>{
                   child: Column(
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: <Widget>[
-                        // _mainPrompt[controller.page.value],
-                        // Obx(()=>controller.getMainPrompt(controller.page.value)),
                         Obx(()=>controller.main[controller.page.value]),
                         SizedBox(height: getProportionateScreenHeight(24)),
                         Obx(()=>controller.sub[controller.page.value])
