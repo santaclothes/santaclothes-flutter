@@ -70,8 +70,7 @@ class AnalysisResultsController extends GetxController {
 
   void _requestAnalysisStatus(String status, VoidCallback onSuccess) async {
     try {
-      await _analysisRepository.putAnalysisRequest(
-          requestId, AnalysisStatus.REPORTED.toShortString());
+      await _analysisRepository.putAnalysisRequest(requestId, status);
       Get.until((route) => route.settings.name == Routes.DASHBOARD);
       onSuccess.call();
     } catch (e) {
