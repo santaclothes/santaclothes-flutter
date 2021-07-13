@@ -40,8 +40,6 @@ const divideLineColor = Color(0xFF4F4F4F); // 79,79,79
 const divideLineColor2 = Color(0xFF444444); // 68,68,68
 const divideLineColor3 = Color(0xFF686868); // 104,104,104
 
-
-
 // SharedPreferences
 const String PREF_USER_TOKEN = "PREF_USER_TOKEN";
 const String PREF_FIREBASE_MESSAGE = "PREF_FIREBASE_MESSAGE";
