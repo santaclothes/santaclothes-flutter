@@ -1,3 +1,8 @@
+<<<<<<< HEAD
+<svg xmlns="http://www.w3.org/2000/svg" width="315" height="485" fill="none" viewBox="0 0 315 485">
+    <path fill="#F8D247" fill-rule="evenodd" d="M0 0v99h3V3h97V0H0zM315 0h-99v3h96v97h3V0zM315 485v-99h-3v96h-97v3h100zM0 485h99v-3H3v-97H0v100z" clip-rule="evenodd"/>
+=======
 <svg xmlns="http://www.w3.org/2000/svg" width="315" height="375" fill="none" viewBox="0 0 315 375">
     <path fill="#F8D247" fill-rule="evenodd" d="M0 0v84.334h3V2.556h97V0H0zM315 0h-99v2.556h96v82.63h3V0zM315 375v-84.334h-3v81.778h-97V375h100zM0 375h99v-2.556H3v-82.63H0V375z" clip-rule="evenodd"/>
+>>>>>>> f23b284e10cec4d9949bcc091daf9f842d4c6881
 </svg>
