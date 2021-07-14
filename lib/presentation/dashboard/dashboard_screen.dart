@@ -19,7 +19,10 @@ class DashboardScreen extends StatelessWidget {
           top: false,
           bottom: false,
           child: Scaffold(
-            backgroundColor: controller.currentTabType.value == DashBoardTabType.HOME ? whiteColor : buttonDisableColor,
+            backgroundColor:
+                controller.currentTabType.value == DashBoardTabType.HOME
+                    ? whiteColor
+                    : buttonDisableColor,
             body: Container(
               child: IndexedStack(
                 index: controller.currentTabType.value.index,

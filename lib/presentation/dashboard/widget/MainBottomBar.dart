@@ -28,8 +28,8 @@ class MainBottomBar extends GetView<DashboardController> {
                   controller.currentTabType.value == DashBoardTabType.HOME
                       ? "assets/icons/ic_home_selected.svg"
                       : "assets/icons/ic_home_unselected.svg",
-                  width: getProportionateScreenHeight(28.0),
-                  height: getProportionateScreenHeight(28.0),
+                  width: 28.0,
+                  height: 28.0,
                 ),
               ),
             ),
@@ -43,8 +43,8 @@ class MainBottomBar extends GetView<DashboardController> {
                   controller.currentTabType.value == DashBoardTabType.MY_PAGE
                       ? "assets/icons/ic_my_page_selected.svg"
                       : "assets/icons/ic_my_page_unselected.svg",
-                  width: getProportionateScreenHeight(28.0),
-                  height: getProportionateScreenHeight(28.0),
+                  width: 28.0,
+                  height: 28.0,
                 ),
               ),
             ),
