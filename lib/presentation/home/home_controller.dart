@@ -21,51 +21,31 @@ class HomeController extends GetxController {
   HomeController(this._homeRepository);
 
   @override
-  void onInit() async {
-    super.onInit();
-    HomeResponse? userData = await _homeRepository.getUserData();
+  Future<void> onReady() async {
+    super.onReady();
+    HomeResponse? homeResponse = await _homeRepository.getHomeData();
 
-    if(userData != null){
-      notice.value = userData.notices;
-      userName.value = userData.userName;
-      clothCount.value = countWithComma(userData.totalClothesCount);
-      hasNoti.value = userData.hasNewNotification;
+    if (homeResponse != null) {
+      notice.value = homeResponse.notices;
+      userName.value = homeResponse.userName;
+      clothCount.value = countWithComma(homeResponse.totalClothesCount);
+      hasNoti.value = homeResponse.hasNewNotification;
     }
 
-    if(hasNoti == true){
+    if (hasNoti.value == true) {
       notiIcon.value = 'assets/icons/has_push.svg';
-    }
-    else{
+    } else {
       notiIcon.value = 'assets/icons/no_push.svg';
     }
 
     randomBackground();
   }
-  @override
-  Future<void> onReady() async {
-    super.onReady();
-    HomeResponse? userData = await _homeRepository.getUserData();
 
-    if(userData != null){
-      notice.value = userData.notices;
-      userName.value = userData.userName;
-      clothCount.value = countWithComma(userData.totalClothesCount);
-      hasNoti.value = userData.hasNewNotification;
-    }
-
-    if(hasNoti == true){
-      notiIcon.value = 'assets/icons/has_push.svg';
-    }
-    else{
-      notiIcon.value = 'assets/icons/no_push.svg';
-    }
-  }
-  
   final pageController = PageController(
     initialPage: 0,
   );
 
-  void randomBackground(){
+  void randomBackground() {
     int rand = Random().nextInt(4);
     background.value = homeBackground[rand];
   }
@@ -74,13 +54,13 @@ class HomeController extends GetxController {
     return circleBar(flag, index);
   }
 
-  String countWithComma(int count){
+  String countWithComma(int count) {
     String countStr = count.toString().split("").reversed.join("");
     String result = "";
 
-    for(int i = 0; i < countStr.length; i++){
+    for (int i = 0; i < countStr.length; i++) {
       result = countStr[i] + result;
-      if((i+1)%3 == 0 && i != countStr.length-1){
+      if ((i + 1) % 3 == 0 && i != countStr.length - 1) {
         result = "," + result;
       }
     }

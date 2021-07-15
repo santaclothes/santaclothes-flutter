@@ -45,7 +45,7 @@ class ApiProvider {
     }
   }
 
-  Future<HomeResponse?> getUserData() async {
+  Future<HomeResponse?> getHomeData() async {
     try {
       Response response = await safeApiCall(() async {
         return await DioClient.authClient.get(
