@@ -1,6 +1,6 @@
 import 'package:get/get.dart';
-import 'package:santaclothes/data/remote/model/my_page_response.dart';
 import 'package:santaclothes/data/repository/my_page_repository.dart';
+import 'package:santaclothes/utils/constants.dart';
 
 class MyPageController extends GetxController {
   final MyPageRepository _myPageRepository;
@@ -16,12 +16,13 @@ class MyPageController extends GetxController {
   }
 
   fetchMyPageData() async {
-    MyPageResponse? myPageData = await _myPageRepository.getMyPageData();
-
-    if (myPageData != null) {
-      myClothesCount.value = myPageData.myClothesCount;
-      myPageClothes.value = myPageData.myPageClothes;
-      userName.value = myPageData.userName;
+    try {
+      final result = await _myPageRepository.getMyPageData();
+      myClothesCount.value = result.myClothesCount;
+      myPageClothes.value = result.myPageClothes;
+      userName.value = result.userName;
+    } catch (e) {
+      Get.snackbar("마이페이지 정보 가져오기 실패", DEFAULT_ERROR_MSG);
     }
   }
 }

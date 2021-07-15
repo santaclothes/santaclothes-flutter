@@ -3,9 +3,9 @@ import 'dart:math';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:santaclothes/data/remote/model/home_notice_response.dart';
-import 'package:santaclothes/data/remote/model/home_response.dart';
 import 'package:santaclothes/data/repository/home_repository.dart';
 import 'package:santaclothes/presentation/home/model/home_background.dart';
+import 'package:santaclothes/utils/constants.dart';
 
 class HomeController extends GetxController {
   final HomeRepository _homeRepository;
@@ -24,17 +24,23 @@ class HomeController extends GetxController {
   HomeController(this._homeRepository);
 
   @override
-  Future<void> onReady() async {
+  void onReady() {
     super.onReady();
-    HomeResponse? homeResponse = await _homeRepository.getHomeData();
+    _fetchHomeData();
+  }
 
-    if (homeResponse != null) {
-      notice.value = homeResponse.notices;
-      userName.value = homeResponse.userName;
-      totalClothesCount.value = countWithComma(homeResponse.totalClothesCount);
-      hasNewNotification.value = homeResponse.hasNewNotification;
+  void _fetchHomeData() async {
+    try {
+      final result = await _homeRepository.getHomeData();
+
+      notice.value = result.notices;
+      userName.value = result.userName;
+      totalClothesCount.value = countWithComma(result.totalClothesCount);
+      hasNewNotification.value = result.hasNewNotification;
+      homeBackgroundImage.value = homeBackground[Random().nextInt(4)];
+    } catch (e) {
+      Get.snackbar("홈 정보 가져오기 실패", DEFAULT_ERROR_MSG);
     }
-    homeBackgroundImage.value = homeBackground[Random().nextInt(4)];
   }
 
   String countWithComma(int count) {
