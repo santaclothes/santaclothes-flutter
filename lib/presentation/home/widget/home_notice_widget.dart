@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/src/widgets/framework.dart';
 import 'package:get/get.dart';
 import 'package:get/get_state_manager/src/simple/get_view.dart';
 import 'package:santaclothes/presentation/home/home_controller.dart';
@@ -34,17 +33,18 @@ class HomeNoticeWidget extends GetView<HomeController> {
               padding: EdgeInsets.only(
                   top: getProportionateScreenHeight(17),
                   left: getProportionateScreenWidth(24)),
-              child: Obx(()=>Row(
-                children: <Widget>[
-                  for (int i = 0; i < controller.notice.value.length; i++)
-                    Obx(() => controller.getCircleBar(controller.page.value, i))
-                ],
-              )),
+              child: Obx(() => Row(
+                    children: <Widget>[
+                      for (int i = 0; i < controller.notice.length; i++)
+                        Obx(() =>
+                            controller.getCircleBar(controller.page.value, i))
+                    ],
+                  )),
             ),
             Expanded(
-              child: Obx(()=>PageView.builder(
+              child: Obx(() => PageView.builder(
                   controller: controller.pageController,
-                  itemCount: controller.notice.value.length,
+                  itemCount: controller.notice.length,
                   onPageChanged: (page) {
                     // propmt 변경
                     controller.page.value = page;
@@ -60,7 +60,7 @@ class HomeNoticeWidget extends GetView<HomeController> {
                               right: getProportionateScreenWidth(24),
                               top: getProportionateScreenHeight(18)),
                           child: Text(
-                            controller.notice.value[controller.page.value].title,
+                            controller.notice[index].title,
                             maxLines: 2,
                             overflow: TextOverflow.ellipsis,
                             style: TextStyle(
@@ -75,7 +75,7 @@ class HomeNoticeWidget extends GetView<HomeController> {
                               right: getProportionateScreenWidth(24),
                               top: getProportionateScreenHeight(10)),
                           child: Text(
-                            controller.notice.value[controller.page.value].hint,
+                            controller.notice[index].hint,
                             maxLines: 1,
                             overflow: TextOverflow.ellipsis,
                             style: TextStyle(
@@ -90,7 +90,7 @@ class HomeNoticeWidget extends GetView<HomeController> {
                               right: getProportionateScreenWidth(24),
                               top: getProportionateScreenHeight(12)),
                           child: Text(
-                            controller.notice.value[controller.page.value].content,
+                            controller.notice[index].content,
                             maxLines: 2,
                             overflow: TextOverflow.ellipsis,
                             style: TextStyle(
