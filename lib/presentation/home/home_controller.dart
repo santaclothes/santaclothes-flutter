@@ -2,6 +2,7 @@ import 'dart:math';
 
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:santaclothes/data/model/home_notice.dart';
 import 'package:santaclothes/data/model/home_response.dart';
 import 'package:santaclothes/data/repository/home_repository.dart';
 import 'package:santaclothes/presentation/common/widget/circle_bar_widget.dart';
@@ -11,12 +12,15 @@ class HomeController extends GetxController {
   final HomeRepository _homeRepository;
 
   final userName = "".obs;
-  final clothCount = "0".obs;
-  final hasNoti = false.obs;
-  final notice = [].obs;
-  final notiIcon = 'assets/icons/no_push.svg'.obs;
-  final background = 'assets/images/home_background.png'.obs;
-  var page = 0.obs;
+  final totalClothesCount = "0".obs;
+  final hasNewNotification = false.obs;
+  final notice = <Notices>[].obs;
+  final homeBackgroundImage = 'assets/images/home_background.png'.obs;
+  var noticeCurrentPage = 0.obs;
+
+  final pageController = PageController(
+    initialPage: 0,
+  );
 
   HomeController(this._homeRepository);
 
@@ -28,30 +32,10 @@ class HomeController extends GetxController {
     if (homeResponse != null) {
       notice.value = homeResponse.notices;
       userName.value = homeResponse.userName;
-      clothCount.value = countWithComma(homeResponse.totalClothesCount);
-      hasNoti.value = homeResponse.hasNewNotification;
+      totalClothesCount.value = countWithComma(homeResponse.totalClothesCount);
+      hasNewNotification.value = homeResponse.hasNewNotification;
     }
-
-    if (hasNoti.value == true) {
-      notiIcon.value = 'assets/icons/has_push.svg';
-    } else {
-      notiIcon.value = 'assets/icons/no_push.svg';
-    }
-
-    randomBackground();
-  }
-
-  final pageController = PageController(
-    initialPage: 0,
-  );
-
-  void randomBackground() {
-    int rand = Random().nextInt(4);
-    background.value = homeBackground[rand];
-  }
-
-  getCircleBar(int flag, int index) {
-    return circleBar(flag, index);
+    homeBackgroundImage.value = homeBackground[Random().nextInt(4)];
   }
 
   String countWithComma(int count) {
@@ -64,7 +48,6 @@ class HomeController extends GetxController {
         result = "," + result;
       }
     }
-
     return result;
   }
 }

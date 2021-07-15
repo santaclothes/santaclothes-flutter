@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:get/get_state_manager/src/simple/get_view.dart';
+import 'package:santaclothes/presentation/common/widget/circle_bar_widget.dart';
 import 'package:santaclothes/presentation/home/home_controller.dart';
 import 'package:santaclothes/utils/constants.dart';
 import 'package:santaclothes/utils/size_config.dart';
@@ -37,7 +38,7 @@ class HomeNoticeWidget extends GetView<HomeController> {
                     children: <Widget>[
                       for (int i = 0; i < controller.notice.length; i++)
                         Obx(() =>
-                            controller.getCircleBar(controller.page.value, i))
+                            circleBar(controller.noticeCurrentPage.value, i))
                     ],
                   )),
             ),
@@ -46,8 +47,7 @@ class HomeNoticeWidget extends GetView<HomeController> {
                   controller: controller.pageController,
                   itemCount: controller.notice.length,
                   onPageChanged: (page) {
-                    // propmt 변경
-                    controller.page.value = page;
+                    controller.noticeCurrentPage.value = page;
                     controller.pageController.jumpToPage(page);
                   },
                   itemBuilder: (context, index) {

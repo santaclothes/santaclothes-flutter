@@ -20,7 +20,7 @@ class HomeScreen extends GetView<HomeController> {
           child: Stack(children: <Widget>[
             Container(
               child: Obx(() => Image.asset(
-                    controller.background.value,
+                    controller.homeBackgroundImage.value,
                     width: MediaQuery.of(context).size.width,
                     fit: BoxFit.fitWidth,
                   )),
@@ -32,7 +32,9 @@ class HomeScreen extends GetView<HomeController> {
                   activeOpacity: 0.6,
                   onTap: () => Get.toNamed(Routes.NOTIFICATION),
                   child: Obx(() => SvgPicture.asset(
-                        controller.notiIcon.value,
+                        controller.hasNewNotification.value
+                            ? 'assets/icons/has_push.svg'
+                            : 'assets/icons/no_push.svg',
                         width: getProportionateScreenHeight(52),
                         height: getProportionateScreenHeight(52),
                       )),
