@@ -1,5 +1,5 @@
 import 'package:json_annotation/json_annotation.dart';
-import 'package:santaclothes/data/model/my_page_clothes_response.dart';
+import 'package:santaclothes/data/remote/model/my_page_clothes_response.dart';
 
 part 'my_page_response.g.dart';
 

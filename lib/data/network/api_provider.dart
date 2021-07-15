@@ -1,6 +1,6 @@
 import 'package:dio/dio.dart';
-import 'package:santaclothes/data/model/home_response.dart';
-import 'package:santaclothes/data/model/my_page_response.dart';
+import 'package:santaclothes/data/remote/model/home_response.dart';
+import 'package:santaclothes/data/remote/model/my_page_response.dart';
 import 'package:santaclothes/data/remote/network/dio_client.dart';
 import 'package:santaclothes/data/utils/api_utils.dart';
 

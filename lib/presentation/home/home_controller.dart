@@ -2,8 +2,8 @@ import 'dart:math';
 
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:santaclothes/data/model/home_notice_response.dart';
-import 'package:santaclothes/data/model/home_response.dart';
+import 'package:santaclothes/data/remote/model/home_notice_response.dart';
+import 'package:santaclothes/data/remote/model/home_response.dart';
 import 'package:santaclothes/data/repository/home_repository.dart';
 import 'package:santaclothes/presentation/home/model/home_background.dart';
 
