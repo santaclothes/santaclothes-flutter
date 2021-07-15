@@ -1,12 +1,12 @@
 import 'package:json_annotation/json_annotation.dart';
-import 'package:santaclothes/data/model/my_page_cloth_data.dart';
+import 'package:santaclothes/data/model/my_page_clothes_response.dart';
 
 part 'my_page_response.g.dart';
 
 @JsonSerializable(explicitToJson: true)
 class MyPageResponse {
   final int myClothesCount;
-  final List<MyPageCloth> myPageClothes;
+  final List<MyPageClothesResponse> myPageClothes;
   final String userName;
 
   MyPageResponse(this.myClothesCount, this.myPageClothes, this.userName);

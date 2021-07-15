@@ -1,16 +1,16 @@
 import 'package:json_annotation/json_annotation.dart';
 
-part 'home_notice.g.dart';
+part 'home_notice_response.g.dart';
 
 @JsonSerializable()
-class Notices {
+class HomeNoticesResponse {
   final String content;
   final String hint;
   final String title;
 
-  Notices(this.content, this.hint, this.title);
+  HomeNoticesResponse(this.content, this.hint, this.title);
 
-  factory Notices.fromJson(Map<String, dynamic> json) =>
+  factory HomeNoticesResponse.fromJson(Map<String, dynamic> json) =>
       _$NoticesFromJson(json);
 
   Map<String, dynamic> toJson() => _$NoticesToJson(this);

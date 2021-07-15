@@ -10,7 +10,7 @@ MyPageResponse _$MyPageResponseFromJson(Map<String, dynamic> json) {
   return MyPageResponse(
     json['myClothesCount'] as int,
     (json['myPageClothes'] as List<dynamic>)
-        .map((e) => MyPageCloth.fromJson(e as Map<String, dynamic>))
+        .map((e) => MyPageClothesResponse.fromJson(e as Map<String, dynamic>))
         .toList(),
     json['userName'] as String,
   );

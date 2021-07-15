@@ -1,13 +1,13 @@
 // GENERATED CODE - DO NOT MODIFY BY HAND
 
-part of 'my_page_cloth_data.dart';
+part of 'my_page_clothes_response.dart';
 
 // **************************************************************************
 // JsonSerializableGenerator
 // **************************************************************************
 
-MyPageCloth _$MyPageClothFromJson(Map<String, dynamic> json) {
-  return MyPageCloth(
+MyPageClothesResponse _$MyPageClothFromJson(Map<String, dynamic> json) {
+  return MyPageClothesResponse(
     json['careLabelCount'] as int,
     json['clothId'] as int,
     json['clothType'] as String,
@@ -16,7 +16,7 @@ MyPageCloth _$MyPageClothFromJson(Map<String, dynamic> json) {
   );
 }
 
-Map<String, dynamic> _$MyPageClothToJson(MyPageCloth instance) =>
+Map<String, dynamic> _$MyPageClothToJson(MyPageClothesResponse instance) =>
     <String, dynamic>{
       'careLabelCount': instance.careLabelCount,
       'clothId': instance.clothId,

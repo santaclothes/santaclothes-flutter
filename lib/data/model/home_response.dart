@@ -1,5 +1,5 @@
 import 'package:json_annotation/json_annotation.dart';
-import 'home_notice.dart';
+import 'home_notice_response.dart';
 
 part 'home_response.g.dart';
 
@@ -8,9 +8,10 @@ class HomeResponse {
   bool hasNewNotification;
   int totalClothesCount;
   String userName;
-  List<Notices> notices;
+  List<HomeNoticesResponse> notices;
 
-  HomeResponse(this.hasNewNotification, this.totalClothesCount, this.userName, this.notices);
+  HomeResponse(this.hasNewNotification, this.totalClothesCount, this.userName,
+      this.notices);
 
   factory HomeResponse.fromJson(Map<String, dynamic> json) =>
       _$HomeResponseFromJson(json);

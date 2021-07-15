@@ -12,7 +12,7 @@ HomeResponse _$HomeResponseFromJson(Map<String, dynamic> json) {
     json['totalClothesCount'] as int,
     json['userName'] as String,
     (json['notices'] as List<dynamic>)
-        .map((e) => Notices.fromJson(e as Map<String, dynamic>))
+        .map((e) => HomeNoticesResponse.fromJson(e as Map<String, dynamic>))
         .toList(),
   );
 }
