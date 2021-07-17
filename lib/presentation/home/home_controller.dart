@@ -4,7 +4,6 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:santaclothes/data/remote/model/home_notice_response.dart';
 import 'package:santaclothes/data/repository/home_repository.dart';
-import 'package:santaclothes/presentation/home/model/home_background.dart';
 import 'package:santaclothes/utils/constants.dart';
 
 class HomeController extends GetxController {
@@ -14,7 +13,6 @@ class HomeController extends GetxController {
   final totalClothesCount = "0".obs;
   final hasNewNotification = false.obs;
   final notice = <HomeNoticesResponse>[].obs;
-  final homeBackgroundImage = 'assets/images/home_background.png'.obs;
   var noticeCurrentPage = 0.obs;
 
   final pageController = PageController(
@@ -37,7 +35,6 @@ class HomeController extends GetxController {
       userName.value = result.userName;
       totalClothesCount.value = countWithComma(result.totalClothesCount);
       hasNewNotification.value = result.hasNewNotification;
-      homeBackgroundImage.value = homeBackground[Random().nextInt(4)];
     } catch (e) {
       Get.snackbar("홈 정보 가져오기 실패", DEFAULT_ERROR_MSG);
     }
@@ -54,5 +51,16 @@ class HomeController extends GetxController {
       }
     }
     return result;
+  }
+
+  String getRandomLottieFile() {
+    final homeBackgroundFileNames = [
+      'assets/lottie/home__background_01.json',
+      'assets/lottie/home__background_02.json',
+      'assets/lottie/home__background_03.json',
+      'assets/lottie/home__background_04.json'
+    ];
+    return homeBackgroundFileNames[
+        Random().nextInt(homeBackgroundFileNames.length)];
   }
 }
