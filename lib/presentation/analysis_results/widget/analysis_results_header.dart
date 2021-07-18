@@ -67,7 +67,7 @@ class AnalysisResultsHeader extends GetView<AnalysisResultsController> {
             ),
           ),
           Image.asset(
-            'assets/images/bg_sancle_illustration_1.png',
+            'assets/images/bg_analysis_results_illustration.png',
           )
         ],
       ),

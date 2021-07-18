@@ -10,11 +10,12 @@ class LoginScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: whiteColor,
       body: Stack(
         fit: StackFit.expand,
         children: [
           Image.asset(
-            "assets/images/login_background.png",
+            "assets/images/bg_login.png",
             fit: BoxFit.cover,
           ),
           Container(
@@ -54,14 +55,15 @@ class LoginScreen extends StatelessWidget {
                 },
               ),
               VerticalSpacing(of: 16.0),
-              LoginButton(
-                iconAssetsName: "assets/icons/ic_apple_logo.svg",
-                backgroundColor: blackColor,
-                textColor: whiteColor,
-                onTab: () {
-                  // TODO Apple 로그인
-                },
-              ),
+              if (GetPlatform.isIOS)
+                LoginButton(
+                  iconAssetsName: "assets/icons/ic_apple_logo.svg",
+                  backgroundColor: blackColor,
+                  textColor: whiteColor,
+                  onTab: () {
+                    // TODO Apple 로그인
+                  },
+                ),
               GetPlatform.isIOS
                   ? VerticalSpacing(of: 62.0)
                   : VerticalSpacing(of: 28.0),

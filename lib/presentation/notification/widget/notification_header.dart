@@ -66,7 +66,7 @@ class NotificationHeader extends GetView<NotificationController> {
             ),
           ),
           Image.asset(
-            'assets/images/bg_sancle_illustration_1.png',
+            'assets/images/bg_notification_illustration.png',
           )
         ],
       ),
