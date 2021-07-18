@@ -49,16 +49,33 @@ class MyPageClothesList extends GetView<MyPageController> {
             height: 2,
           ),
           VerticalSpacing(of: 30),
-          Obx(() => GridView.builder(
-                gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
-                    crossAxisCount: 3, childAspectRatio: 0.7),
-                shrinkWrap: true,
-                primary: false,
-                itemCount: controller.myPageClothes.length,
-                itemBuilder: (context, index) {
-                  return MyPageClothWidget(index);
-                },
-              ))
+          Obx(() => controller.myPageClothes.isEmpty
+              ? Container(
+                  margin: EdgeInsets.only(
+                    bottom: getProportionateScreenHeight(30),
+                  ),
+                  child: Center(
+                    child: Text(
+                      '저장된 의류가 없습니다.',
+                      style: TextStyle(
+                        fontSize: 12.0,
+                        fontFamily: 'nanum_square',
+                        color: sancleDarkColor,
+                        fontWeight: FontWeight.w400,
+                      ),
+                    ),
+                  ),
+                )
+              : GridView.builder(
+                  gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+                      crossAxisCount: 3, childAspectRatio: 0.7),
+                  shrinkWrap: true,
+                  primary: false,
+                  itemCount: controller.myPageClothes.length,
+                  itemBuilder: (context, index) {
+                    return MyPageClothWidget(index);
+                  },
+                ))
         ],
       ),
     );
