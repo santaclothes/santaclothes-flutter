@@ -14,12 +14,12 @@ class OnboardingController extends GetxController {
   var button = buttonPrompt.obs;
 
   /* Onboarding 이미지 */
-  RxString onboardingImage = "assets/images/onboarding_1.png".obs;
+  RxString onboardingImage = "assets/images/bg_onboarding_1.png".obs;
 
   final List<RxString> onboardingList = [
-    RxString('assets/images/onboarding_1.png'),
-    RxString('assets/images/onboarding_2.png'),
-    RxString('assets/images/onboarding_3.png')
+    RxString('assets/images/bg_onboarding_1.png'),
+    RxString('assets/images/bg_onboarding_2.png'),
+    RxString('assets/images/bg_onboarding_3.png')
   ];
 
   setOnboardingList(index) {
