@@ -1,4 +1,5 @@
 import 'package:get/get.dart';
+import 'package:santaclothes/data/remote/model/my_page_clothes_response.dart';
 import 'package:santaclothes/data/repository/my_page_repository.dart';
 import 'package:santaclothes/utils/constants.dart';
 
@@ -6,7 +7,7 @@ class MyPageController extends GetxController {
   final MyPageRepository _myPageRepository;
   final myClothesCount = 0.obs;
   final userName = "".obs;
-  final myPageClothes = [].obs;
+  final myPageClothes = <MyPageClothesResponse>[].obs;
 
   MyPageController(this._myPageRepository);
 
