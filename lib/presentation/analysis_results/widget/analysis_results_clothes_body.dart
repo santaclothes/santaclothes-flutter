@@ -6,6 +6,7 @@ import 'package:santaclothes/presentation/common/widget/dotted_line.dart';
 import 'package:santaclothes/presentation/common/widget/receipt_widget.dart';
 import 'package:santaclothes/presentation/common/widget/vertical_spacing.dart';
 import 'package:santaclothes/utils/constants.dart';
+import 'package:santaclothes/utils/date_utils.dart';
 import 'package:santaclothes/utils/size_config.dart';
 
 class AnalysisResultsClothesBody extends GetView<AnalysisResultsController> {
@@ -49,7 +50,9 @@ class AnalysisResultsClothesBody extends GetView<AnalysisResultsController> {
                     VerticalSpacing(of: 24.0),
                     _rowText(
                       '요청일시',
-                      controller.analysisResults.value!.createdDate,
+                      convertToOutputFormat(
+                          controller.analysisResults.value!.createdDate,
+                          "yyyy/MM/dd  HH:mma"),
                     ),
                     VerticalSpacing(of: 10.0),
                     _rowText('분석건', '1건'),
