@@ -47,7 +47,7 @@ class AnalysisRequestHeader extends GetView<AnalysisRequestController> {
             ),
           ),
           Image.asset(
-            'assets/images/bg_sancle_illustration_1.png',
+            'assets/images/bg_analysis_request_illustration.png',
           )
         ],
       ),
