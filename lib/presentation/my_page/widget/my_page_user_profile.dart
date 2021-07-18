@@ -82,7 +82,7 @@ class MyPageUserProfile extends GetView<MyPageController> {
           ),
           Expanded(child: Container()),
           Image.asset(
-            'assets/images/default_profile.png',
+            'assets/images/bg_default_profile.png',
             height: getProportionateScreenHeight(78),
             width: getProportionateScreenWidth(78),
           )
