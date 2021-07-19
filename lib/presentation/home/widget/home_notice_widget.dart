@@ -27,28 +27,27 @@ class HomeNoticeWidget extends GetView<HomeController> {
                 offset: Offset(0, -5), // changes position of shadow
               )
             ]),
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: <Widget>[
-            Container(
-              padding: EdgeInsets.only(
-                  top: getProportionateScreenHeight(17),
-                  left: getProportionateScreenWidth(24)),
-              child: Obx(() => Row(
-                    children: <Widget>[
-                      for (int i = 0; i < controller.notice.length; i++)
-                        Obx(() =>
-                            circleBar(controller.noticeCurrentPage.value, i))
-                    ],
-                  )),
-            ),
-            Expanded(
-              child: Obx(() => PageView.builder(
-                  controller: controller.pageController,
+        child: Obx(
+          () => Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: <Widget>[
+              Container(
+                padding: EdgeInsets.only(
+                    top: getProportionateScreenHeight(17),
+                    left: getProportionateScreenWidth(24)),
+                child: Row(
+                  children: <Widget>[
+                    for (int i = 0; i < controller.notice.length; i++)
+                      Obx(() =>
+                          circleBar(controller.noticeCurrentPage.value, i))
+                  ],
+                ),
+              ),
+              Expanded(
+                child: PageView.builder(
                   itemCount: controller.notice.length,
                   onPageChanged: (page) {
                     controller.noticeCurrentPage.value = page;
-                    controller.pageController.jumpToPage(page);
                   },
                   itemBuilder: (context, index) {
                     return Column(
@@ -101,9 +100,11 @@ class HomeNoticeWidget extends GetView<HomeController> {
                         ),
                       ],
                     );
-                  })),
-            )
-          ],
+                  },
+                ),
+              )
+            ],
+          ),
         ),
       ),
     );
